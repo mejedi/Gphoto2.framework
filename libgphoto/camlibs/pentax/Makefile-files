@@ -1,0 +1,23 @@
+# If you use this as pentax for a real camlib (say 'foobar.la'),
+# make sure to change the "noinst_" at the beginning of the following
+# lines:
+#   * "noinst_DATA" into "camlibdoc_DATA"
+#   * "noinst_LTLIBRARIES" into "EXTRA_LTLIBRARIES"
+#
+# Additionally, you must add add an include line to the Makefile-files
+# of the new camlib to camlibs/Makefile.am:
+#   * "include my-new-camlib/Makefile-files"
+#
+# And as the last step, you need to add it to configure.ac:
+#   * GP_CAMLIB([foobar])dnl
+
+EXTRA_DIST += pentax/README.pentax pentax/ChangeLog
+
+camlibdoc_DATA += pentax/README.pentax
+EXTRA_LTLIBRARIES += pentax.la
+
+pentax_la_SOURCES = pentax/pslr.c pentax/pslr.h pentax/library.c
+pentax_la_CFLAGS = $(AM_CFLAGS) $(NO_UNUSED_CFLAGS) $(CFLAGS) -DLIBGPHOTO2
+pentax_la_LDFLAGS = $(camlib_ldflags)
+pentax_la_DEPENDENCIES = $(camlib_dependencies)
+pentax_la_LIBADD = $(camlib_libadd)
