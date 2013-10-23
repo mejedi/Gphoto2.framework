@@ -29,7 +29,30 @@
 		90B8289D1817DB890029357C /* version.h in Headers */ = {isa = PBXBuildFile; fileRef = 90B828641817D5C50029357C /* version.h */; };
 		90B8289E1817DB890029357C /* version_nano.h in Headers */ = {isa = PBXBuildFile; fileRef = 90B828651817D5C50029357C /* version_nano.h */; };
 		90B828C61817DD2F0029357C /* listdevs.c in Sources */ = {isa = PBXBuildFile; fileRef = 90B828C01817DCFE0029357C /* listdevs.c */; };
-		90B828C71817DD440029357C /* libusb-1.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 90B8282B1817D56D0029357C /* libusb-1.0.dylib */; };
+		90B828C71817DD440029357C /* libusbx-1.0.16.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 90B8282B1817D56D0029357C /* libusbx-1.0.16.dylib */; };
+		90B82A0C1817F0980029357C /* dlopen.c in Sources */ = {isa = PBXBuildFile; fileRef = 90B829E61817EFBE0029357C /* dlopen.c */; };
+		90B82A101817F0980029357C /* preopen.c in Sources */ = {isa = PBXBuildFile; fileRef = 90B829EA1817EFBE0029357C /* preopen.c */; };
+		90B82A111817F0980029357C /* lt__alloc.c in Sources */ = {isa = PBXBuildFile; fileRef = 90B829EC1817EFBE0029357C /* lt__alloc.c */; };
+		90B82A121817F0980029357C /* lt__dirent.c in Sources */ = {isa = PBXBuildFile; fileRef = 90B829ED1817EFBE0029357C /* lt__dirent.c */; };
+		90B82A131817F0980029357C /* lt__strl.c in Sources */ = {isa = PBXBuildFile; fileRef = 90B829EE1817EFBE0029357C /* lt__strl.c */; };
+		90B82A141817F0980029357C /* lt_dlloader.c in Sources */ = {isa = PBXBuildFile; fileRef = 90B829EF1817EFBE0029357C /* lt_dlloader.c */; };
+		90B82A151817F0980029357C /* lt_error.c in Sources */ = {isa = PBXBuildFile; fileRef = 90B829F01817EFBE0029357C /* lt_error.c */; };
+		90B82A161817F0980029357C /* ltdl.c in Sources */ = {isa = PBXBuildFile; fileRef = 90B829F11817EFBE0029357C /* ltdl.c */; };
+		90B82A171817F0980029357C /* slist.c in Sources */ = {isa = PBXBuildFile; fileRef = 90B82A011817EFBE0029357C /* slist.c */; };
+		90B82A181817F0AB0029357C /* argz.c in Sources */ = {isa = PBXBuildFile; fileRef = 90B829C51817EFBE0029357C /* argz.c */; };
+		90B82A1A1817F0CD0029357C /* lt__alloc.h in Headers */ = {isa = PBXBuildFile; fileRef = 90B829DB1817EFBE0029357C /* lt__alloc.h */; };
+		90B82A1B1817F0CD0029357C /* lt__dirent.h in Headers */ = {isa = PBXBuildFile; fileRef = 90B829DC1817EFBE0029357C /* lt__dirent.h */; };
+		90B82A1C1817F0CD0029357C /* lt__glibc.h in Headers */ = {isa = PBXBuildFile; fileRef = 90B829DD1817EFBE0029357C /* lt__glibc.h */; };
+		90B82A1D1817F0CD0029357C /* lt__private.h in Headers */ = {isa = PBXBuildFile; fileRef = 90B829DE1817EFBE0029357C /* lt__private.h */; };
+		90B82A1E1817F0CD0029357C /* lt__strl.h in Headers */ = {isa = PBXBuildFile; fileRef = 90B829DF1817EFBE0029357C /* lt__strl.h */; };
+		90B82A1F1817F0CD0029357C /* lt_dlloader.h in Headers */ = {isa = PBXBuildFile; fileRef = 90B829E01817EFBE0029357C /* lt_dlloader.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		90B82A201817F0CD0029357C /* lt_error.h in Headers */ = {isa = PBXBuildFile; fileRef = 90B829E11817EFBE0029357C /* lt_error.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		90B82A211817F0CD0029357C /* lt_system.h in Headers */ = {isa = PBXBuildFile; fileRef = 90B829E21817EFBE0029357C /* lt_system.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		90B82A221817F0CD0029357C /* slist.h in Headers */ = {isa = PBXBuildFile; fileRef = 90B829E31817EFBE0029357C /* slist.h */; };
+		90B82A231817F0CD0029357C /* ltdl.h in Headers */ = {isa = PBXBuildFile; fileRef = 90B829F21817EFBE0029357C /* ltdl.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		90B82A291817F14F0029357C /* config.h in Headers */ = {isa = PBXBuildFile; fileRef = 90B82A241817F11D0029357C /* config.h */; };
+		90B82A2B1817F18F0029357C /* argz.h in Headers */ = {isa = PBXBuildFile; fileRef = 90B82A2A1817F18F0029357C /* argz.h */; };
+		90B82A2D1817F8E80029357C /* libltdlS.c in Sources */ = {isa = PBXBuildFile; fileRef = 90B82A2C1817F8E80029357C /* libltdlS.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -45,7 +68,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		90B8282B1817D56D0029357C /* libusb-1.0.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = "libusb-1.0.dylib"; sourceTree = BUILT_PRODUCTS_DIR; };
+		90B8282B1817D56D0029357C /* libusbx-1.0.16.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = "libusbx-1.0.16.dylib"; sourceTree = BUILT_PRODUCTS_DIR; };
 		90B828411817D5C40029357C /* core.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = core.c; sourceTree = "<group>"; };
 		90B828421817D5C40029357C /* descriptor.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = descriptor.c; sourceTree = "<group>"; };
 		90B828431817D5C40029357C /* hotplug.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = hotplug.c; sourceTree = "<group>"; };
@@ -67,7 +90,7 @@
 		90B828911817D75F0029357C /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/System/Library/Frameworks/CoreFoundation.framework; sourceTree = DEVELOPER_DIR; };
 		90B828931817D7680029357C /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/System/Library/Frameworks/IOKit.framework; sourceTree = DEVELOPER_DIR; };
 		90B828951817D7BB0029357C /* libobjc.A.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libobjc.A.dylib; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/usr/lib/libobjc.A.dylib; sourceTree = DEVELOPER_DIR; };
-		90B828A31817DCB90029357C /* libusb-listdevs */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "listdevs"; sourceTree = BUILT_PRODUCTS_DIR; };
+		90B828A31817DCB90029357C /* listdevs */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = listdevs; sourceTree = BUILT_PRODUCTS_DIR; };
 		90B828B61817DCFE0029357C /* dpfp.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = dpfp.c; sourceTree = "<group>"; };
 		90B828B71817DCFE0029357C /* dpfp_threaded.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = dpfp_threaded.c; sourceTree = "<group>"; };
 		90B828B81817DCFE0029357C /* ezusb.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = ezusb.c; sourceTree = "<group>"; };
@@ -77,6 +100,30 @@
 		90B828C01817DCFE0029357C /* listdevs.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = listdevs.c; sourceTree = "<group>"; };
 		90B828C41817DCFE0029357C /* sam3u_benchmark.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = sam3u_benchmark.c; sourceTree = "<group>"; };
 		90B828C51817DCFE0029357C /* xusb.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = xusb.c; sourceTree = "<group>"; };
+		90B829C51817EFBE0029357C /* argz.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = argz.c; sourceTree = "<group>"; };
+		90B829DB1817EFBE0029357C /* lt__alloc.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = lt__alloc.h; sourceTree = "<group>"; };
+		90B829DC1817EFBE0029357C /* lt__dirent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = lt__dirent.h; sourceTree = "<group>"; };
+		90B829DD1817EFBE0029357C /* lt__glibc.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = lt__glibc.h; sourceTree = "<group>"; };
+		90B829DE1817EFBE0029357C /* lt__private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = lt__private.h; sourceTree = "<group>"; };
+		90B829DF1817EFBE0029357C /* lt__strl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = lt__strl.h; sourceTree = "<group>"; };
+		90B829E01817EFBE0029357C /* lt_dlloader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = lt_dlloader.h; sourceTree = "<group>"; };
+		90B829E11817EFBE0029357C /* lt_error.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = lt_error.h; sourceTree = "<group>"; };
+		90B829E21817EFBE0029357C /* lt_system.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = lt_system.h; sourceTree = "<group>"; };
+		90B829E31817EFBE0029357C /* slist.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = slist.h; sourceTree = "<group>"; };
+		90B829E61817EFBE0029357C /* dlopen.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = dlopen.c; sourceTree = "<group>"; };
+		90B829EA1817EFBE0029357C /* preopen.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = preopen.c; sourceTree = "<group>"; };
+		90B829EC1817EFBE0029357C /* lt__alloc.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = lt__alloc.c; sourceTree = "<group>"; };
+		90B829ED1817EFBE0029357C /* lt__dirent.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = lt__dirent.c; sourceTree = "<group>"; };
+		90B829EE1817EFBE0029357C /* lt__strl.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = lt__strl.c; sourceTree = "<group>"; };
+		90B829EF1817EFBE0029357C /* lt_dlloader.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = lt_dlloader.c; sourceTree = "<group>"; };
+		90B829F01817EFBE0029357C /* lt_error.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = lt_error.c; sourceTree = "<group>"; };
+		90B829F11817EFBE0029357C /* ltdl.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = ltdl.c; sourceTree = "<group>"; };
+		90B829F21817EFBE0029357C /* ltdl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ltdl.h; sourceTree = "<group>"; };
+		90B82A011817EFBE0029357C /* slist.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = slist.c; sourceTree = "<group>"; };
+		90B82A071817F0580029357C /* libltdl.7.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libltdl.7.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		90B82A241817F11D0029357C /* config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = config.h; sourceTree = "<group>"; };
+		90B82A2A1817F18F0029357C /* argz.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = argz.h; sourceTree = "<group>"; };
+		90B82A2C1817F8E80029357C /* libltdlS.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = libltdlS.c; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,7 +141,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				90B828C71817DD440029357C /* libusb-1.0.dylib in Frameworks */,
+				90B828C71817DD440029357C /* libusbx-1.0.16.dylib in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		90B82A041817F0580029357C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -108,6 +162,7 @@
 				90B828931817D7680029357C /* IOKit.framework */,
 				90B828911817D75F0029357C /* CoreFoundation.framework */,
 				90B8282F1817D5C40029357C /* libusb */,
+				90B829C31817EFBE0029357C /* libltdl */,
 				90B828231817D50E0029357C /* Products */,
 			);
 			sourceTree = "<group>";
@@ -115,8 +170,9 @@
 		90B828231817D50E0029357C /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				90B8282B1817D56D0029357C /* libusb-1.0.dylib */,
-				90B828A31817DCB90029357C /* libusb-listdevs */,
+				90B8282B1817D56D0029357C /* libusbx-1.0.16.dylib */,
+				90B828A31817DCB90029357C /* listdevs */,
+				90B82A071817F0580029357C /* libltdl.7.dylib */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -173,6 +229,53 @@
 			path = libusb/examples;
 			sourceTree = SOURCE_ROOT;
 		};
+		90B829C31817EFBE0029357C /* libltdl */ = {
+			isa = PBXGroup;
+			children = (
+				90B82A2C1817F8E80029357C /* libltdlS.c */,
+				90B82A2A1817F18F0029357C /* argz.h */,
+				90B82A241817F11D0029357C /* config.h */,
+				90B829C51817EFBE0029357C /* argz.c */,
+				90B829DA1817EFBE0029357C /* libltdl */,
+				90B829E41817EFBE0029357C /* loaders */,
+				90B829EC1817EFBE0029357C /* lt__alloc.c */,
+				90B829ED1817EFBE0029357C /* lt__dirent.c */,
+				90B829EE1817EFBE0029357C /* lt__strl.c */,
+				90B829EF1817EFBE0029357C /* lt_dlloader.c */,
+				90B829F01817EFBE0029357C /* lt_error.c */,
+				90B829F11817EFBE0029357C /* ltdl.c */,
+				90B829F21817EFBE0029357C /* ltdl.h */,
+				90B82A011817EFBE0029357C /* slist.c */,
+			);
+			name = libltdl;
+			path = libtool/libltdl;
+			sourceTree = "<group>";
+		};
+		90B829DA1817EFBE0029357C /* libltdl */ = {
+			isa = PBXGroup;
+			children = (
+				90B829DB1817EFBE0029357C /* lt__alloc.h */,
+				90B829DC1817EFBE0029357C /* lt__dirent.h */,
+				90B829DD1817EFBE0029357C /* lt__glibc.h */,
+				90B829DE1817EFBE0029357C /* lt__private.h */,
+				90B829DF1817EFBE0029357C /* lt__strl.h */,
+				90B829E01817EFBE0029357C /* lt_dlloader.h */,
+				90B829E11817EFBE0029357C /* lt_error.h */,
+				90B829E21817EFBE0029357C /* lt_system.h */,
+				90B829E31817EFBE0029357C /* slist.h */,
+			);
+			path = libltdl;
+			sourceTree = "<group>";
+		};
+		90B829E41817EFBE0029357C /* loaders */ = {
+			isa = PBXGroup;
+			children = (
+				90B829E61817EFBE0029357C /* dlopen.c */,
+				90B829EA1817EFBE0029357C /* preopen.c */,
+			);
+			path = loaders;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -189,6 +292,25 @@
 				90B8289D1817DB890029357C /* version.h in Headers */,
 				90B8289E1817DB890029357C /* version_nano.h in Headers */,
 				90B828871817D6A00029357C /* config.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		90B82A051817F0580029357C /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				90B82A231817F0CD0029357C /* ltdl.h in Headers */,
+				90B82A1F1817F0CD0029357C /* lt_dlloader.h in Headers */,
+				90B82A201817F0CD0029357C /* lt_error.h in Headers */,
+				90B82A211817F0CD0029357C /* lt_system.h in Headers */,
+				90B82A291817F14F0029357C /* config.h in Headers */,
+				90B82A1A1817F0CD0029357C /* lt__alloc.h in Headers */,
+				90B82A1B1817F0CD0029357C /* lt__dirent.h in Headers */,
+				90B82A1C1817F0CD0029357C /* lt__glibc.h in Headers */,
+				90B82A1D1817F0CD0029357C /* lt__private.h in Headers */,
+				90B82A1E1817F0CD0029357C /* lt__strl.h in Headers */,
+				90B82A221817F0CD0029357C /* slist.h in Headers */,
+				90B82A2B1817F18F0029357C /* argz.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -209,7 +331,7 @@
 			);
 			name = "libusb-1.0";
 			productName = "libusbx-1.0.16";
-			productReference = 90B8282B1817D56D0029357C /* libusb-1.0.dylib */;
+			productReference = 90B8282B1817D56D0029357C /* libusbx-1.0.16.dylib */;
 			productType = "com.apple.product-type.library.dynamic";
 		};
 		90B828A21817DCB90029357C /* listdevs */ = {
@@ -225,9 +347,26 @@
 			dependencies = (
 			);
 			name = listdevs;
-			productName = "listdevs";
-			productReference = 90B828A31817DCB90029357C /* libusb-listdevs */;
+			productName = listdevs;
+			productReference = 90B828A31817DCB90029357C /* listdevs */;
 			productType = "com.apple.product-type.tool";
+		};
+		90B82A061817F0580029357C /* libltdl */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 90B82A081817F0580029357C /* Build configuration list for PBXNativeTarget "libltdl" */;
+			buildPhases = (
+				90B82A031817F0580029357C /* Sources */,
+				90B82A041817F0580029357C /* Frameworks */,
+				90B82A051817F0580029357C /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = libltdl;
+			productName = libltdl;
+			productReference = 90B82A071817F0580029357C /* libltdl.7.dylib */;
+			productType = "com.apple.product-type.library.dynamic";
 		};
 /* End PBXNativeTarget section */
 
@@ -251,6 +390,7 @@
 			targets = (
 				90B8282A1817D56D0029357C /* libusb-1.0 */,
 				90B828A21817DCB90029357C /* listdevs */,
+				90B82A061817F0580029357C /* libltdl */,
 			);
 		};
 /* End PBXProject section */
@@ -277,6 +417,24 @@
 			buildActionMask = 2147483647;
 			files = (
 				90B828C61817DD2F0029357C /* listdevs.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		90B82A031817F0580029357C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				90B82A181817F0AB0029357C /* argz.c in Sources */,
+				90B82A0C1817F0980029357C /* dlopen.c in Sources */,
+				90B82A101817F0980029357C /* preopen.c in Sources */,
+				90B82A111817F0980029357C /* lt__alloc.c in Sources */,
+				90B82A121817F0980029357C /* lt__dirent.c in Sources */,
+				90B82A131817F0980029357C /* lt__strl.c in Sources */,
+				90B82A141817F0980029357C /* lt_dlloader.c in Sources */,
+				90B82A151817F0980029357C /* lt_error.c in Sources */,
+				90B82A161817F0980029357C /* ltdl.c in Sources */,
+				90B82A171817F0980029357C /* slist.c in Sources */,
+				90B82A2D1817F8E80029357C /* libltdlS.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -326,7 +484,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "libusbx-1.0.16";
 				SDKROOT = macosx;
 				STRIP_INSTALLED_PRODUCT = YES;
 			};
@@ -352,7 +510,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "libusbx-1.0.16";
 				SDKROOT = macosx;
 				STRIP_INSTALLED_PRODUCT = YES;
 			};
@@ -417,6 +575,69 @@
 			};
 			name = Release;
 		};
+		90B82A091817F0580029357C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+					"$(LIBLTDL_DEFINES)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LIBLTDL_DEFINES = "HAVE_CONFIG_H LTDL LT_CONFIG_H=<config.h> LTDLOPEN=libltdl";
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = libltdl.7;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		90B82A0A1817F0580029357C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = "$(LIBLTDL_DEFINES)";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LIBLTDL_DEFINES = "HAVE_CONFIG_H LTDL LT_CONFIG_H=<config.h> LTDLOPEN=libltdl";
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				PRODUCT_NAME = libltdl.7;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -446,6 +667,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		90B82A081817F0580029357C /* Build configuration list for PBXNativeTarget "libltdl" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				90B82A091817F0580029357C /* Debug */,
+				90B82A0A1817F0580029357C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};
