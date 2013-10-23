@@ -274,6 +274,48 @@ foreach_func (const char *filename, lt_ptr data)
 	return (0);
 }
 
+/*
+ * @loader_path/../IOLibs in dyld argo
+ */
+#define _DARWIN_C_SOURCE
+#include <dispatch/dispatch.h>
+#include <dlfcn.h>
+static const char *gp_port_iolibs_dir()
+{
+    static char *iolibs_dir = NULL;
+    static dispatch_once_t once;
+    dispatch_once(&once, ^{
+        Dl_info info;
+        if (dladdr(&gp_port_iolibs_dir, &info)) {
+            const char *loader_path = info.dli_fname;
+            const char suffix[] = "/IOLibs";
+            char *buf = malloc(strlen(loader_path) + sizeof suffix);
+            if (buf) {
+                strcpy(buf, loader_path);
+                int components=2;
+                while (components>0) {
+                    char *last = strrchr(buf, '/');
+                    if (!last)
+                        break;
+                    if (strcmp(last,"/..")==0) {
+                        components += 1;
+                    }
+                    else if (strcmp(last,"/.")!=0) {
+                        components -= 1;
+                    }
+                    *last = 0;
+                }
+                if (components == 0) {
+                    strcat(buf, suffix);
+                    iolibs_dir = buf;
+                } else
+                    free(buf);
+            }
+        }
+        
+    });
+    return iolibs_dir;
+}
 
 /**
  * \brief Load system ports
@@ -291,7 +333,7 @@ int
 gp_port_info_list_load (GPPortInfoList *list)
 {
 	const char *iolibs_env = getenv(IOLIBDIR_ENV);
-	const char *iolibs = (iolibs_env != NULL)?iolibs_env:IOLIBS;
+	const char *iolibs = (iolibs_env != NULL)?iolibs_env:gp_port_iolibs_dir();
 	int result;
 
 	CHECK_NULL (list);

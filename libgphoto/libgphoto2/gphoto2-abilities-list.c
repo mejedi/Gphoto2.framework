@@ -298,6 +298,48 @@ gp_abilities_list_load_dir (CameraAbilitiesList *list, const char *dir,
 	return (GP_OK);
 }
 
+/*
+ * @loader_path/../CamLibs in dyld argo
+ */
+#define _DARWIN_C_SOURCE
+#include <dispatch/dispatch.h>
+#include <dlfcn.h>
+static const char *gp_camlibs_dir()
+{
+    static char *camlibs_dir = NULL;
+    static dispatch_once_t once;
+    dispatch_once(&once, ^{
+        Dl_info info;
+        if (dladdr(&gp_camlibs_dir, &info)) {
+            const char *loader_path = info.dli_fname;
+            const char suffix[] = "/CamLibs";
+            char *buf = malloc(strlen(loader_path) + sizeof suffix);
+            if (buf) {
+                strcpy(buf, loader_path);
+                int components=2;
+                while (components>0) {
+                    char *last = strrchr(buf, '/');
+                    if (!last)
+                        break;
+                    if (strcmp(last,"/..")==0) {
+                        components += 1;
+                    }
+                    else if (strcmp(last,"/.")!=0) {
+                        components -= 1;
+                    }
+                    *last = 0;
+                }
+                if (components == 0) {
+                    strcat(buf, suffix);
+                    camlibs_dir = buf;
+                } else
+                    free(buf);
+            }
+        }
+    });
+    return camlibs_dir;
+}
+
 
 /**
  * \brief Scans the system for camera drivers.
@@ -313,7 +355,7 @@ int
 gp_abilities_list_load (CameraAbilitiesList *list, GPContext *context)
 {
 	const char *camlib_env = getenv(CAMLIBDIR_ENV);
-	const char *camlibs = (camlib_env != NULL)?camlib_env:CAMLIBS;
+	const char *camlibs = (camlib_env != NULL)?camlib_env:gp_camlibs_dir();
 	CHECK_NULL (list);
 
 	CHECK_RESULT (gp_abilities_list_load_dir (list, camlibs, context));
