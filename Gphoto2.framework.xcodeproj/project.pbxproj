@@ -29,7 +29,7 @@
 		90B8289D1817DB890029357C /* version.h in Headers */ = {isa = PBXBuildFile; fileRef = 90B828641817D5C50029357C /* version.h */; };
 		90B8289E1817DB890029357C /* version_nano.h in Headers */ = {isa = PBXBuildFile; fileRef = 90B828651817D5C50029357C /* version_nano.h */; };
 		90B828C61817DD2F0029357C /* listdevs.c in Sources */ = {isa = PBXBuildFile; fileRef = 90B828C01817DCFE0029357C /* listdevs.c */; };
-		90B828C71817DD440029357C /* libusbx-1.0.16.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 90B8282B1817D56D0029357C /* libusbx-1.0.16.dylib */; };
+		90B828C71817DD440029357C /* libusb-1.0.16.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 90B8282B1817D56D0029357C /* libusb-1.0.16.dylib */; };
 		90B82A0C1817F0980029357C /* dlopen.c in Sources */ = {isa = PBXBuildFile; fileRef = 90B829E61817EFBE0029357C /* dlopen.c */; };
 		90B82A101817F0980029357C /* preopen.c in Sources */ = {isa = PBXBuildFile; fileRef = 90B829EA1817EFBE0029357C /* preopen.c */; };
 		90B82A111817F0980029357C /* lt__alloc.c in Sources */ = {isa = PBXBuildFile; fileRef = 90B829EC1817EFBE0029357C /* lt__alloc.c */; };
@@ -55,6 +55,16 @@
 		90B82A2D1817F8E80029357C /* libltdlS.c in Sources */ = {isa = PBXBuildFile; fileRef = 90B82A2C1817F8E80029357C /* libltdlS.c */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		90A6632B181826C800592E25 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 90B828181817D43B0029357C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 90B8282A1817D56D0029357C;
+			remoteInfo = "libusb-1.0";
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXCopyFilesBuildPhase section */
 		90B828A11817DCB90029357C /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
@@ -68,7 +78,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		90B8282B1817D56D0029357C /* libusbx-1.0.16.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = "libusbx-1.0.16.dylib"; sourceTree = BUILT_PRODUCTS_DIR; };
+		90B8282B1817D56D0029357C /* libusb-1.0.16.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = "libusb-1.0.16.dylib"; sourceTree = BUILT_PRODUCTS_DIR; };
 		90B828411817D5C40029357C /* core.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = core.c; sourceTree = "<group>"; };
 		90B828421817D5C40029357C /* descriptor.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = descriptor.c; sourceTree = "<group>"; };
 		90B828431817D5C40029357C /* hotplug.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = hotplug.c; sourceTree = "<group>"; };
@@ -141,7 +151,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				90B828C71817DD440029357C /* libusbx-1.0.16.dylib in Frameworks */,
+				90B828C71817DD440029357C /* libusb-1.0.16.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -170,7 +180,7 @@
 		90B828231817D50E0029357C /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				90B8282B1817D56D0029357C /* libusbx-1.0.16.dylib */,
+				90B8282B1817D56D0029357C /* libusb-1.0.16.dylib */,
 				90B828A31817DCB90029357C /* listdevs */,
 				90B82A071817F0580029357C /* libltdl.7.dylib */,
 			);
@@ -331,7 +341,7 @@
 			);
 			name = "libusb-1.0";
 			productName = "libusbx-1.0.16";
-			productReference = 90B8282B1817D56D0029357C /* libusbx-1.0.16.dylib */;
+			productReference = 90B8282B1817D56D0029357C /* libusb-1.0.16.dylib */;
 			productType = "com.apple.product-type.library.dynamic";
 		};
 		90B828A21817DCB90029357C /* listdevs */ = {
@@ -345,6 +355,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				90A6632C181826C800592E25 /* PBXTargetDependency */,
 			);
 			name = listdevs;
 			productName = listdevs;
@@ -440,6 +451,14 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		90A6632C181826C800592E25 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 90B8282A1817D56D0029357C /* libusb-1.0 */;
+			targetProxy = 90A6632B181826C800592E25 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
 		90B8281C1817D43B0029357C /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -470,6 +489,7 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				EXECUTABLE_EXTENSION = 16.dylib;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
@@ -484,7 +504,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_NAME = "libusbx-1.0.16";
+				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				STRIP_INSTALLED_PRODUCT = YES;
 			};
@@ -504,13 +524,14 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				EXECUTABLE_EXTENSION = 16.dylib;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				PRODUCT_NAME = "libusbx-1.0.16";
+				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				STRIP_INSTALLED_PRODUCT = YES;
 			};
@@ -588,6 +609,7 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				EXECUTABLE_EXTENSION = 7.dylib;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
@@ -603,9 +625,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				LIBLTDL_DEFINES = "HAVE_CONFIG_H LTDL LT_CONFIG_H=<config.h> LTDLOPEN=libltdl";
-				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_NAME = libltdl.7;
+				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 			};
 			name = Debug;
@@ -624,6 +645,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				EXECUTABLE_EXTENSION = 7.dylib;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = "$(LIBLTDL_DEFINES)";
@@ -632,8 +654,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				LIBLTDL_DEFINES = "HAVE_CONFIG_H LTDL LT_CONFIG_H=<config.h> LTDLOPEN=libltdl";
-				MACOSX_DEPLOYMENT_TARGET = 10.8;
-				PRODUCT_NAME = libltdl.7;
+				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 			};
 			name = Release;
@@ -675,6 +696,7 @@
 				90B82A0A1817F0580029357C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
