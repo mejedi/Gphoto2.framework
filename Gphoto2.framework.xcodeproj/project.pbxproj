@@ -37,10 +37,10 @@
 		90A666C918182E1400592E25 /* libltdl.7.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 90B82A071817F0580029357C /* libltdl.7.dylib */; };
 		90A666D01818302600592E25 /* config.h in Headers */ = {isa = PBXBuildFile; fileRef = 90B828861817D6A00029357C /* config.h */; };
 		90A666D11818322F00592E25 /* libltdl.7.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 90B82A071817F0580029357C /* libltdl.7.dylib */; };
-		90A666D41818345300592E25 /* libgphoto_port.10.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 90A666BB18182C0600592E25 /* libgphoto_port.10.dylib */; };
+		90A666D41818345300592E25 /* libgphoto2_port.10.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 90A666BB18182C0600592E25 /* libgphoto2_port.10.dylib */; };
 		90A666D61818390B00592E25 /* gphoto2_framework.c in Sources */ = {isa = PBXBuildFile; fileRef = 90A666D51818390B00592E25 /* gphoto2_framework.c */; };
 		90A666E01818472000592E25 /* libusb1.c in Sources */ = {isa = PBXBuildFile; fileRef = 90A666A518182AF000592E25 /* libusb1.c */; };
-		90A666E11818472800592E25 /* libgphoto_port.10.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 90A666BB18182C0600592E25 /* libgphoto_port.10.dylib */; };
+		90A666E11818472800592E25 /* libgphoto2_port.10.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 90A666BB18182C0600592E25 /* libgphoto2_port.10.dylib */; };
 		90A666E21818472800592E25 /* libusb-1.0.16.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 90B8282B1817D56D0029357C /* libusb-1.0.16.dylib */; };
 		90A666E31818483000592E25 /* libusb.h in Headers */ = {isa = PBXBuildFile; fileRef = 90B828481817D5C40029357C /* libusb.h */; };
 		90A666E41818484100592E25 /* config.h in Headers */ = {isa = PBXBuildFile; fileRef = 90A666CE1818301000592E25 /* config.h */; };
@@ -66,7 +66,7 @@
 		90A6670418184D2900592E25 /* jpeg.h in Headers */ = {isa = PBXBuildFile; fileRef = 90A6659C1818286E00592E25 /* jpeg.h */; };
 		90A6670518184D3D00592E25 /* ltdl.h in Headers */ = {isa = PBXBuildFile; fileRef = 90B829F21817EFBE0029357C /* ltdl.h */; };
 		90A6670718184E0500592E25 /* config.h in Headers */ = {isa = PBXBuildFile; fileRef = 90A6670618184E0500592E25 /* config.h */; };
-		90A6670818184EC200592E25 /* libgphoto_port.10.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 90A666BB18182C0600592E25 /* libgphoto_port.10.dylib */; };
+		90A6670818184EC200592E25 /* libgphoto2_port.10.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 90A666BB18182C0600592E25 /* libgphoto2_port.10.dylib */; };
 		90A6670918184EC200592E25 /* libltdl.7.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 90B82A071817F0580029357C /* libltdl.7.dylib */; };
 		90A6670A18184EC200592E25 /* libusb-1.0.16.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 90B8282B1817D56D0029357C /* libusb-1.0.16.dylib */; };
 		90A6670D18184EF500592E25 /* libgphoto2.6.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 90A666ED18184CBB00592E25 /* libgphoto2.6.dylib */; };
@@ -86,7 +86,7 @@
 		90A667251818518F00592E25 /* gphoto2-endian.h in Headers */ = {isa = PBXBuildFile; fileRef = 90A667241818518E00592E25 /* gphoto2-endian.h */; };
 		90A667261818519E00592E25 /* gphoto2-endian.h in Headers */ = {isa = PBXBuildFile; fileRef = 90A667241818518E00592E25 /* gphoto2-endian.h */; };
 		90A66727181851FD00592E25 /* libgphoto2.6.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 90A666ED18184CBB00592E25 /* libgphoto2.6.dylib */; };
-		90A667281818524F00592E25 /* libgphoto_port.10.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 90A666BB18182C0600592E25 /* libgphoto_port.10.dylib */; };
+		90A667281818524F00592E25 /* libgphoto2_port.10.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 90A666BB18182C0600592E25 /* libgphoto2_port.10.dylib */; };
 		90A6672A1818533100592E25 /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 90A667291818533100592E25 /* libxml2.2.dylib */; };
 		90A6672D1818535D00592E25 /* libiconv.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 90A6672B1818534F00592E25 /* libiconv.2.dylib */; };
 		90A667311818539200592E25 /* ptp2.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 90A667121818500300592E25 /* ptp2.dylib */; };
@@ -199,7 +199,7 @@
 			files = (
 				90A666C818182D7900592E25 /* libusb-1.0.16.dylib in CopyFiles */,
 				90A666C918182E1400592E25 /* libltdl.7.dylib in CopyFiles */,
-				90A666D41818345300592E25 /* libgphoto_port.10.dylib in CopyFiles */,
+				90A666D41818345300592E25 /* libgphoto2_port.10.dylib in CopyFiles */,
 				90A6670D18184EF500592E25 /* libgphoto2.6.dylib in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -814,7 +814,7 @@
 		90A666B318182AF000592E25 /* Makefile-files */ = {isa = PBXFileReference; lastKnownFileType = text; path = "Makefile-files"; sourceTree = "<group>"; };
 		90A666B518182AF000592E25 /* linux.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = linux.c; sourceTree = "<group>"; };
 		90A666B618182AF000592E25 /* Makefile-files */ = {isa = PBXFileReference; lastKnownFileType = text; path = "Makefile-files"; sourceTree = "<group>"; };
-		90A666BB18182C0600592E25 /* libgphoto_port.10.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libgphoto_port.10.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		90A666BB18182C0600592E25 /* libgphoto2_port.10.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libgphoto2_port.10.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		90A666CE1818301000592E25 /* config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = config.h; sourceTree = "<group>"; };
 		90A666D51818390B00592E25 /* gphoto2_framework.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = gphoto2_framework.c; sourceTree = "<group>"; };
 		90A666D718183AED00592E25 /* Gphoto2-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Gphoto2-Info.plist"; sourceTree = "<group>"; };
@@ -903,7 +903,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				90A666E11818472800592E25 /* libgphoto_port.10.dylib in Frameworks */,
+				90A666E11818472800592E25 /* libgphoto2_port.10.dylib in Frameworks */,
 				90A666E21818472800592E25 /* libusb-1.0.16.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -912,7 +912,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				90A6670818184EC200592E25 /* libgphoto_port.10.dylib in Frameworks */,
+				90A6670818184EC200592E25 /* libgphoto2_port.10.dylib in Frameworks */,
 				90A6670918184EC200592E25 /* libltdl.7.dylib in Frameworks */,
 				90A6670A18184EC200592E25 /* libusb-1.0.16.dylib in Frameworks */,
 			);
@@ -924,7 +924,7 @@
 			files = (
 				90A6672D1818535D00592E25 /* libiconv.2.dylib in Frameworks */,
 				90A6672A1818533100592E25 /* libxml2.2.dylib in Frameworks */,
-				90A667281818524F00592E25 /* libgphoto_port.10.dylib in Frameworks */,
+				90A667281818524F00592E25 /* libgphoto2_port.10.dylib in Frameworks */,
 				90A66727181851FD00592E25 /* libgphoto2.6.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2195,7 +2195,7 @@
 				90B828A31817DCB90029357C /* listdevs */,
 				90B82A071817F0580029357C /* libltdl.7.dylib */,
 				90A666571818291900592E25 /* Gphoto2.framework */,
-				90A666BB18182C0600592E25 /* libgphoto_port.10.dylib */,
+				90A666BB18182C0600592E25 /* libgphoto2_port.10.dylib */,
 				90A666DC181846DA00592E25 /* usb.dylib */,
 				90A666ED18184CBB00592E25 /* libgphoto2.6.dylib */,
 				90A667121818500300592E25 /* ptp2.dylib */,
@@ -2443,9 +2443,9 @@
 			productReference = 90A666571818291900592E25 /* Gphoto2.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		90A666BA18182C0600592E25 /* libgphoto_port */ = {
+		90A666BA18182C0600592E25 /* libgphoto2_port */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 90A666BC18182C0600592E25 /* Build configuration list for PBXNativeTarget "libgphoto_port" */;
+			buildConfigurationList = 90A666BC18182C0600592E25 /* Build configuration list for PBXNativeTarget "libgphoto2_port" */;
 			buildPhases = (
 				90A666B718182C0600592E25 /* Sources */,
 				90A666B818182C0600592E25 /* Frameworks */,
@@ -2455,9 +2455,9 @@
 			);
 			dependencies = (
 			);
-			name = libgphoto_port;
+			name = libgphoto2_port;
 			productName = libgphoto_port;
-			productReference = 90A666BB18182C0600592E25 /* libgphoto_port.10.dylib */;
+			productReference = 90A666BB18182C0600592E25 /* libgphoto2_port.10.dylib */;
 			productType = "com.apple.product-type.library.dynamic";
 		};
 		90A666DB181846DA00592E25 /* usb */ = {
@@ -2587,7 +2587,7 @@
 				90B8282A1817D56D0029357C /* libusb-1.0 */,
 				90B828A21817DCB90029357C /* listdevs */,
 				90B82A061817F0580029357C /* libltdl */,
-				90A666BA18182C0600592E25 /* libgphoto_port */,
+				90A666BA18182C0600592E25 /* libgphoto2_port */,
 				90A666DB181846DA00592E25 /* usb */,
 				90A666EC18184CBB00592E25 /* libgphoto2 */,
 				90A667111818500300592E25 /* ptp2 */,
@@ -2732,7 +2732,7 @@
 		};
 		90A666D31818344700592E25 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 90A666BA18182C0600592E25 /* libgphoto_port */;
+			target = 90A666BA18182C0600592E25 /* libgphoto2_port */;
 			targetProxy = 90A666D21818344700592E25 /* PBXContainerItemProxy */;
 		};
 		90A666E618184AF300592E25 /* PBXTargetDependency */ = {
@@ -2791,7 +2791,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
 					"-Wl,-reexport-lgphoto2.6",
-					"-Wl,-reexport-lgphoto_port.10",
+					"-Wl,-reexport-lgphoto2_port.10",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
@@ -2830,7 +2830,7 @@
 				LINK_WITH_STANDARD_LIBRARIES = NO;
 				OTHER_LDFLAGS = (
 					"-Wl,-reexport-lgphoto2.6",
-					"-Wl,-reexport-lgphoto_port.10",
+					"-Wl,-reexport-lgphoto2_port.10",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
@@ -2851,6 +2851,8 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DYLIB_COMPATIBILITY_VERSION = 12;
+				DYLIB_CURRENT_VERSION = 12;
 				EXECUTABLE_EXTENSION = 10.dylib;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -2888,6 +2890,8 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DYLIB_COMPATIBILITY_VERSION = 12;
+				DYLIB_CURRENT_VERSION = 12;
 				EXECUTABLE_EXTENSION = 10.dylib;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
@@ -2981,6 +2985,8 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DYLIB_COMPATIBILITY_VERSION = 7;
+				DYLIB_CURRENT_VERSION = 7;
 				EXECUTABLE_EXTENSION = 6.dylib;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -3018,6 +3024,8 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DYLIB_COMPATIBILITY_VERSION = 7;
+				DYLIB_CURRENT_VERSION = 7;
 				EXECUTABLE_EXTENSION = 6.dylib;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
@@ -3310,7 +3318,7 @@
 			);
 			defaultConfigurationIsVisible = 0;
 		};
-		90A666BC18182C0600592E25 /* Build configuration list for PBXNativeTarget "libgphoto_port" */ = {
+		90A666BC18182C0600592E25 /* Build configuration list for PBXNativeTarget "libgphoto2_port" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				90A666BD18182C0600592E25 /* Debug */,
