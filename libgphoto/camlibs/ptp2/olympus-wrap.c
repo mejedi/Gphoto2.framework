@@ -24,14 +24,14 @@
 
 #define _BSD_SOURCE
 
-#include "config.h"
+#include <config.h>
 
 #ifdef HAVE_LIBXML2
 
 #include <string.h>
 #include <stdlib.h>
 #include <stdio.h>
-#include <_stdint.h>
+#include <stdint.h>
 
 #include <libxml/parser.h>
 
