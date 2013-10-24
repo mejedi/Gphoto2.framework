@@ -191,6 +191,11 @@ gp_abilities_list_load_dir (CameraAbilitiesList *list, const char *dir,
 		lt_dlinit ();
 		lt_dladdsearchdir (dir);
 		ret = lt_dlforeachfile (dir, foreach_func, &foreach_data);
+        const char *dyld_library_path = getenv("DYLD_LIBRARY_PATH");
+        if (dyld_library_path && ret == 0) {
+            lt_dladdsearchdir(dyld_library_path);
+            ret = lt_dlforeachfile (dyld_library_path, foreach_func, &foreach_data);
+        }
 		lt_dlexit ();
 		if (ret != 0) {
 			gp_list_free (flist);

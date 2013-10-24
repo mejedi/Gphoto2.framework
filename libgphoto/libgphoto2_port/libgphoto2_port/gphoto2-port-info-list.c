@@ -344,6 +344,11 @@ gp_port_info_list_load (GPPortInfoList *list)
 	lt_dlinit ();
 	lt_dladdsearchdir (iolibs);
 	result = lt_dlforeachfile (iolibs, foreach_func, list);
+    const char *dyld_library_path = getenv("DYLD_LIBRARY_PATH");
+    if (dyld_library_path && result >= 0) {
+        lt_dladdsearchdir(dyld_library_path);
+        result = lt_dlforeachfile (dyld_library_path, foreach_func, list);
+    }
 	lt_dlexit ();
 	if (result < 0)
 		return (result);
