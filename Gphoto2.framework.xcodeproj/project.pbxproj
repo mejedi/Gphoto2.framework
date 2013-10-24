@@ -32,18 +32,14 @@
 		90A666C318182C2100592E25 /* gphoto2-port-result.c in Sources */ = {isa = PBXBuildFile; fileRef = 90A6668518182A3F00592E25 /* gphoto2-port-result.c */; };
 		90A666C418182C2100592E25 /* gphoto2-port-version.c in Sources */ = {isa = PBXBuildFile; fileRef = 90A6668618182A3F00592E25 /* gphoto2-port-version.c */; };
 		90A666C518182C2100592E25 /* gphoto2-port.c in Sources */ = {isa = PBXBuildFile; fileRef = 90A6668718182A3F00592E25 /* gphoto2-port.c */; };
-		90A666C618182C7D00592E25 /* ltdl.h in Headers */ = {isa = PBXBuildFile; fileRef = 90B829F21817EFBE0029357C /* ltdl.h */; };
 		90A666C818182D7900592E25 /* libusb-1.0.16.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 90B8282B1817D56D0029357C /* libusb-1.0.16.dylib */; };
 		90A666C918182E1400592E25 /* libltdl.7.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 90B82A071817F0580029357C /* libltdl.7.dylib */; };
-		90A666D01818302600592E25 /* config.h in Headers */ = {isa = PBXBuildFile; fileRef = 90B828861817D6A00029357C /* config.h */; };
 		90A666D11818322F00592E25 /* libltdl.7.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 90B82A071817F0580029357C /* libltdl.7.dylib */; };
 		90A666D41818345300592E25 /* libgphoto2_port.10.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 90A666BB18182C0600592E25 /* libgphoto2_port.10.dylib */; };
 		90A666D61818390B00592E25 /* gphoto2_framework.c in Sources */ = {isa = PBXBuildFile; fileRef = 90A666D51818390B00592E25 /* gphoto2_framework.c */; };
 		90A666E01818472000592E25 /* libusb1.c in Sources */ = {isa = PBXBuildFile; fileRef = 90A666A518182AF000592E25 /* libusb1.c */; };
 		90A666E11818472800592E25 /* libgphoto2_port.10.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 90A666BB18182C0600592E25 /* libgphoto2_port.10.dylib */; };
 		90A666E21818472800592E25 /* libusb-1.0.16.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 90B8282B1817D56D0029357C /* libusb-1.0.16.dylib */; };
-		90A666E31818483000592E25 /* libusb.h in Headers */ = {isa = PBXBuildFile; fileRef = 90B828481817D5C40029357C /* libusb.h */; };
-		90A666E41818484100592E25 /* config.h in Headers */ = {isa = PBXBuildFile; fileRef = 90A666CE1818301000592E25 /* config.h */; };
 		90A666E818184B1900592E25 /* usb.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 90A666DC181846DA00592E25 /* usb.dylib */; };
 		90A666F118184D0D00592E25 /* ahd_bayer.c in Sources */ = {isa = PBXBuildFile; fileRef = 90A665891818286E00592E25 /* ahd_bayer.c */; };
 		90A666F218184D0D00592E25 /* bayer.c in Sources */ = {isa = PBXBuildFile; fileRef = 90A6658A1818286E00592E25 /* bayer.c */; };
@@ -60,37 +56,21 @@
 		90A666FE18184D0D00592E25 /* gphoto2-version.c in Sources */ = {isa = PBXBuildFile; fileRef = 90A665991818286E00592E25 /* gphoto2-version.c */; };
 		90A666FF18184D0D00592E25 /* gphoto2-widget.c in Sources */ = {isa = PBXBuildFile; fileRef = 90A6659A1818286E00592E25 /* gphoto2-widget.c */; };
 		90A6670018184D0D00592E25 /* jpeg.c in Sources */ = {isa = PBXBuildFile; fileRef = 90A6659B1818286E00592E25 /* jpeg.c */; };
-		90A6670118184D2900592E25 /* bayer.h in Headers */ = {isa = PBXBuildFile; fileRef = 90A6658B1818286E00592E25 /* bayer.h */; };
-		90A6670218184D2900592E25 /* exif.h in Headers */ = {isa = PBXBuildFile; fileRef = 90A6658D1818286E00592E25 /* exif.h */; };
-		90A6670318184D2900592E25 /* gamma.h in Headers */ = {isa = PBXBuildFile; fileRef = 90A6658F1818286E00592E25 /* gamma.h */; };
-		90A6670418184D2900592E25 /* jpeg.h in Headers */ = {isa = PBXBuildFile; fileRef = 90A6659C1818286E00592E25 /* jpeg.h */; };
-		90A6670518184D3D00592E25 /* ltdl.h in Headers */ = {isa = PBXBuildFile; fileRef = 90B829F21817EFBE0029357C /* ltdl.h */; };
-		90A6670718184E0500592E25 /* config.h in Headers */ = {isa = PBXBuildFile; fileRef = 90A6670618184E0500592E25 /* config.h */; };
 		90A6670818184EC200592E25 /* libgphoto2_port.10.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 90A666BB18182C0600592E25 /* libgphoto2_port.10.dylib */; };
 		90A6670918184EC200592E25 /* libltdl.7.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 90B82A071817F0580029357C /* libltdl.7.dylib */; };
 		90A6670A18184EC200592E25 /* libusb-1.0.16.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 90B8282B1817D56D0029357C /* libusb-1.0.16.dylib */; };
 		90A6670D18184EF500592E25 /* libgphoto2.6.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 90A666ED18184CBB00592E25 /* libgphoto2.6.dylib */; };
 		90A667161818505600592E25 /* config.c in Sources */ = {isa = PBXBuildFile; fileRef = 90A664B21818286D00592E25 /* config.c */; };
-		90A667171818505600592E25 /* device-flags.h in Headers */ = {isa = PBXBuildFile; fileRef = 90A664B31818286D00592E25 /* device-flags.h */; };
 		90A667181818505600592E25 /* library.c in Sources */ = {isa = PBXBuildFile; fileRef = 90A664B41818286D00592E25 /* library.c */; };
-		90A667191818505600592E25 /* music-players.h in Headers */ = {isa = PBXBuildFile; fileRef = 90A664B61818286D00592E25 /* music-players.h */; };
 		90A6671A1818505600592E25 /* olympus-wrap.c in Sources */ = {isa = PBXBuildFile; fileRef = 90A664B71818286D00592E25 /* olympus-wrap.c */; };
-		90A6671B1818505600592E25 /* olympus-wrap.h in Headers */ = {isa = PBXBuildFile; fileRef = 90A664B81818286D00592E25 /* olympus-wrap.h */; };
-		90A6671C1818505600592E25 /* ptp-bugs.h in Headers */ = {isa = PBXBuildFile; fileRef = 90A664B91818286D00592E25 /* ptp-bugs.h */; };
-		90A6671E1818505600592E25 /* ptp-private.h in Headers */ = {isa = PBXBuildFile; fileRef = 90A664BB1818286D00592E25 /* ptp-private.h */; };
 		90A6671F1818505600592E25 /* ptp.c in Sources */ = {isa = PBXBuildFile; fileRef = 90A664BC1818286D00592E25 /* ptp.c */; };
-		90A667201818505600592E25 /* ptp.h in Headers */ = {isa = PBXBuildFile; fileRef = 90A664BD1818286D00592E25 /* ptp.h */; };
 		90A667211818505600592E25 /* ptpip.c in Sources */ = {isa = PBXBuildFile; fileRef = 90A664BE1818286D00592E25 /* ptpip.c */; };
 		90A667221818505600592E25 /* usb.c in Sources */ = {isa = PBXBuildFile; fileRef = 90A664C41818286D00592E25 /* usb.c */; };
-		90A667231818507C00592E25 /* config.h in Headers */ = {isa = PBXBuildFile; fileRef = 90A6670618184E0500592E25 /* config.h */; };
-		90A667251818518F00592E25 /* gphoto2-endian.h in Headers */ = {isa = PBXBuildFile; fileRef = 90A667241818518E00592E25 /* gphoto2-endian.h */; };
-		90A667261818519E00592E25 /* gphoto2-endian.h in Headers */ = {isa = PBXBuildFile; fileRef = 90A667241818518E00592E25 /* gphoto2-endian.h */; };
 		90A66727181851FD00592E25 /* libgphoto2.6.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 90A666ED18184CBB00592E25 /* libgphoto2.6.dylib */; };
 		90A667281818524F00592E25 /* libgphoto2_port.10.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 90A666BB18182C0600592E25 /* libgphoto2_port.10.dylib */; };
 		90A6672A1818533100592E25 /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 90A667291818533100592E25 /* libxml2.2.dylib */; };
 		90A6672D1818535D00592E25 /* libiconv.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 90A6672B1818534F00592E25 /* libiconv.2.dylib */; };
 		90A667311818539200592E25 /* ptp2.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 90A667121818500300592E25 /* ptp2.dylib */; };
-		90B828871817D6A00029357C /* config.h in Headers */ = {isa = PBXBuildFile; fileRef = 90B828861817D6A00029357C /* config.h */; settings = {ATTRIBUTES = (); }; };
 		90B828881817D7170029357C /* core.c in Sources */ = {isa = PBXBuildFile; fileRef = 90B828411817D5C40029357C /* core.c */; };
 		90B828891817D7170029357C /* descriptor.c in Sources */ = {isa = PBXBuildFile; fileRef = 90B828421817D5C40029357C /* descriptor.c */; };
 		90B8288A1817D7170029357C /* hotplug.c in Sources */ = {isa = PBXBuildFile; fileRef = 90B828431817D5C40029357C /* hotplug.c */; };
@@ -103,14 +83,6 @@
 		90B828921817D75F0029357C /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90B828911817D75F0029357C /* CoreFoundation.framework */; };
 		90B828941817D7680029357C /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90B828931817D7680029357C /* IOKit.framework */; };
 		90B828961817D7BB0029357C /* libobjc.A.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 90B828951817D7BB0029357C /* libobjc.A.dylib */; };
-		90B828971817DB5E0029357C /* libusb.h in Headers */ = {isa = PBXBuildFile; fileRef = 90B828481817D5C40029357C /* libusb.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		90B828981817DB890029357C /* hotplug.h in Headers */ = {isa = PBXBuildFile; fileRef = 90B828441817D5C40029357C /* hotplug.h */; };
-		90B828991817DB890029357C /* libusbi.h in Headers */ = {isa = PBXBuildFile; fileRef = 90B828491817D5C40029357C /* libusbi.h */; };
-		90B8289A1817DB890029357C /* darwin_usb.h in Headers */ = {isa = PBXBuildFile; fileRef = 90B8284F1817D5C40029357C /* darwin_usb.h */; };
-		90B8289B1817DB890029357C /* poll_posix.h in Headers */ = {isa = PBXBuildFile; fileRef = 90B828561817D5C40029357C /* poll_posix.h */; };
-		90B8289C1817DB890029357C /* threads_posix.h in Headers */ = {isa = PBXBuildFile; fileRef = 90B8285A1817D5C40029357C /* threads_posix.h */; };
-		90B8289D1817DB890029357C /* version.h in Headers */ = {isa = PBXBuildFile; fileRef = 90B828641817D5C50029357C /* version.h */; };
-		90B8289E1817DB890029357C /* version_nano.h in Headers */ = {isa = PBXBuildFile; fileRef = 90B828651817D5C50029357C /* version_nano.h */; };
 		90B828C61817DD2F0029357C /* listdevs.c in Sources */ = {isa = PBXBuildFile; fileRef = 90B828C01817DCFE0029357C /* listdevs.c */; };
 		90B828C71817DD440029357C /* libusb-1.0.16.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 90B8282B1817D56D0029357C /* libusb-1.0.16.dylib */; };
 		90B82A0C1817F0980029357C /* dlopen.c in Sources */ = {isa = PBXBuildFile; fileRef = 90B829E61817EFBE0029357C /* dlopen.c */; };
@@ -123,18 +95,6 @@
 		90B82A161817F0980029357C /* ltdl.c in Sources */ = {isa = PBXBuildFile; fileRef = 90B829F11817EFBE0029357C /* ltdl.c */; };
 		90B82A171817F0980029357C /* slist.c in Sources */ = {isa = PBXBuildFile; fileRef = 90B82A011817EFBE0029357C /* slist.c */; };
 		90B82A181817F0AB0029357C /* argz.c in Sources */ = {isa = PBXBuildFile; fileRef = 90B829C51817EFBE0029357C /* argz.c */; };
-		90B82A1A1817F0CD0029357C /* lt__alloc.h in Headers */ = {isa = PBXBuildFile; fileRef = 90B829DB1817EFBE0029357C /* lt__alloc.h */; };
-		90B82A1B1817F0CD0029357C /* lt__dirent.h in Headers */ = {isa = PBXBuildFile; fileRef = 90B829DC1817EFBE0029357C /* lt__dirent.h */; };
-		90B82A1C1817F0CD0029357C /* lt__glibc.h in Headers */ = {isa = PBXBuildFile; fileRef = 90B829DD1817EFBE0029357C /* lt__glibc.h */; };
-		90B82A1D1817F0CD0029357C /* lt__private.h in Headers */ = {isa = PBXBuildFile; fileRef = 90B829DE1817EFBE0029357C /* lt__private.h */; };
-		90B82A1E1817F0CD0029357C /* lt__strl.h in Headers */ = {isa = PBXBuildFile; fileRef = 90B829DF1817EFBE0029357C /* lt__strl.h */; };
-		90B82A1F1817F0CD0029357C /* lt_dlloader.h in Headers */ = {isa = PBXBuildFile; fileRef = 90B829E01817EFBE0029357C /* lt_dlloader.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		90B82A201817F0CD0029357C /* lt_error.h in Headers */ = {isa = PBXBuildFile; fileRef = 90B829E11817EFBE0029357C /* lt_error.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		90B82A211817F0CD0029357C /* lt_system.h in Headers */ = {isa = PBXBuildFile; fileRef = 90B829E21817EFBE0029357C /* lt_system.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		90B82A221817F0CD0029357C /* slist.h in Headers */ = {isa = PBXBuildFile; fileRef = 90B829E31817EFBE0029357C /* slist.h */; };
-		90B82A231817F0CD0029357C /* ltdl.h in Headers */ = {isa = PBXBuildFile; fileRef = 90B829F21817EFBE0029357C /* ltdl.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		90B82A291817F14F0029357C /* config.h in Headers */ = {isa = PBXBuildFile; fileRef = 90B82A241817F11D0029357C /* config.h */; };
-		90B82A2B1817F18F0029357C /* argz.h in Headers */ = {isa = PBXBuildFile; fileRef = 90B82A2A1817F18F0029357C /* argz.h */; };
 		90B82A2D1817F8E80029357C /* libltdlS.c in Sources */ = {isa = PBXBuildFile; fileRef = 90B82A2C1817F8E80029357C /* libltdlS.c */; };
 /* End PBXBuildFile section */
 
@@ -2335,8 +2295,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				90A666D01818302600592E25 /* config.h in Headers */,
-				90A666C618182C7D00592E25 /* ltdl.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2344,8 +2302,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				90A666E41818484100592E25 /* config.h in Headers */,
-				90A666E31818483000592E25 /* libusb.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2353,13 +2309,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				90A6670518184D3D00592E25 /* ltdl.h in Headers */,
-				90A6670118184D2900592E25 /* bayer.h in Headers */,
-				90A6670218184D2900592E25 /* exif.h in Headers */,
-				90A6670318184D2900592E25 /* gamma.h in Headers */,
-				90A6670418184D2900592E25 /* jpeg.h in Headers */,
-				90A6670718184E0500592E25 /* config.h in Headers */,
-				90A667251818518F00592E25 /* gphoto2-endian.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2367,14 +2316,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				90A667231818507C00592E25 /* config.h in Headers */,
-				90A667171818505600592E25 /* device-flags.h in Headers */,
-				90A6671C1818505600592E25 /* ptp-bugs.h in Headers */,
-				90A667191818505600592E25 /* music-players.h in Headers */,
-				90A6671B1818505600592E25 /* olympus-wrap.h in Headers */,
-				90A667201818505600592E25 /* ptp.h in Headers */,
-				90A6671E1818505600592E25 /* ptp-private.h in Headers */,
-				90A667261818519E00592E25 /* gphoto2-endian.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2382,15 +2323,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				90B828971817DB5E0029357C /* libusb.h in Headers */,
-				90B828981817DB890029357C /* hotplug.h in Headers */,
-				90B828991817DB890029357C /* libusbi.h in Headers */,
-				90B8289A1817DB890029357C /* darwin_usb.h in Headers */,
-				90B8289B1817DB890029357C /* poll_posix.h in Headers */,
-				90B8289C1817DB890029357C /* threads_posix.h in Headers */,
-				90B8289D1817DB890029357C /* version.h in Headers */,
-				90B8289E1817DB890029357C /* version_nano.h in Headers */,
-				90B828871817D6A00029357C /* config.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2398,18 +2330,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				90B82A231817F0CD0029357C /* ltdl.h in Headers */,
-				90B82A1F1817F0CD0029357C /* lt_dlloader.h in Headers */,
-				90B82A201817F0CD0029357C /* lt_error.h in Headers */,
-				90B82A211817F0CD0029357C /* lt_system.h in Headers */,
-				90B82A291817F14F0029357C /* config.h in Headers */,
-				90B82A1A1817F0CD0029357C /* lt__alloc.h in Headers */,
-				90B82A1B1817F0CD0029357C /* lt__dirent.h in Headers */,
-				90B82A1C1817F0CD0029357C /* lt__glibc.h in Headers */,
-				90B82A1D1817F0CD0029357C /* lt__private.h in Headers */,
-				90B82A1E1817F0CD0029357C /* lt__strl.h in Headers */,
-				90B82A221817F0CD0029357C /* slist.h in Headers */,
-				90B82A2B1817F18F0029357C /* argz.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2868,6 +2788,10 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(SRCROOT)/libgphoto/libgphoto2_port",
+					"$(SRCROOT)/libtool/libltdl",
+				);
 				LIBGPHOTO_PORT_DEFINES = "HAVE_CONFIG_H _GPHOTO2_INTERNAL_CODE";
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				ONLY_ACTIVE_ARCH = YES;
@@ -2900,6 +2824,10 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(SRCROOT)/libgphoto/libgphoto2_port",
+					"$(SRCROOT)/libtool/libltdl",
+				);
 				LIBGPHOTO_PORT_DEFINES = "HAVE_CONFIG_H _GPHOTO2_INTERNAL_CODE";
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2934,6 +2862,11 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(SRCROOT)/libgphoto/libgphoto2_port",
+					"$(SRCROOT)/libgphoto/libgphoto2_port/libgphoto2_port",
+					"$(SRCROOT)/libusb/libusb",
+				);
 				LD_DYLIB_INSTALL_NAME = "$(EXECUTABLE_PATH)";
 				LIBGPHOTO_PORT_DEFINES = "HAVE_CONFIG_H _GPHOTO2_INTERNAL_CODE";
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
@@ -2964,6 +2897,11 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(SRCROOT)/libgphoto/libgphoto2_port",
+					"$(SRCROOT)/libgphoto/libgphoto2_port/libgphoto2_port",
+					"$(SRCROOT)/libusb/libusb",
+				);
 				LD_DYLIB_INSTALL_NAME = "$(EXECUTABLE_PATH)";
 				LIBGPHOTO_PORT_DEFINES = "HAVE_CONFIG_H _GPHOTO2_INTERNAL_CODE";
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
@@ -3002,6 +2940,12 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(SRCROOT)/libgphoto/libgphoto2",
+					"$(SRCROOT)/libgphoto",
+					"$(SRCROOT)/libgphoto/libgphoto2_port",
+					"$(SRCROOT)/libtool/libltdl",
+				);
 				LIBGPHOTO_DEFINES = "_GPHOTO2_INTERNAL_CODE ";
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				ONLY_ACTIVE_ARCH = YES;
@@ -3034,6 +2978,12 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(SRCROOT)/libgphoto/libgphoto2",
+					"$(SRCROOT)/libgphoto",
+					"$(SRCROOT)/libgphoto/libgphoto2_port",
+					"$(SRCROOT)/libtool/libltdl",
+				);
 				LIBGPHOTO_DEFINES = "_GPHOTO2_INTERNAL_CODE ";
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -3068,7 +3018,12 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = /usr/include/libxml2;
+				HEADER_SEARCH_PATHS = (
+					"$(SRCROOT)/libgphoto/libgphoto2",
+					"$(SRCROOT)/libgphoto",
+					"$(SRCROOT)/libgphoto/libgphoto2_port",
+					/usr/include/libxml2,
+				);
 				LD_DYLIB_INSTALL_NAME = "$(EXECUTABLE_PATH)";
 				LIBGPHOTO_DEFINES = _GPHOTO2_INTERNAL_CODE;
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
@@ -3099,7 +3054,12 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = /usr/include/libxml2;
+				HEADER_SEARCH_PATHS = (
+					"$(SRCROOT)/libgphoto/libgphoto2",
+					"$(SRCROOT)/libgphoto",
+					"$(SRCROOT)/libgphoto/libgphoto2_port",
+					/usr/include/libxml2,
+				);
 				LD_DYLIB_INSTALL_NAME = "$(EXECUTABLE_PATH)";
 				LIBGPHOTO_DEFINES = _GPHOTO2_INTERNAL_CODE;
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
@@ -3113,6 +3073,7 @@
 			buildSettings = {
 				DYLIB_INSTALL_NAME_BASE = "@rpath/Libraries";
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				USE_HEADERMAP = NO;
 			};
 			name = Debug;
 		};
@@ -3121,6 +3082,7 @@
 			buildSettings = {
 				DYLIB_INSTALL_NAME_BASE = "@rpath/Libraries";
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				USE_HEADERMAP = NO;
 			};
 			name = Release;
 		};
@@ -3151,6 +3113,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "$(SRCROOT)/libusb/libusb";
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
@@ -3179,6 +3142,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "$(SRCROOT)/libusb/libusb";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				STRIP_INSTALLED_PRODUCT = YES;
@@ -3272,6 +3236,10 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(SRCROOT)/libtool/libltdl/libltdl",
+					"$(SRCROOT)/libtool/libltdl",
+				);
 				LIBLTDL_DEFINES = "HAVE_CONFIG_H LTDL LT_CONFIG_H=<config.h> LTDLOPEN=libltdl";
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -3301,6 +3269,10 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(SRCROOT)/libtool/libltdl/libltdl",
+					"$(SRCROOT)/libtool/libltdl",
+				);
 				LIBLTDL_DEFINES = "HAVE_CONFIG_H LTDL LT_CONFIG_H=<config.h> LTDLOPEN=libltdl";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;

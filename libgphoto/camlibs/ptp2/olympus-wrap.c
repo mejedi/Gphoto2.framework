@@ -24,7 +24,7 @@
 
 #define _BSD_SOURCE
 
-#include <config.h>
+#include "config.h"
 
 #ifdef HAVE_LIBXML2
 
