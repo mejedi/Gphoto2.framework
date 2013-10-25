@@ -726,6 +726,18 @@ void API_EXPORTED libusb_free_device_list(libusb_device **list,
 	free(list);
 }
 
+#ifdef __APPLE__
+/** \ingroup dev
+ * Get location id of the device as defined by OSX.
+ * \param dev a device
+ * \returns location id
+ */
+uint32_t LIBUSB_CALL libusb_get_location_id_np(libusb_device *dev)
+{
+    return dev->location_id_np;
+}
+#endif
+
 /** \ingroup dev
  * Get the number of the bus that a device is connected to.
  * \param dev a device

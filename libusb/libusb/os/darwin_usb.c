@@ -861,6 +861,7 @@ static int process_new_device (struct libusb_context *ctx, io_service_t service)
     } else {
       dev->parent_dev = NULL;
     }
+    dev->location_id_np    = cached_device->location;
     dev->port_number    = cached_device->port;
     dev->bus_number     = cached_device->location >> 24;
     dev->device_address = cached_device->address;

@@ -293,6 +293,9 @@ struct libusb_device {
 
 	struct libusb_context *ctx;
 
+#ifdef __APPLE__
+	uint32_t location_id_np;
+#endif
 	uint8_t bus_number;
 	uint8_t port_number;
 	struct libusb_device* parent_dev;

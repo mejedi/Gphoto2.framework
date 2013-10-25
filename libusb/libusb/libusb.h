@@ -1351,6 +1351,9 @@ int LIBUSB_CALL libusb_get_container_id_descriptor(struct libusb_context *ctx,
 	struct libusb_container_id_descriptor **container_id);
 void LIBUSB_CALL libusb_free_container_id_descriptor(
 	struct libusb_container_id_descriptor *container_id);
+#ifdef __APPLE__
+uint32_t LIBUSB_CALL libusb_get_location_id_np(libusb_device *dev) __attribute__((weak_import));
+#endif
 uint8_t LIBUSB_CALL libusb_get_bus_number(libusb_device *dev);
 uint8_t LIBUSB_CALL libusb_get_port_number(libusb_device *dev);
 int LIBUSB_CALL libusb_get_port_numbers(libusb_device *dev, uint8_t* port_numbers, int port_numbers_len);
