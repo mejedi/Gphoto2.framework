@@ -3,7 +3,7 @@
 The famous [libgphoto2](http://www.gphoto.org) library packaged as a native OSX framework.
 One can put it into an application bundle.
 
-Gphoto supports lots and lots of funny devices but we build only PTP2 camera driver since
+Gphoto supports lots and lots of [funny devices](https://github.com/mejedi/Gphoto2.framework/tree/master/libgphoto/camlibs) but we build only PTP2 camera driver since
 it covers the majority of current and antiquated cameras.
 
 ## Usage
