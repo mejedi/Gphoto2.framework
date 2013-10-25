@@ -1451,7 +1451,7 @@ static int submit_bulk_transfer(struct usbi_transfer *itransfer) {
   (*(cInterface->interface))->GetPipeProperties (cInterface->interface, pipeRef, &direction, &number,
                                                  &transferType, &maxPacketSize, &interval);
 
-  if (0 != (transfer->length % maxPacketSize)) {
+  if (0 != maxPacketSize && 0 != (transfer->length % maxPacketSize)) {
     /* do not need a zero packet */
     transfer->flags &= ~LIBUSB_TRANSFER_ADD_ZERO_PACKET;
   }
