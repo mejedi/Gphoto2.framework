@@ -58,6 +58,13 @@
 #  define N_(String) (String)
 #endif
 
+#ifdef __APPLE__
+#  define _DARWIN_C_SOURCE
+#  include <inttypes.h>
+#  include <dlfcn.h>
+#  include <spawn.h>
+#endif
+
 #define CHECK(result) {int r=(result); if (r<0) return (r);}
 
 struct _GPPortPrivateLibrary {
@@ -296,6 +303,129 @@ gp_port_usb_exit (GPPort *port)
 	return (GP_OK);
 }
 
+#ifdef __APPLE__
+// On OSX ImageCaptureCore framework (ICC) claims devices we are interested in.
+// This function asks ICC to release the device using icc-yield helper tool.
+// Can't do this in process since ICC requires the main thread to perform the
+// runloop but we must NOT make such an assumption since we are a library.
+static int gp_port_icc_yield(GPPort *port)
+{
+    if (!&libusb_get_location_id_np)
+        return EXIT_FAILURE;
+
+    static const char tool_file[] = "icc-yield";
+    static const char tool_file_path_suffix[] = "../Resources/";
+    int tool_status = EXIT_FAILURE;
+    char *tool_path = NULL;
+    char *alt_tool_path = NULL;
+    int devnull_fd = -1;
+    posix_spawnattr_t spawn_attr = NULL;
+    posix_spawn_file_actions_t spawn_file_actions = NULL;
+
+    // tool_path: @loader_path/../icc-yield
+    Dl_info dl_info;
+    if (dladdr(&gp_port_icc_yield, &dl_info)) {
+        tool_path = malloc(strlen(dl_info.dli_fname) + sizeof tool_file + sizeof tool_file_path_suffix);
+        if (tool_path) {
+            strcpy(tool_path, dl_info.dli_fname);
+            char *p = strrchr(tool_path, '/');
+            if (p) {
+                strcpy(p+1, tool_file_path_suffix);
+                strcat(p+1, tool_file);
+            } else {
+                free(tool_path);
+                tool_path = NULL;
+            }
+        }
+    }
+    if (!tool_path)
+        goto cleanup;
+
+    // alt_tool_path: $DYLD_LIBRARY_PATH/icc-yield
+    const char *dyld_library_path = getenv("DYLD_LIBRARY_PATH");
+    if (dyld_library_path) {
+        size_t dyld_library_path_len = strlen(dyld_library_path);
+        alt_tool_path = malloc(dyld_library_path_len+sizeof tool_file+1);
+        if (alt_tool_path) {
+            strcpy(alt_tool_path, dyld_library_path);
+            char *p = strchr(alt_tool_path, ':');
+            if (p)
+                *p = '\0';
+            strcat(alt_tool_path, "/");
+            strcat(alt_tool_path, tool_file);
+        }
+    }
+
+    // devnull_fd
+    if (-1 == (devnull_fd = open("/dev/null", O_RDWR)))
+        goto cleanup;
+    fcntl(devnull_fd, F_SETFD, FD_CLOEXEC);
+
+    // spawn_attr
+    if (posix_spawnattr_init(&spawn_attr)!=0)
+        goto cleanup;
+    posix_spawnattr_setflags(&spawn_attr, POSIX_SPAWN_CLOEXEC_DEFAULT);
+
+    // spawn_file_actions
+    if (posix_spawn_file_actions_init(&spawn_file_actions)!=0)
+        goto cleanup;
+    posix_spawn_file_actions_adddup2(&spawn_file_actions, devnull_fd, STDIN_FILENO);
+    posix_spawn_file_actions_adddup2(&spawn_file_actions, devnull_fd, STDOUT_FILENO);
+    posix_spawn_file_actions_addinherit_np(&spawn_file_actions, STDERR_FILENO);
+
+    // run ptp-camera-stop
+    char tool_arg[32];
+    char * const tool_argv[] = {tool_path, tool_arg, NULL};
+    snprintf(tool_arg, sizeof tool_arg,
+             "%"PRId32, libusb_get_location_id_np(port->pl->d));
+    int spawn_error;
+    pid_t tool_pid;
+    extern char **environ;
+    spawn_error = posix_spawn(&tool_pid,
+                              tool_path,
+                              &spawn_file_actions,
+                              &spawn_attr,
+                              tool_argv,
+                              environ);
+
+    if (spawn_error == ENOENT && alt_tool_path) {
+        char * const alt_tool_argv[] = {alt_tool_path, tool_arg, NULL};
+        spawn_error = posix_spawn(&tool_pid,
+                                  alt_tool_path,
+                                  &spawn_file_actions,
+                                  &spawn_attr,
+                                  alt_tool_argv,
+                                  environ);
+    }
+    if (spawn_error == 0) {
+        int status;
+        while (waitpid(tool_pid, &status, 0) == -1) {
+            if (errno != EINTR)
+                goto cleanup;
+        }
+        if (WIFEXITED(status))
+            tool_status = WEXITSTATUS(status);
+    } else {
+        gp_port_set_error(port, "Running %s helper tool: %s",
+                          tool_file, strerror(spawn_error));
+    }
+
+cleanup:
+    if (tool_path)
+        free(tool_path);
+    if (alt_tool_path)
+        free(alt_tool_path);
+    if (devnull_fd != -1)
+        close(devnull_fd);
+    if (spawn_attr)
+        posix_spawnattr_destroy(&spawn_attr);
+    if (spawn_file_actions)
+        posix_spawn_file_actions_destroy(&spawn_file_actions);
+
+    return tool_status;
+}
+#endif
+
 static int gp_port_usb_find_path_lib(GPPort *port);
 static int
 gp_port_usb_open (GPPort *port)
@@ -350,6 +480,12 @@ gp_port_usb_open (GPPort *port)
 	gp_log (GP_LOG_DEBUG,"libusb1","claiming interface %d", port->settings.usb.interface);
 	ret = libusb_claim_interface (port->pl->dh,
 				   port->settings.usb.interface);
+#ifdef __APPLE__
+	if (ret < 0 && gp_port_icc_yield(port) == EXIT_SUCCESS) {
+        ret = libusb_claim_interface (port->pl->dh,
+                                      port->settings.usb.interface);
+	}
+#endif /* __APPLE__ */
 	if (ret < 0) {
 		int saved_errno = errno;
 		gp_port_set_error (port, _("Could not claim interface %d (%s). "

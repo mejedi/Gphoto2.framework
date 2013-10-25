@@ -71,6 +71,9 @@
 		90A6672A1818533100592E25 /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 90A667291818533100592E25 /* libxml2.2.dylib */; };
 		90A6672D1818535D00592E25 /* libiconv.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 90A6672B1818534F00592E25 /* libiconv.2.dylib */; };
 		90A667311818539200592E25 /* ptp2.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 90A667121818500300592E25 /* ptp2.dylib */; };
+		90ADD95E181B02540083A15F /* icc-yield.m in Sources */ = {isa = PBXBuildFile; fileRef = 90ADD950181B00FB0083A15F /* icc-yield.m */; };
+		90ADD960181B02830083A15F /* ImageCaptureCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90ADD95F181B02830083A15F /* ImageCaptureCore.framework */; };
+		90ADD963181B02CE0083A15F /* icc-yield in Resources */ = {isa = PBXBuildFile; fileRef = 90ADD955181B023E0083A15F /* icc-yield */; };
 		90B828881817D7170029357C /* core.c in Sources */ = {isa = PBXBuildFile; fileRef = 90B828411817D5C40029357C /* core.c */; };
 		90B828891817D7170029357C /* descriptor.c in Sources */ = {isa = PBXBuildFile; fileRef = 90B828421817D5C40029357C /* descriptor.c */; };
 		90B8288A1817D7170029357C /* hotplug.c in Sources */ = {isa = PBXBuildFile; fileRef = 90B828431817D5C40029357C /* hotplug.c */; };
@@ -147,6 +150,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 90A667111818500300592E25;
 			remoteInfo = ptp2;
+		};
+		90ADD961181B02BA0083A15F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 90B828181817D43B0029357C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 90ADD954181B023E0083A15F;
+			remoteInfo = "ptp-camera-stop";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -785,6 +795,9 @@
 		90A667241818518E00592E25 /* gphoto2-endian.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "gphoto2-endian.h"; sourceTree = "<group>"; };
 		90A667291818533100592E25 /* libxml2.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.2.dylib; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/usr/lib/libxml2.2.dylib; sourceTree = DEVELOPER_DIR; };
 		90A6672B1818534F00592E25 /* libiconv.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.2.dylib; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/usr/lib/libiconv.2.dylib; sourceTree = DEVELOPER_DIR; };
+		90ADD950181B00FB0083A15F /* icc-yield.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "icc-yield.m"; sourceTree = "<group>"; };
+		90ADD955181B023E0083A15F /* icc-yield */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "icc-yield"; sourceTree = BUILT_PRODUCTS_DIR; };
+		90ADD95F181B02830083A15F /* ImageCaptureCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageCaptureCore.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/System/Library/Frameworks/ImageCaptureCore.framework; sourceTree = DEVELOPER_DIR; };
 		90B8282B1817D56D0029357C /* libusb-1.0.16.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = "libusb-1.0.16.dylib"; sourceTree = BUILT_PRODUCTS_DIR; };
 		90B828411817D5C40029357C /* core.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = core.c; sourceTree = "<group>"; };
 		90B828421817D5C40029357C /* descriptor.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = descriptor.c; sourceTree = "<group>"; };
@@ -886,6 +899,14 @@
 				90A6672A1818533100592E25 /* libxml2.2.dylib in Frameworks */,
 				90A667281818524F00592E25 /* libgphoto2_port.10.dylib in Frameworks */,
 				90A66727181851FD00592E25 /* libgphoto2.6.dylib in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		90ADD952181B023E0083A15F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				90ADD960181B02830083A15F /* ImageCaptureCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2079,6 +2100,7 @@
 			isa = PBXGroup;
 			children = (
 				90A666A518182AF000592E25 /* libusb1.c */,
+				90ADD950181B00FB0083A15F /* icc-yield.m */,
 			);
 			name = libusb1;
 			path = libgphoto/libgphoto2_port/libusb1;
@@ -2128,6 +2150,7 @@
 				90A6672B1818534F00592E25 /* libiconv.2.dylib */,
 				90A667291818533100592E25 /* libxml2.2.dylib */,
 				90B828951817D7BB0029357C /* libobjc.A.dylib */,
+				90ADD95F181B02830083A15F /* ImageCaptureCore.framework */,
 				90B828931817D7680029357C /* IOKit.framework */,
 				90B828911817D75F0029357C /* CoreFoundation.framework */,
 			);
@@ -2159,6 +2182,7 @@
 				90A666DC181846DA00592E25 /* usb.dylib */,
 				90A666ED18184CBB00592E25 /* libgphoto2.6.dylib */,
 				90A667121818500300592E25 /* ptp2.dylib */,
+				90ADD955181B023E0083A15F /* icc-yield */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -2351,6 +2375,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				90ADD962181B02BA0083A15F /* PBXTargetDependency */,
 				90A6672F1818537B00592E25 /* PBXTargetDependency */,
 				90A6670C18184EE400592E25 /* PBXTargetDependency */,
 				90A666E618184AF300592E25 /* PBXTargetDependency */,
@@ -2430,6 +2455,22 @@
 			productName = ptp2;
 			productReference = 90A667121818500300592E25 /* ptp2.dylib */;
 			productType = "com.apple.product-type.library.dynamic";
+		};
+		90ADD954181B023E0083A15F /* icc-yield */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 90ADD95B181B023E0083A15F /* Build configuration list for PBXNativeTarget "icc-yield" */;
+			buildPhases = (
+				90ADD951181B023E0083A15F /* Sources */,
+				90ADD952181B023E0083A15F /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "icc-yield";
+			productName = "ptp-camera-stop";
+			productReference = 90ADD955181B023E0083A15F /* icc-yield */;
+			productType = "com.apple.product-type.tool";
 		};
 		90B8282A1817D56D0029357C /* libusb-1.0 */ = {
 			isa = PBXNativeTarget;
@@ -2511,6 +2552,7 @@
 				90A666DB181846DA00592E25 /* usb */,
 				90A666EC18184CBB00592E25 /* libgphoto2 */,
 				90A667111818500300592E25 /* ptp2 */,
+				90ADD954181B023E0083A15F /* icc-yield */,
 			);
 		};
 /* End PBXProject section */
@@ -2520,6 +2562,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				90ADD963181B02CE0083A15F /* icc-yield in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2587,6 +2630,14 @@
 				90A6671F1818505600592E25 /* ptp.c in Sources */,
 				90A667211818505600592E25 /* ptpip.c in Sources */,
 				90A667221818505600592E25 /* usb.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		90ADD951181B023E0083A15F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				90ADD95E181B02540083A15F /* icc-yield.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2669,6 +2720,11 @@
 			isa = PBXTargetDependency;
 			target = 90A667111818500300592E25 /* ptp2 */;
 			targetProxy = 90A6672E1818537B00592E25 /* PBXContainerItemProxy */;
+		};
+		90ADD962181B02BA0083A15F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 90ADD954181B023E0083A15F /* icc-yield */;
+			targetProxy = 90ADD961181B02BA0083A15F /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -3068,6 +3124,65 @@
 			};
 			name = Release;
 		};
+		90ADD95C181B023E0083A15F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		90ADD95D181B023E0083A15F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
 		90B8281C1817D43B0029357C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -3319,6 +3434,15 @@
 			buildConfigurations = (
 				90A667141818500300592E25 /* Debug */,
 				90A667151818500300592E25 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		90ADD95B181B023E0083A15F /* Build configuration list for PBXNativeTarget "icc-yield" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				90ADD95C181B023E0083A15F /* Debug */,
+				90ADD95D181B023E0083A15F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};
