@@ -19,8 +19,8 @@
 /*                                                              */
 /* You should have received a copy of the GNU Library General   */
 /* Public License along with this library; if not, write to the */
-/* Free Software Foundation, Inc., 59 Temple Place - Suite 330, */
-/* Boston, MA 02111-1307, USA.                                  */
+/* Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,*/
+/* Boston, MA  02110-1301  USA					*/
 /****************************************************************/
 
 #include <config.h>
@@ -181,7 +181,8 @@ get_file_func (CameraFilesystem *fs, const char *folder,
 {
 	Camera *camera = user_data;
 	unsigned char *data = NULL;
-	unsigned int size, index, mimetype;
+	unsigned int size, mimetype;
+	int index;
 
 	size = 0;
 	index = gp_filesystem_number (fs, folder, filename, context);

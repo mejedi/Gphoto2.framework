@@ -23,8 +23,8 @@
  *
  * You should have received a copy of the GNU Lesser General Public
  * License along with this library; if not, write to the
- * Free Software Foundation, Inc., 59 Temple Place - Suite 330,
- * Boston, MA 02111-1307, USA.
+ * Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
+ * Boston, MA  02110-1301  USA
  */
 
 #define _BSD_SOURCE
@@ -375,8 +375,7 @@ gp_port_library_list (GPPortInfoList *list)
 	gp_port_info_set_type (info, GP_PORT_SERIAL);
 	gp_port_info_set_path (info, "^serial:");
 	gp_port_info_set_name (info, "");
-	gp_port_info_list_append (list, info);
-	return GP_OK;
+	return gp_port_info_list_append (list, info);
 }
 
 static int

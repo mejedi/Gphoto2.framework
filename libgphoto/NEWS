@@ -1,3 +1,67 @@
+libgphoto2 2.5.3 release
+
+packaging:
+* "print-camera-list hwdb" output mode added for udev versions >= 201.
+
+  Put this to /usr/lib/udev/hwdb/20-gphoto.hwdb (your udev hwdb directory might be different)
+
+* "print-camera-list html" output mode added for http://gphoto.org/proj/libgphoto2/support.php
+
+all:
+* Lots of Coverity fixes merged
+
+ptp2:
+* Nikon: added a new PTP capture opcode function, allows capture to card during liveview
+* Nikon: rewrote some of the wait logic in the capture routines
+* Nikon: enable --trigger-capture support
+* Nikon: hook up some more configuration variables (funcbutton, previewbutton, menusandplayback, changeafarea)
+* canon: hook up configuration variables (colortemperature)
+* ptpip: several contributed bugfixes, and event handling
+* panasonic: allow deleting files by setting MTP Responder code.
+* new ids:
+  * Kodak Z8612 IS
+  * Sony DSC-S780, SLT-A57, SLT-A58, SLT-A99v, DSC-RX100M2, Alpha A3000, NEX 6
+  * Nikon Coolpix S3200, DSLR D3200, J3, V2, S02, 2200v1.1, S4300, S2700, L27, S02, V2, J3
+  * Panasonic TZ-8
+  * Olympus E-M5
+  * Canon Rebel G15, EOS 70D, A1000IS, SX150IS, A810
+  * Canon Rebel T3, EOS 1Dx, EOS 70D
+  * Fuji FinePix SL1000, S2980
+* merged ids from libmtp
+* lots of bugfixes
+
+canon:
+* label PowerShot S110 from 2001 differently than the 2012 PowerShot S110.
+* fixed "new / downloaded" logic
+* disable unconditional "clear halt" calls as they confuse newer controllers
+
+ax203:
+* support Nantronics N25S80 chipset
+
+directory:
+* support NRW files
+
+sierra:
+* capture fixed for Olympus C-3030
+
+pentax:
+* Various fixes from Jiri Pinka
+
+jd11:
+* enhanced de-bayering a bit
+
+translations:
+* new czech translation by Pavel Borecki.
+* updated czech, danish, dutch, polish, russian, seribian, ukrainian,
+  french, vietnamese, taiwanese
+
+libgphoto2:
+* use generic macros to check for libGD and libxml2 to allow better handling.
+
+libgphoto2_port/disk:
+* check the right fstab field for ignoring filesystems (avoids autofs scans)
+
+
 ------------------------------------------------------------------------------
 libgphoto2 2.5.2 release
 

@@ -17,8 +17,8 @@
  * \note
  * You should have received a copy of the GNU Lesser General Public
  * License along with this library; if not, write to the
- * Free Software Foundation, Inc., 59 Temple Place - Suite 330,
- * Boston, MA 02111-1307, USA.
+ * Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
+ * Boston, MA  02110-1301  USA
  *
  * \note
  * This file contains internal functions. Use of these functions from
@@ -235,7 +235,7 @@ gp_file_append (CameraFile *file, const char *data,
 	case GP_FILE_ACCESSTYPE_FD: {
 		unsigned long int curwritten = 0; 
 		while (curwritten < size) {
-			size_t	res = write (file->fd, data+curwritten, size-curwritten);
+			ssize_t	res = write (file->fd, data+curwritten, size-curwritten);
 			if (res == -1) {
 				gp_log (GP_LOG_ERROR, "gphoto2-file", "Encountered error %d writing to fd.", errno);
 				return GP_ERROR_IO_WRITE;
@@ -289,7 +289,7 @@ gp_file_slurp (CameraFile *file, char *data,
 	case GP_FILE_ACCESSTYPE_FD: {
 		unsigned long int curread = 0; 
 		while (curread < size) {
-			size_t	res = read (file->fd, data+curread, size-curread);
+			ssize_t	res = read (file->fd, data+curread, size-curread);
 			if (res == -1) {
 				gp_log (GP_LOG_ERROR, "gphoto2-file", "Encountered error %d reading from fd.", errno);
 				return GP_ERROR_IO_READ;
@@ -348,7 +348,7 @@ gp_file_set_data_and_size (CameraFile *file, char *data,
 		file->size = size;
 		break;
 	case GP_FILE_ACCESSTYPE_FD: {
-		int curwritten = 0;
+		unsigned int curwritten = 0;
 
 		/* truncate */
 		if (-1 == lseek (file->fd, 0, SEEK_SET)) {
@@ -360,7 +360,7 @@ gp_file_set_data_and_size (CameraFile *file, char *data,
 			/* might happen on pipes ... just ignore it */
 		}
 		while (curwritten < size) {
-			size_t	res = write (file->fd, data+curwritten, size-curwritten);
+			ssize_t	res = write (file->fd, data+curwritten, size-curwritten);
 			if (res == -1) {
 				gp_log (GP_LOG_ERROR, "gphoto2-file", "Encountered error %d writing to fd.", errno);
 				return GP_ERROR_IO_WRITE;
@@ -458,7 +458,7 @@ gp_file_get_data_and_size (CameraFile *file, const char **data,
 		if (!*data)
 			return GP_ERROR_NO_MEMORY;
 		while (curread < offset) {
-			unsigned int res = read (file->fd, (char*)((*data)+curread), offset-curread);
+			ssize_t res = read (file->fd, (char*)((*data)+curread), offset-curread);
 			if (res == -1) {
 				free ((char*)*data);
 				gp_log (GP_LOG_ERROR, "gphoto2-file", "Encountered error %d reading.", errno);
@@ -659,8 +659,10 @@ gp_file_open (CameraFile *file, const char *filename)
 	switch (file->accesstype) {
 	case GP_FILE_ACCESSTYPE_MEMORY:
 		file->data = malloc (sizeof(char)*(size + 1));
-		if (!file->data)
+		if (!file->data) {
+			fclose (fp);
 			return (GP_ERROR_NO_MEMORY);
+		}
 		size_read = fread (file->data, (size_t)sizeof(char), (size_t)size, fp);
 		if (ferror(fp)) {
 			gp_file_clean (file);
@@ -816,7 +818,7 @@ gp_file_copy (CameraFile *destination, CameraFile *source)
 		if (!destination->data)
 			return GP_ERROR_NO_MEMORY;
 		while (curread < offset) {
-			unsigned int res = read (source->fd, destination->data+curread, offset-curread);
+			ssize_t res = read (source->fd, destination->data+curread, offset-curread);
 			if (res == -1) {
 				free (destination->data);
 				gp_log (GP_LOG_ERROR, "gphoto2-file", "Encountered error %d reading.", errno);
@@ -843,7 +845,7 @@ gp_file_copy (CameraFile *destination, CameraFile *source)
 		data = malloc (65536);
 		while (1) {
 			unsigned long curwritten = 0;
-			int res;
+			ssize_t res;
 
 			res = read (source->fd, data, 65536);
 			if (res == -1) {
@@ -853,7 +855,7 @@ gp_file_copy (CameraFile *destination, CameraFile *source)
 			if (res == 0)
 				break;
 			while (curwritten < res) {
-				int res2 = write (destination->fd, data+curwritten, res-curwritten);
+				ssize_t res2 = write (destination->fd, data+curwritten, res-curwritten);
 				if (res2 == -1) {
 					free (data);
 					return GP_ERROR_IO_WRITE;

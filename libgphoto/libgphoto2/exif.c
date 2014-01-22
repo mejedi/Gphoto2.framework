@@ -24,8 +24,9 @@
    
   \par
   You should have received a copy of the GNU General Public License
-  along with this program; if not, write to the Free Software
-  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+  along with this program; if not, write to the 
+  Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
+  Boston, MA  02110-1301  USA
 */
 #include "exif.h"
 
@@ -422,7 +423,7 @@ unsigned char *gpi_exif_get_thumbnail_and_size(exifparser *exifdat, long *size) 
   unsigned char *imagedata,*exifimg,*newimg,*curptr;
   unsigned int entry;
   long dataptr,dsize,tag,datvec,tmp;
-  int i,j;
+  unsigned int i,j;
 
   exif_debug=1;
   if (exif_parse_data(exifdat)<0) return(NULL);
@@ -446,7 +447,10 @@ unsigned char *gpi_exif_get_thumbnail_and_size(exifparser *exifdat, long *size) 
       gpi_exif_get_field( EXIF_Model, -1, exifdat, &owner);
       printf("Camera model: %s\n",owner.data);
       printf("Comment for this picture (%d chars)",gpi_exif_get_comment( exifdat, &comment));
-      if (comment) printf(" -> %s\n",comment);
+      if (comment) { 
+          printf(" -> %s\n",comment);
+          free(comment);
+      }
       gpi_exif_get_field( EXIF_SubjectDistance, 2, exifdat, &owner);
       /*      dump_exif(exifdat);       */
   }
@@ -457,6 +461,7 @@ unsigned char *gpi_exif_get_thumbnail_and_size(exifparser *exifdat, long *size) 
       fprintf(stderr,"Too few ifds, doesn't look right. Giving up\n");
     }
     *size = 0;
+    free(newimg);
     return(NULL); /* Things don't look right...*/
   }
 
@@ -480,6 +485,7 @@ unsigned char *gpi_exif_get_thumbnail_and_size(exifparser *exifdat, long *size) 
     if (dsize==-1){
       fprintf(stderr,"No Jpeg size tag for thumbnail, skipping\n");
       *size = 0;
+      free(newimg);
       return(NULL);
     }
     imagedata=exifdat->data+tmp;
@@ -493,6 +499,7 @@ unsigned char *gpi_exif_get_thumbnail_and_size(exifparser *exifdat, long *size) 
   if (tmp==-1) {
     fprintf(stderr,"gpe_get_thumbnail: Tiff or jpeg data not found, skipping\n");
     *size = 0;
+    free(newimg);
     return(NULL);
   }
   imagedata=exifdat->data+tmp;
@@ -501,6 +508,7 @@ unsigned char *gpi_exif_get_thumbnail_and_size(exifparser *exifdat, long *size) 
   if (dataptr==-1) {
     printf("Split two\n");
     *size = 0;
+    free(newimg);
     return(NULL);
   }
 

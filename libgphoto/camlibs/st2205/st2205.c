@@ -13,8 +13,9 @@
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+ * along with this program; if not, write to the 
+ * Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
+ * Boston, MA  02110-1301  USA
  */
 #define _BSD_SOURCE
 #define _POSIX_C_SOURCE 1
@@ -569,6 +570,7 @@ st2205_real_write_file(Camera *camera,
 					  allow_uv_corr);
 	else
 		size = st2205_rgb24_to_rgb565 (camera->pl, rgb24, buf);
+	if (size < GP_OK) return size;
 
 	count = st2205_read_file_count (camera);
 	if (count < 0) return count;

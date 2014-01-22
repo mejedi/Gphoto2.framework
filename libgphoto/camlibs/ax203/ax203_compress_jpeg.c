@@ -14,15 +14,16 @@
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+ * along with this program; if not, write to the 
+ * Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
+ * Boston, MA  02110-1301  USA
  */
 
 #include "config.h"
 
 #include <stdlib.h>
 #include <string.h>
-#ifdef HAVE_GD
+#ifdef HAVE_LIBGD
 #include <gd.h>
 #endif
 
@@ -31,7 +32,7 @@
 #include "jpeg_memsrcdest.h"
 #endif
 
-#if defined(HAVE_GD) && defined(HAVE_LIBJPEG)
+#if defined(HAVE_LIBGD) && defined(HAVE_LIBJPEG)
 static int
 locate_tables_n_write(JOCTET *jpeg, int jpeg_size, JOCTET table_type,
 	uint8_t *outbuf, int *outc)

@@ -14,8 +14,8 @@
  *
  * You should have received a copy of the GNU Lesser General Public
  * License along with this library; if not, write to the
- * Free Software Foundation, Inc., 59 Temple Place - Suite 330,
- * Boston, MA 02111-1307, USA.
+ * Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
+ * Boston, MA  02110-1301  USA
  */
 #include "config.h"
 
@@ -643,6 +643,7 @@ get_info_func (CameraFilesystem *fs, const char *folder, const char *filename,
 		strcpy(info->file.type,"text/plain");
 
 	cmd = malloc(strlen("-FDAT ")+strlen(folder)+1+strlen(filename)+1);
+	if (!cmd) return GP_ERROR_NO_MEMORY;
 	sprintf(cmd, "-FDAT %s/%s", folder,filename);
 	ret = g3_ftp_command_and_reply(camera->port, cmd, &reply);
 	if (ret < GP_OK) goto out;
@@ -683,7 +684,7 @@ get_info_func (CameraFilesystem *fs, const char *folder, const char *filename,
 	}
 out:
 	if (reply) free(reply);
-	if (cmd) free(cmd);
+	free(cmd);
 
 	return (GP_OK);
 
@@ -787,7 +788,7 @@ file_list_func (CameraFilesystem *fs, const char *folder, CameraList *list,
 		int n = 0, channel, len, rlen;
 		ret = g3_channel_read(camera->port, &channel, &buf, &len); /* data. */
 		if (ret < GP_OK) goto out;
-		g3_channel_read(camera->port, &channel, &reply, &rlen); /* next reply  */
+		ret = g3_channel_read(camera->port, &channel, &reply, &rlen); /* next reply  */
 		if (ret < GP_OK) goto out;
 		gp_log(GP_LOG_DEBUG, "g3" , "reply %s", reply);
 

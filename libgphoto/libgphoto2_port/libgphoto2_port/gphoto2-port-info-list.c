@@ -17,8 +17,8 @@
  * \par
  * You should have received a copy of the GNU Lesser General Public
  * License along with this library; if not, write to the
- * Free Software Foundation, Inc., 59 Temple Place - Suite 330,
- * Boston, MA 02111-1307, USA.
+ * Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
+ * Boston, MA  02110-1301  USA
  */
 #define _GNU_SOURCE
 
@@ -139,7 +139,7 @@ gp_port_info_list_free (GPPortInfoList *list)
 	CHECK_NULL (list);
 
 	if (list->info) {
-		int i;
+		unsigned int i;
 
 		for (i=0;i<list->count;i++) {
 			free (list->info[i]->name);
@@ -179,7 +179,7 @@ gp_port_info_list_free (GPPortInfoList *list)
 int
 gp_port_info_list_append (GPPortInfoList *list, GPPortInfo info)
 {
-	int generic, i;
+	unsigned int generic, i;
 	GPPortInfo *new_info;
 
 	CHECK_NULL (list);
@@ -371,7 +371,7 @@ gp_port_info_list_load (GPPortInfoList *list)
 int
 gp_port_info_list_count (GPPortInfoList *list)
 {
-	int count, i;
+	unsigned int count, i;
 
 	CHECK_NULL (list);
 
@@ -412,7 +412,8 @@ gp_port_info_list_count (GPPortInfoList *list)
 int
 gp_port_info_list_lookup_path (GPPortInfoList *list, const char *path)
 {
-	int i, result, generic;
+	unsigned int i;
+	int result, generic;
 	regex_t pattern;
 #ifdef HAVE_GNU_REGEX
 	const char *rv;
@@ -514,7 +515,7 @@ gp_port_info_list_lookup_path (GPPortInfoList *list, const char *path)
 int
 gp_port_info_list_lookup_name (GPPortInfoList *list, const char *name)
 {
-	int i, generic;
+	unsigned int i, generic;
 
 	CHECK_NULL (list && name);
 

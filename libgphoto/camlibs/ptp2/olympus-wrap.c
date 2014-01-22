@@ -14,9 +14,8 @@
  *
  * You should have received a copy of the GNU Lesser General Public
  * License along with this library; if not, write to the
- * Free Software Foundation, Inc., 59 Temple Place - Suite 330,
- * Boston, MA 02111-1307, USA.
- * 
+ * Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
+ * Boston, MA  02110-1301  USA
  *
  * Notes:
  * XDISCVRY.X3C file sent on start, empty.
@@ -325,7 +324,7 @@ ums_wrap_getresp (PTPParams* params, PTPContainer* resp)
 
 	GP_DEBUG("send_scsi_cmd ret %d", ret);
 
-	memcpy (&usbresp, buf, sizeof(usbresp));
+	memcpy (&usbresp, buf, sizeof(buf));
 	resp->Code = dtoh16(usbresp.code);
 	resp->Nparam = (dtoh32(usbresp.length)-PTP_USB_BULK_REQ_LEN)/sizeof(uint32_t);
 	resp->Param1 = dtoh32(usbresp.payload.params.param1);
@@ -359,7 +358,7 @@ ums_wrap_getdata (PTPParams* params, PTPContainer* ptp, PTPDataHandler *putter)
 
 	GP_DEBUG("send_scsi_cmd ret %d", ret);
 
-	memcpy (&usbresp, buf, sizeof(usbresp));
+	memcpy (&usbresp, buf, sizeof(buf));
 	if ((dtoh16(usbresp.code) != ptp->Code) && (dtoh16(usbresp.code) != PTP_RC_OK)) {
 		GP_DEBUG( "ums_wrap_getdata *** PTP code %04x during PTP data in size read", dtoh16(usbresp.code));
 		/* break; */
@@ -591,6 +590,7 @@ parse_9581_tree (xmlNodePtr node) {
 
 
 			next = xmlNextElementSibling (next);
+			free (x);
 			continue;
 		}
 		gp_log (GP_LOG_ERROR, "olympus","9581: unhandled node type %s", next->name);
@@ -927,7 +927,8 @@ traverse_output_tree (PTPParams *params, xmlNodePtr node, PTPContainer *resp) {
 
 static int
 traverse_input_tree (PTPParams *params, xmlNodePtr node, PTPContainer *resp) {
-	int		evt, curpar = 0;
+	unsigned int	curpar = 0;
+	int		evt;
 	xmlNodePtr	next = xmlFirstElementChild (node);
 	uint32_t	pars[5];
 
@@ -991,9 +992,9 @@ traverse_input_tree (PTPParams *params, xmlNodePtr node, PTPContainer *resp) {
 	switch (curpar) {
 	case 5: resp->Param5 = pars[4];
 	case 4: resp->Param4 = pars[3];
-	case 3: resp->Param4 = pars[2];
-	case 2: resp->Param4 = pars[1];
-	case 1: resp->Param4 = pars[0];
+	case 3: resp->Param3 = pars[2];
+	case 2: resp->Param2 = pars[1];
+	case 1: resp->Param1 = pars[0];
 	case 0: break;
 	}
 	/* FIXME: decode content and inject into PTP event queue. */
@@ -1188,7 +1189,7 @@ generate_xml(PTPParams *params, PTPContainer *ptp, unsigned char *data, int len)
 
 static int
 is_outer_operation (PTPParams* params, uint16_t opcode) {
-	int i;
+	unsigned int i;
 
 	GP_DEBUG("is_outer_operation %04x", opcode);
 	/* the ones we need before we can do getdeviceinfo */

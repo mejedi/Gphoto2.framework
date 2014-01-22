@@ -20,8 +20,8 @@
  * \note
  * You should have received a copy of the GNU Lesser General Public
  * License along with this library; if not, write to the
- * Free Software Foundation, Inc., 59 Temple Place - Suite 330,
- * Boston, MA 02111-1307, USA.
+ * Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
+ * Boston, MA  02110-1301  USA
  */
 
 #include "config.h"
@@ -745,11 +745,11 @@ gp_camera_init (Camera *camera, GPContext *context)
 			"port nor model set. Trying auto-detection...");
 
 		/* Call auto-detect and choose the first camera */
-		gp_abilities_list_new (&al);
-		gp_abilities_list_load (al, context);
-		gp_port_info_list_new (&il);
-		gp_port_info_list_load (il);
-		gp_abilities_list_detect (al, il, list, context);
+		CRSL (camera, gp_abilities_list_new (&al), context, list);
+		CRSL (camera, gp_abilities_list_load (al, context), context, list);
+		CRSL (camera, gp_port_info_list_new (&il), context, list);
+		CRSL (camera, gp_port_info_list_load (il), context, list);
+		CRSL (camera, gp_abilities_list_detect (al, il, list, context), context, list);
 		if (!gp_list_count (list)) {
 			gp_abilities_list_free (al);
 			gp_port_info_list_free (il);
@@ -759,9 +759,9 @@ gp_camera_init (Camera *camera, GPContext *context)
 			return (GP_ERROR_MODEL_NOT_FOUND);
 		}
 		p = 0;
-		gp_port_get_info (camera->port, &info);
-		gp_port_info_get_path (info, &ppath);
-		gp_port_info_get_type (info, &ptype);
+		CRSL (camera, gp_port_get_info (camera->port, &info), context, list);
+		CRSL (camera, gp_port_info_get_path (info, &ppath), context, list);
+		CRSL (camera, gp_port_info_get_type (info, &ptype), context, list);
 		/* if the port was set before, then use that entry, but not if it is "usb:" */
 		if ((ptype == GP_PORT_USB) && strlen(ppath) && strcmp(ppath, "usb:")) {
 			for (p = gp_list_count (list);p--;) {
@@ -772,19 +772,24 @@ gp_camera_init (Camera *camera, GPContext *context)
 					break;
 			}
 			if (p<0) {
+				gp_abilities_list_free (al);
+				gp_port_info_list_free (il);
 				gp_context_error (context, _("Could not detect any camera at port %s"), ppath);
+				gp_list_free (list);
 				return (GP_ERROR_FILE_NOT_FOUND);
 			}
 		}
 
-		gp_list_get_name  (list, p, &model);
+		CRSL (camera, gp_list_get_name  (list, p, &model), context, list);
 		m = gp_abilities_list_lookup_model (al, model);
-		gp_abilities_list_get_abilities (al, m, &a);
+		CRSL (camera, m, context, list);
+		CRSL (camera, gp_abilities_list_get_abilities (al, m, &a), context, list);
 		gp_abilities_list_free (al);
 		CRSL (camera, gp_camera_set_abilities (camera, a), context, list);
 		CRSL (camera, gp_list_get_value (list, p, &port), context, list);
 		p = gp_port_info_list_lookup_path (il, port);
-		gp_port_info_list_get_info (il, p, &info);
+		CRSL (camera, p, context, list);
+		CRSL (camera, gp_port_info_list_get_info (il, p, &info), context, list);
 		CRSL (camera, gp_camera_set_port_info (camera, info), context, list);
 		gp_port_info_list_free (il);
 		gp_list_free (list);

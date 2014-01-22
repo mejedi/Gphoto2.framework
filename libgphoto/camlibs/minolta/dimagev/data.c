@@ -13,13 +13,13 @@
 *    GNU General Public License for more details.                     *
 *                                                                     *
 *    You should have received a copy of the GNU General Public        *
-*    License along with this program; if not, write to the Free       *
-*    Software Foundation, Inc., 59 Temple Place, Suite 330,           *
-*    Boston, MA 02111-1307 USA                                        *
+*    License along with this program; if not, write to the *
+*    Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
+*    Boston, MA  02110-1301  USA
 *                                                                     *
 **********************************************************************/
 
-/* $Id: data.c 11818 2009-02-16 08:09:49Z marcusmeissner $ */
+/* $Id: data.c 14608 2014-01-01 20:27:33Z marcusmeissner $ */
 
 #include "config.h"
 

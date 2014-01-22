@@ -12,7 +12,7 @@ Straightforward. Gphoto2 install name is *@rpath/Frameworks/Gphoto2.framework/Gp
 please adjust your rpath accordingly.
 
 ## Library Versions
-- libgphoto-2.5.2
+- libgphoto-2.5.3.1
 - libusbx-1.0.16
 - libtool-2.4.2
 

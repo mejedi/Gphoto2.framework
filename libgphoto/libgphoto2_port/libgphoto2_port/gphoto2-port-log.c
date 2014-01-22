@@ -17,8 +17,8 @@
  * \par
  * You should have received a copy of the GNU Lesser General Public
  * License along with this library; if not, write to the
- * Free Software Foundation, Inc., 59 Temple Place - Suite 330,
- * Boston, MA 02111-1307, USA.
+ * Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
+ * Boston, MA  02110-1301  USA
  */
 
 #define _BSD_SOURCE
@@ -183,7 +183,7 @@ gp_log_data (const char *domain, const char *data, unsigned int size)
 	char *curline, *result;
 	int x = HEXDUMP_INIT_X;
 	int y = HEXDUMP_INIT_Y;
-	int index;
+	unsigned int index;
 	unsigned char value;
 
 	if (!data) {
@@ -262,7 +262,7 @@ void
 gp_logv (GPLogLevel level, const char *domain, const char *format,
 	 va_list args)
 {
-	int i;
+	unsigned int i;
 #ifdef HAVE_VA_COPY
 	va_list xargs;
 #else

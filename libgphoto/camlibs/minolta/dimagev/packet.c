@@ -13,13 +13,13 @@
 *    GNU General Public License for more details.                     *
 *                                                                     *
 *    You should have received a copy of the GNU General Public        *
-*    License along with this program; if not, write to the Free       *
-*    Software Foundation, Inc., 59 Temple Place, Suite 330,           *
-*    Boston, MA 02111-1307 USA                                        *
+*    License along with this program; if not, write to the *
+*    Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
+*    Boston, MA  02110-1301  USA
 *                                                                     *
 **********************************************************************/
 
-/* $Id: packet.c 9739 2006-12-27 10:06:07Z hun $ */
+/* $Id: packet.c 14651 2014-01-06 11:16:28Z marcusmeissner $ */
 
 #include "config.h"
 
@@ -121,7 +121,7 @@ dimagev_packet *dimagev_read_packet(dimagev_t *dimagev) {
 		}
 
 		/* Who likes recursion? */
-		return ( p = dimagev_read_packet(dimagev));
+		return dimagev_read_packet(dimagev);
 
 	}
 
@@ -139,7 +139,7 @@ dimagev_packet *dimagev_read_packet(dimagev_t *dimagev) {
 		}
 
 		/* Who likes recursion? */
-		return ( p = dimagev_read_packet(dimagev));
+		return dimagev_read_packet(dimagev);
 
 	}
 
@@ -156,7 +156,7 @@ dimagev_packet *dimagev_read_packet(dimagev_t *dimagev) {
 		}
 		
 		/* Who likes recursion? */
-		return ( p = dimagev_read_packet(dimagev));
+		return dimagev_read_packet(dimagev);
 
 	}
 

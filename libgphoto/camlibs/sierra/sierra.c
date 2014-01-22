@@ -14,8 +14,8 @@
  *
  * You should have received a copy of the GNU Lesser General Public
  * License along with this library; if not, write to the
- * Free Software Foundation, Inc., 59 Temple Place - Suite 330,
- * Boston, MA 02111-1307, USA.
+ * Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
+ * Boston, MA  02110-1301  USA
  */
 #define _BSD_SOURCE
 
@@ -82,7 +82,8 @@ static struct {
 		SIERRA_NO_51 | SIERRA_LOW_SPEED, NULL },
 	{"Agfa", "ePhoto 1280",	SIERRA_MODEL_DEFAULT,	0, 0, 0, NULL },
 	{"Agfa", "ePhoto 1680", SIERRA_MODEL_DEFAULT,	0, 0, 0, NULL },
-	{"Apple", "QuickTake 200", SIERRA_MODEL_DEFAULT,	0, 0, 0, NULL },
+	/* unclear, if driven by fuji driver or by sierra driver */
+	{"Apple", "QuickTake 200 (Sierra Mode)", SIERRA_MODEL_DEFAULT,	0, 0, 0, NULL },
 	{"Chinon", "ES-1000", 	SIERRA_MODEL_DEFAULT,	0, 0, 0, NULL },
 	{"Epson", "PhotoPC 500", SIERRA_MODEL_EPSON,	0, 0, 0, NULL },
 	{"Epson", "PhotoPC 550", SIERRA_MODEL_EPSON,	0, 0, 0, NULL },
@@ -576,14 +577,14 @@ get_file_func (CameraFilesystem *fs, const char *folder, const char *filename,
 	switch (type) {
 	case GP_FILE_TYPE_PREVIEW:
 	case GP_FILE_TYPE_EXIF:
-		sierra_get_size(camera, 13, n, &download_size, context);
+		CHECK_STOP (camera, sierra_get_size(camera, 13, n, &download_size, context));
 		break;
 	case GP_FILE_TYPE_NORMAL:
-		sierra_get_size(camera, 12, n, &download_size, context);
+		CHECK_STOP (camera, sierra_get_size(camera, 12, n, &download_size, context));
 		break;
 	case GP_FILE_TYPE_AUDIO:
-		sierra_get_string_register (camera, 43, n, NULL,
-			(unsigned char *) &audio_info, &transferred, context);
+		CHECK_STOP (camera, sierra_get_string_register (camera, 43, n, NULL,
+			(unsigned char *) &audio_info, &transferred, context));
 		if (transferred == 0) 
 			download_size = 0;
 		else

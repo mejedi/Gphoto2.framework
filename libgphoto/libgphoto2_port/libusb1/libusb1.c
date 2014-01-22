@@ -17,8 +17,8 @@
  *
  * You should have received a copy of the GNU Lesser General Public
  * License along with this library; if not, write to the
- * Free Software Foundation, Inc., 59 Temple Place - Suite 330,
- * Boston, MA 02111-1307, USA.
+ * Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
+ * Boston, MA  02110-1301  USA
  */
 #include "config.h"
 #include <gphoto2/gphoto2-port-library.h>
@@ -267,6 +267,7 @@ gp_port_library_list (GPPortInfoList *list)
 		CHECK (gp_port_info_list_append (list, info));
 	}
 	libusb_exit (ctx); /* should free all stuff above */
+	free (descs);
 	return (GP_OK);
 }
 
@@ -489,12 +490,21 @@ gp_port_usb_open (GPPort *port)
 	if (ret < 0) {
 		int saved_errno = errno;
 		gp_port_set_error (port, _("Could not claim interface %d (%s). "
-					   "Make sure no other program "
+					   "Make sure no other program (%s) "
 					   "or kernel module (such as %s) "
 					   "is using the device and you have "
 					   "read/write access to the device."),
 				   port->settings.usb.interface,
 				   strerror(saved_errno),
+#ifdef __linux__
+				   "gvfs-gphoto2-volume-monitor",
+#else
+#if defined(__APPLE__)
+				   _("MacOS PTPCamera service"),
+#else
+				   _("unknown libgphoto2 using program"),
+#endif
+#endif
 				   "sdc2xx, stv680, spca50x");
 		return GP_ERROR_IO_USB_CLAIM;
 	}
@@ -608,7 +618,7 @@ gp_port_usb_read(GPPort *port, char *bytes, int size)
 static int
 gp_port_usb_reset(GPPort *port)
 {
-	int ret, curread;
+	int ret;
 
 	if (!port || !port->pl->dh) {
 		gp_log (GP_LOG_ERROR, "libusb1", "gp_port_usb_reset: bad parameters");
@@ -930,10 +940,12 @@ gp_port_usb_find_path_lib(GPPort *port)
 {
 	char *s;
 	int d, busnr = 0, devnr = 0;
-	GPPortPrivateLibrary *pl = port->pl;
+	GPPortPrivateLibrary *pl;
 
 	if (!port)
 		return (GP_ERROR_BAD_PARAMETERS);
+
+	pl = port->pl;
 
 	s = strchr (port->settings.usb.port,':');
 	if (s && (s[1] != '\0')) { /* usb:%d,%d */
@@ -1005,10 +1017,12 @@ gp_port_usb_find_device_lib(GPPort *port, int idvendor, int idproduct)
 {
 	char *s;
 	int d, busnr = 0, devnr = 0;
-	GPPortPrivateLibrary *pl = port->pl;
+	GPPortPrivateLibrary *pl;
 
 	if (!port)
 		return (GP_ERROR_BAD_PARAMETERS);
+
+	pl = port->pl;
 
 	s = strchr (port->settings.usb.port,':');
 	if (s && (s[1] != '\0')) { /* usb:%d,%d */
@@ -1308,10 +1322,12 @@ gp_port_usb_find_device_by_class_lib(GPPort *port, int class, int subclass, int 
 {
 	char *s;
 	int d, busnr = 0, devnr = 0;
-	GPPortPrivateLibrary *pl = port->pl;
+	GPPortPrivateLibrary *pl;
 
 	if (!port)
 		return (GP_ERROR_BAD_PARAMETERS);
+
+	pl = port->pl;
 
 	s = strchr (port->settings.usb.port,':');
 	if (s && (s[1] != '\0')) { /* usb:%d,%d */

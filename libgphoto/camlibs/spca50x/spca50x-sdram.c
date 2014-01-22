@@ -20,8 +20,8 @@
 /*                                                              */
 /* You should have received a copy of the GNU Library General   */
 /* Public License along with this library; if not, write to the */
-/* Free Software Foundation, Inc., 59 Temple Place - Suite 330, */
-/* Boston, MA 02111-1307, USA.                                  */
+/* Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,*/
+/* Boston, MA  02110-1301  USA					*/
 /****************************************************************/
 #define _BSD_SOURCE
 
@@ -128,12 +128,12 @@ spca50x_sdram_get_file_count_and_fat_count (CameraPrivateLibrary * lib,
 		sleep (1);
 		CHECK (gp_port_usb_msg_read
 				(lib->gpdev, 0, 0, 0x0e19,
-				 (uint8_t *) & lower, 1));
+				 (uint8_t*)&lower, 1));
 		CHECK (gp_port_usb_msg_read
 				(lib->gpdev, 0, 0, 0x0e20,
-				 (uint8_t *) & upper, 1));
+				 (uint8_t*)&upper, 1));
 
-		lib->num_fats = ((upper & 0xFF << 8) | (lower & 0xFF));
+		lib->num_fats = (((upper & 0xFF) << 8) | (lower & 0xFF));
 	} else {
 		while (1) {
 			CHECK (spca50x_sdram_get_fat_page (lib, lib->num_fats,

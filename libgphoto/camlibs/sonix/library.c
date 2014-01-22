@@ -14,8 +14,8 @@
  *
  * You should have received a copy of the GNU Lesser General Public
  * License along with this library; if not, write to the
- * Free Software Foundation, Inc., 59 Temple Place - Suite 330,
- * Boston, MA 02111-1307, USA.
+ * Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
+ * Boston, MA  02110-1301  USA
  */
 
 #define _BSD_SOURCE
@@ -98,10 +98,10 @@ camera_abilities (CameraAbilitiesList *list)
 			a.operations = GP_OPERATION_NONE;
 		else
 			a.operations = GP_OPERATION_CAPTURE_IMAGE;
-			a.folder_operations = GP_FOLDER_OPERATION_DELETE_ALL;
-			a.file_operations   = GP_FILE_OPERATION_DELETE|
-					GP_FILE_OPERATION_PREVIEW;
-			gp_abilities_list_append (list, a);
+		a.folder_operations = GP_FOLDER_OPERATION_DELETE_ALL;
+		a.file_operations   = GP_FILE_OPERATION_DELETE|
+				GP_FILE_OPERATION_PREVIEW;
+		gp_abilities_list_append (list, a);
 	}
 	return GP_OK;
 }
@@ -240,6 +240,8 @@ get_file_func (CameraFilesystem *fs, const char *folder, const char *filename,
 	GP_DEBUG( "avitype is %d\n", avitype);
 	GP_DEBUG ("height of picture %i is %i\n", k+1,h);
 	rawsize = sonix_read_data_size (camera->port, k);
+	if (rawsize < GP_OK)
+		return rawsize;
 	GP_DEBUG("rawsize = 0x%x = %i\n", rawsize, rawsize);
 	if(rawsize%0x40) 
 		buffersize = rawsize - (rawsize%0x40) + 0x40;
@@ -298,14 +300,13 @@ get_file_func (CameraFilesystem *fs, const char *folder, const char *filename,
 			gp_file_set_mime_type (file, GP_MIME_AVI);
 			frame_data = malloc(frame_size);
 			if (!frame_data) {
-				free (frame_data);
 				return -1;
 			}
 			size = (numframes)*(3*frame_size+ 8) + 224;
 			GP_DEBUG("size = %i\n", size);
 			avi = malloc(224);
 			if (!avi) {
-				free(avi); 
+				free(frame_data);
 				return -1;
 			}
 			GP_DEBUG("avi malloc'ed\n");
@@ -328,7 +329,8 @@ get_file_func (CameraFilesystem *fs, const char *folder, const char *filename,
 			avi[0x8c] = numframes&0xff;
 			ptr=malloc(3*frame_size+8);
 			if(!ptr) {
-				free(ptr);
+				free(frame_data);
+				free(avi);
 				return GP_ERROR_NO_MEMORY;
 			}
 			GP_DEBUG("avi hdr written\n");
@@ -486,9 +488,9 @@ delete_file_func (CameraFilesystem *fs, const char *folder,
 	if (k+1 != camera->pl->num_pics) {
 		GP_DEBUG("Only the last photo can be deleted!\n");
 		return GP_ERROR_NOT_SUPPORTED;
-	} else
-	    sonix_delete_last (camera->port);
-	    camera->pl->num_pics -= 1;
+	}
+	sonix_delete_last (camera->port);
+	camera->pl->num_pics -= 1;
 	return GP_OK;
 }
 

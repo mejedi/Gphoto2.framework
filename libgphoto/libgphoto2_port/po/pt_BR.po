@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libgphoto2_port 2.4.9\n"
 "Report-Msgid-Bugs-To: gphoto-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2013-05-05 21:31+0200\n"
+"POT-Creation-Date: 2014-01-06 14:47+0100\n"
 "PO-Revision-Date: 2010-05-09 20:44-0300\n"
 "Last-Translator: Fabrício Godoy <skarllot@gmail.com>\n"
 "Language-Team: Brazilian Portuguese <ldp-br@bazar.conectiva.com.br>\n"
@@ -67,46 +67,46 @@ msgid_plural "%i regular entries available."
 msgstr[0] "%i entradas regulares disponíveis."
 msgstr[1] "%i entradas regulares disponíveis."
 
-#: libgphoto2_port/gphoto2-port-info-list.c:380
+#: libgphoto2_port/gphoto2-port-info-list.c:381
 #, fuzzy, c-format
 msgid "Looking for path '%s' (%i entry available)..."
 msgid_plural "Looking for path '%s' (%i entries available)..."
 msgstr[0] "Procurando pelo caminho \"%s\" (%i entradas disponíveis)..."
 msgstr[1] "Procurando pelo caminho \"%s\" (%i entradas disponíveis)..."
 
-#: libgphoto2_port/gphoto2-port-info-list.c:394
+#: libgphoto2_port/gphoto2-port-info-list.c:395
 #, c-format
 msgid "Starting regex search for '%s'..."
 msgstr "Iniciando busca, por REGEX, por \"%s\"..."
 
-#: libgphoto2_port/gphoto2-port-info-list.c:402
+#: libgphoto2_port/gphoto2-port-info-list.c:403
 #, c-format
 msgid "Trying '%s'..."
 msgstr "Tentando \"%s\"..."
 
-#: libgphoto2_port/gphoto2-port-info-list.c:423
+#: libgphoto2_port/gphoto2-port-info-list.c:424
 msgid "regcomp failed"
 msgstr "falha ao computar expressão"
 
-#: libgphoto2_port/gphoto2-port-info-list.c:434
+#: libgphoto2_port/gphoto2-port-info-list.c:435
 #, c-format
 msgid "re_match failed (%i)"
 msgstr "falha ao comparar expressão (%i)"
 
-#: libgphoto2_port/gphoto2-port-info-list.c:442
+#: libgphoto2_port/gphoto2-port-info-list.c:443
 msgid "regexec failed"
 msgstr "falha ao executar expressão"
 
-#: libgphoto2_port/gphoto2-port-info-list.c:449
+#: libgphoto2_port/gphoto2-port-info-list.c:450
 msgid "Generic Port"
 msgstr "Porta genérica"
 
-#: libgphoto2_port/gphoto2-port-info-list.c:474
+#: libgphoto2_port/gphoto2-port-info-list.c:475
 #, c-format
 msgid "Looking up entry '%s'..."
 msgstr "Procurando entrada \"%s\"..."
 
-#: libgphoto2_port/gphoto2-port-info-list.c:506
+#: libgphoto2_port/gphoto2-port-info-list.c:507
 #, fuzzy, c-format
 msgid "Getting info of entry %i (%i available)..."
 msgid_plural "Getting info of entry %i (%i available)..."
@@ -365,8 +365,8 @@ msgstr ""
 msgid "No error description available"
 msgstr "Descrição do erro não disponível"
 
-#: disk/disk.c:135 disk/disk.c:136 disk/disk.c:197 disk/disk.c:198
-#: disk/disk.c:238 disk/disk.c:261
+#: disk/disk.c:145 disk/disk.c:146 disk/disk.c:216 disk/disk.c:217
+#: disk/disk.c:257 disk/disk.c:280
 #, c-format
 msgid "Media '%s'"
 msgstr "Mídia \"%s\""
@@ -376,12 +376,12 @@ msgstr "Mídia \"%s\""
 msgid "Could not lock device '%s'"
 msgstr "Não foi possível travar o dispositivo \"%s\""
 
-#: serial/unix.c:239 usbdiskdirect/linux.c:96
+#: serial/unix.c:239 usbdiskdirect/linux.c:97
 #, c-format
 msgid "Device '%s' is locked by pid %d"
 msgstr "O dispositivo \"%s\" está travado pelo PID %d"
 
-#: serial/unix.c:242 usbdiskdirect/linux.c:99
+#: serial/unix.c:242 usbdiskdirect/linux.c:100
 #, c-format
 msgid "Device '%s' could not be locked (dev_lock returned %d)"
 msgstr "O dispositivo \"%s\" não pôde ser travado (dev_lock retornou %d)"
@@ -391,13 +391,13 @@ msgstr "O dispositivo \"%s\" não pôde ser travado (dev_lock retornou %d)"
 msgid "Device '%s' could not be unlocked."
 msgstr "O dispositivo \"%s\" não pôde ser destravado."
 
-#: serial/unix.c:283 usbdiskdirect/linux.c:128
+#: serial/unix.c:283 usbdiskdirect/linux.c:129
 #, c-format
 msgid "Device '%s' could not be unlocked as it is locked by pid %d."
 msgstr ""
 "O dispositivo \"%s\" não pôde ser destravado pois está travado pelo PID %d."
 
-#: serial/unix.c:287 usbdiskdirect/linux.c:132
+#: serial/unix.c:287 usbdiskdirect/linux.c:133
 #, c-format
 msgid "Device '%s' could not be unlocked (dev_unlock returned %d)"
 msgstr "O dispositivo \"%s\" não pôde ser destravado (dev_unlock retornou %d)"
@@ -407,85 +407,85 @@ msgstr "O dispositivo \"%s\" não pôde ser destravado (dev_unlock retornou %d)"
 msgid "Serial Port %i"
 msgstr "Porta serial %i"
 
-#: serial/unix.c:461
+#: serial/unix.c:460
 #, fuzzy, c-format
 msgid "Failed to open '%s' (%s)."
 msgstr "Falhou ao abrir \"%s\" (%m)."
 
-#: serial/unix.c:481
+#: serial/unix.c:480
 #, fuzzy, c-format
 msgid "Could not close '%s' (%s)."
 msgstr "Não foi possível fechar \"%s\" (%m)."
 
-#: serial/unix.c:538
+#: serial/unix.c:537
 #, fuzzy, c-format
 msgid "Could not write to port (%s)"
 msgstr "Não foi possível escrever para a porta (%m)"
 
-#: serial/unix.c:616
+#: serial/unix.c:615
 msgid "Parity error."
 msgstr "Erro de paridade."
 
-#: serial/unix.c:620
+#: serial/unix.c:619
 #, c-format
 msgid "Unexpected parity response sequence 0xff 0x%02x."
 msgstr "Sequência de resposta de paridade inesperada 0xff 0x%02x."
 
-#: serial/unix.c:663
+#: serial/unix.c:662
 #, c-format
 msgid "Unknown pin %i."
 msgstr "Pino desconhecido %i."
 
-#: serial/unix.c:686
+#: serial/unix.c:685
 #, fuzzy, c-format
 msgid "Could not get level of pin %i (%s)."
 msgstr "Não foi possível obter o nível do pino %i (%m)."
 
-#: serial/unix.c:723
+#: serial/unix.c:722
 #, fuzzy, c-format
 msgid "Could not set level of pin %i to %i (%s)."
 msgstr "Não foi possível ajustar o nível do pino de %i para %i (%m)."
 
-#: serial/unix.c:750
+#: serial/unix.c:749
 #, fuzzy, c-format
 msgid "Could not flush '%s' (%s)."
 msgstr "Não foi possível descarregar \"%s\" (%m)."
 
-#: serial/unix.c:864
+#: serial/unix.c:863
 #, c-format
 msgid "Could not set the baudrate to %d"
 msgstr "Não foi possível ajustar a taxa de baud para %d"
 
-#: usbdiskdirect/linux.c:234
+#: usbdiskdirect/linux.c:236
 msgid "USB Mass Storage direct IO"
 msgstr "E/S direta para armazenamento em massa USB"
 
-#: usbdiskdirect/linux.c:289 usbscsi/linux.c:261
+#: usbdiskdirect/linux.c:293 usbscsi/linux.c:277
 #, c-format
 msgid "Failed to open '%s' (%m)."
 msgstr "Falhou ao abrir \"%s\" (%m)."
 
-#: usbdiskdirect/linux.c:303 usbscsi/linux.c:290
+#: usbdiskdirect/linux.c:307 usbscsi/linux.c:306
 #, c-format
 msgid "Could not close '%s' (%m)."
 msgstr "Não foi possível fechar \"%s\" (%m)."
 
-#: usbdiskdirect/linux.c:328
+#: usbdiskdirect/linux.c:332
 #, c-format
 msgid "Could not seek to offset: %x on '%s' (%m)."
 msgstr "Não foi possível buscar até a posição %x em \"%s\" (%m)."
 
-#: usbdiskdirect/linux.c:351
+#: usbdiskdirect/linux.c:355
 #, c-format
 msgid "Could not write to '%s' (%m)."
 msgstr "Não foi possível escrever para \"%s\" (%m)."
 
-#: usbdiskdirect/linux.c:373
+#: usbdiskdirect/linux.c:377
 #, c-format
 msgid "Could not read from '%s' (%m)."
 msgstr "Não foi possível ler de \"%s\" (%m)."
 
-#: usb/libusb.c:268 libusb1/libusb1.c:322
+#: usb/libusb.c:268 libusb1/libusb1.c:323
 #, fuzzy, c-format
 msgid "Could not open USB device (%s)."
 msgstr "Não foi possível abrir o dispositivo USB (%m)."
@@ -495,7 +495,7 @@ msgstr "Não foi possível abrir o dispositivo USB (%m)."
 msgid "Device has driver '%s' attached."
 msgstr "O dispositivo está com o driver \"%s\" anexado, desanexando agora."
 
-#: usb/libusb.c:281 libusb1/libusb1.c:331
+#: usb/libusb.c:281 libusb1/libusb1.c:332
 msgid "Camera is already in use."
 msgstr "A câmera já está em uso."
 
@@ -511,14 +511,14 @@ msgstr ""
 "Não foi possível desanexar o driver de kernel \"%s\" do dispositivo de "
 "câmera."
 
-#: usb/libusb.c:294 libusb1/libusb1.c:347
+#: usb/libusb.c:294 libusb1/libusb1.c:348
 msgid "Could not query kernel driver of device."
 msgstr "Não foi possível examinar o driver de kernel do dispositivo."
 
-#: usb/libusb.c:303 libusb1/libusb1.c:355
+#: usb/libusb.c:303 libusb1/libusb1.c:356
 #, fuzzy, c-format
 msgid ""
-"Could not claim interface %d (%s). Make sure no other program or kernel "
+"Could not claim interface %d (%s). Make sure no other program (%s) or kernel "
 "module (such as %s) is using the device and you have read/write access to "
 "the device."
 msgstr ""
@@ -526,37 +526,45 @@ msgstr ""
 "outro programa ou módulo do kernel (como %s) está usando o dispositivo e que "
 "você tem acesso de leitura e escrita para o dispositivo."
 
-#: usb/libusb.c:325 libusb1/libusb1.c:377
+#: usb/libusb.c:315 libusb1/libusb1.c:367
+msgid "MacOS PTPCamera service"
+msgstr ""
+
+#: usb/libusb.c:317 libusb1/libusb1.c:369
+msgid "unknown libgphoto2 using program"
+msgstr ""
+
+#: usb/libusb.c:335 libusb1/libusb1.c:387
 #, fuzzy, c-format
 msgid "Could not release interface %d (%s)."
 msgstr "Não foi possível liberar a interface %d (%m)."
 
-#: usb/libusb.c:340 libusb1/libusb1.c:392
+#: usb/libusb.c:350 libusb1/libusb1.c:402
 #, fuzzy, c-format
 msgid "Could not reset USB port (%s)."
 msgstr "Não foi possível reiniciar a porta USB (%m)."
 
-#: usb/libusb.c:370
+#: usb/libusb.c:380
 #, fuzzy, c-format
 msgid "Could not close USB port (%s)."
 msgstr "Não foi possível fechar a porta USB (%m)."
 
-#: usb/libusb.c:643 libusb1/libusb1.c:678
+#: usb/libusb.c:653 libusb1/libusb1.c:688
 #, fuzzy, c-format
 msgid "Could not set config %d/%d (%s)"
 msgstr "Não foi possível definir a configuração %d/%d (%m)"
 
-#: usb/libusb.c:678 libusb1/libusb1.c:717
+#: usb/libusb.c:688 libusb1/libusb1.c:727
 #, fuzzy, c-format
 msgid "Could not set altsetting from %d to %d (%s)"
 msgstr "Não foi possível definir a configuração alternativa de %d para %d (%m)"
 
-#: usb/libusb.c:771 libusb1/libusb1.c:891
+#: usb/libusb.c:781 libusb1/libusb1.c:905
 #, c-format
 msgid "The supplied vendor or product id (0x%x,0x%x) is not valid."
 msgstr "O fabricante ou o ID do produto (0x%x,0x%x) não é válido."
 
-#: usb/libusb.c:807 libusb1/libusb1.c:930
+#: usb/libusb.c:817 libusb1/libusb1.c:944
 #, c-format
 msgid ""
 "USB device (vendor 0x%x, product 0x%x) is a mass storage device, and might "
@@ -565,8 +573,8 @@ msgstr ""
 "O dispositivo USB (fabricante 0x%x, produto 0x%x) é um dispositivo de "
 "armazenamento em massa, e pode não funcionar com o gphoto2. Referência: %s"
 
-#: usb/libusb.c:850 usb/libusb.c:945 libusb1/libusb1.c:861
-#: libusb1/libusb1.c:962
+#: usb/libusb.c:860 usb/libusb.c:955 libusb1/libusb1.c:873
+#: libusb1/libusb1.c:976
 #, c-format
 msgid ""
 "Could not find USB device (vendor 0x%x, product 0x%x). Make sure this device "
@@ -575,7 +583,7 @@ msgstr ""
 "Não foi possível localizar o dispositivo USB (fabricante 0x%x, produto 0x"
 "%x). Tenha certeza de que esse dispositivo está conectado ao computador."
 
-#: usb/libusb.c:1245 libusb1/libusb1.c:1258
+#: usb/libusb.c:1259 libusb1/libusb1.c:1274
 #, c-format
 msgid ""
 "Could not find USB device (class 0x%x, subclass 0x%x, protocol 0x%x). Make "
@@ -585,45 +593,45 @@ msgstr ""
 "protocolo 0x%x). Tenha certeza de que esse dispositivo está conectado ao "
 "computador."
 
-#: libusb1/libusb1.c:337
+#: libusb1/libusb1.c:338
 #, fuzzy, c-format
 msgid "Device has a kernel driver attached (%d), detaching it now."
 msgstr "O dispositivo está com o driver \"%s\" anexado, desanexando agora."
 
-#: libusb1/libusb1.c:340
+#: libusb1/libusb1.c:341
 #, fuzzy
 msgid "Could not detach kernel driver of camera device."
 msgstr ""
 "Não foi possível desanexar o driver de kernel \"%s\" do dispositivo de "
 "câmera."
 
-#: libusb1/libusb1.c:403
+#: libusb1/libusb1.c:413
 #, fuzzy
 msgid "Could not reattach kernel driver of camera device."
 msgstr ""
 "Não foi possível desanexar o driver de kernel \"%s\" do dispositivo de "
 "câmera."
 
-#: usbscsi/linux.c:97
+#: usbscsi/linux.c:110
 #, fuzzy, c-format
 msgid "Device '%s' is locked by another app."
 msgstr "O dispositivo \"%s\" está travado pelo PID %d"
 
-#: usbscsi/linux.c:102
+#: usbscsi/linux.c:115
 #, fuzzy, c-format
 msgid "Failed to lock '%s' (%m)."
 msgstr "Falhou ao abrir \"%s\" (%m)."
 
-#: usbscsi/linux.c:119
+#: usbscsi/linux.c:132
 #, fuzzy, c-format
 msgid "Failed to unlock '%s' (%m)."
 msgstr "Falhou ao abrir \"%s\" (%m)."
 
-#: usbscsi/linux.c:219
+#: usbscsi/linux.c:233
 msgid "USB Mass Storage raw SCSI"
 msgstr "Armazenamento em massa USB bruto SCSI"
 
-#: usbscsi/linux.c:335
+#: usbscsi/linux.c:351
 #, c-format
 msgid "Could not send scsi command to: '%s' (%m)."
 msgstr "Não foi possível enviar um comando SCSI para \"%s\" (%m)."

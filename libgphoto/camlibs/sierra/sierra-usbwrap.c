@@ -14,8 +14,8 @@
  *
  * You should have received a copy of the GNU Lesser General Public
  * License along with this library; if not, write to the
- * Free Software Foundation, Inc., 59 Temple Place - Suite 330,
- * Boston, MA 02111-1307, USA.
+ * Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
+ * Boston, MA  02110-1301  USA
  * 
  *
  * Olympus C-3040Z (and possibly also the C-2040Z and others) have
@@ -356,12 +356,12 @@ usb_wrap_DATA (GPPort *dev, unsigned int type, char *sierra_response, int *sierr
    }
    *sierra_len = msg_len - sizeof(*msg);
 
-   msg = (uw_pkout_sierra_hdr_t*)malloc(msg_len);
+   msg = (uw_pkout_sierra_hdr_t*)calloc(msg_len,1);
+
    memset(&cmd, 0, sizeof(cmd));
    cmd.cmd 	= cmdbyte(type, 2);
    cmd.length	= uw_value(msg_len);
 
-   memset(msg, 0, sizeof(msg));
    ret = gp_port_send_scsi_cmd (dev, 0, (char*)&cmd, sizeof(cmd),
    	 sense_buffer, sizeof(sense_buffer), (char*)msg, msg_len);
 

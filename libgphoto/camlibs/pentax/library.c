@@ -13,8 +13,9 @@
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+ * along with this program; if not, write to the 
+ * Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
+ * Boston, MA  02110-1301  USA
  */
 
 #define _BSD_SOURCE
@@ -94,7 +95,14 @@ camera_abilities (CameraAbilitiesList *list)
 	a.usb_product		= 0x0102;
 	if (GP_OK != (ret = gp_abilities_list_append (list, a)))
 		return ret;
+
+        strcpy (a.model, "Pentax:K30");
+        // same usb vendor like Pentax K5D
+        a.usb_product           = 0x0132;
+        if (GP_OK != (ret = gp_abilities_list_append (list, a)))
+                return ret;
 	return GP_OK;
+
 }
 
 static int
@@ -330,10 +338,14 @@ camera_get_config (Camera *camera, CameraWidget **window, GPContext *context)
 	const char	*model;
 	pslr_status	status;
 	char		buf[20];
+	const char      **available_resolutions;
+	int i;
 
 	pslr_get_status (camera->pl, &status);
 
 	model = pslr_camera_name (camera->pl);
+
+	available_resolutions = pslr_camera_resolution_steps (camera->pl);
 
 	GP_DEBUG ("*** camera_get_config");
 
@@ -353,18 +365,16 @@ camera_get_config (Camera *camera, CameraWidget **window, GPContext *context)
 
 	gp_widget_new (GP_WIDGET_RADIO, _("Image Size"), &t);
 	gp_widget_set_name (t, "imgsize");
-	gp_widget_add_choice (t, "14");
-	gp_widget_add_choice (t, "10");
-	gp_widget_add_choice (t, "6");
-	gp_widget_add_choice (t, "2");
-
-	switch (status.jpeg_resolution) {
-	case PSLR_JPEG_RESOLUTION_14M:	gp_widget_set_value (t, "14");break;
-	case PSLR_JPEG_RESOLUTION_10M:	gp_widget_set_value (t, "10");break;
-	case PSLR_JPEG_RESOLUTION_6M:	gp_widget_set_value (t, "6");break;
-	case PSLR_JPEG_RESOLUTION_2M:	gp_widget_set_value (t, "2");break;
-	default: 			gp_widget_set_value (t, _("Unknown"));break;
+	for (i = 0; i < PSLR_MAX_RESOLUTIONS; i++)
+	{
+		gp_widget_add_choice (t, available_resolutions[i]);
 	}
+
+        if (status.jpeg_resolution > 0 && status.jpeg_resolution < PSLR_MAX_RESOLUTIONS)
+		gp_widget_set_value (t, available_resolutions[status.jpeg_resolution]);
+        else
+		gp_widget_set_value (t, _("Unknown"));
+
 	gp_widget_append (section, t);
 
 	gp_widget_new (GP_WIDGET_RADIO, _("Image Quality"), &t);
@@ -499,20 +509,23 @@ camera_set_config (Camera *camera, CameraWidget *window, GPContext *context)
 	GP_DEBUG ("*** camera_set_config");
 	gp_widget_get_child_by_label (window, _("Image Size"), &w);
 	if (gp_widget_changed (w)) {
-		pslr_jpeg_resolution_t resolution;
+		int i, resolution = -1;
+		const char **valid_resolutions;
+
+		valid_resolutions = pslr_camera_resolution_steps (camera->pl);
 
 		gp_widget_get_value (w, &sval);
-		resolution = PSLR_JPEG_RESOLUTION_MAX;
-		if (!strcmp(sval,"14"))	resolution = PSLR_JPEG_RESOLUTION_14M;
-		if (!strcmp(sval,"10"))	resolution = PSLR_JPEG_RESOLUTION_10M;
-		if (!strcmp(sval,"6"))	resolution = PSLR_JPEG_RESOLUTION_6M;
-		if (!strcmp(sval,"2"))	resolution = PSLR_JPEG_RESOLUTION_2M;
+		for (i = 0; i < PSLR_MAX_RESOLUTIONS; i++)
+	        {
+			if (!strcmp(sval,valid_resolutions[i]))
+				resolution = i;
+		}
 	
-		if (resolution != PSLR_JPEG_RESOLUTION_MAX) {
+		if (resolution == -1) {
+			gp_log (GP_LOG_ERROR, "pentax", "Could not decode image size %s", sval);
+		} else {
 			pslr_set_jpeg_resolution(camera->pl, resolution);
 			pslr_get_status(camera->pl, &status);
-		} else {
-			gp_log (GP_LOG_ERROR, "pentax", "Could not decode image size %s", sval);
 		}
 	}
 
@@ -546,6 +559,7 @@ camera_set_config (Camera *camera, CameraWidget *window, GPContext *context)
 		if (sscanf(sval, "%d", &iso)) {
 			pslr_set_iso(camera->pl, iso);
 			pslr_get_status(camera->pl, &status);
+			// FIXME: K-30 iso doesn't get updated immediately
 		} else
 			gp_log (GP_LOG_ERROR, "pentax", "Could not decode iso %s", sval);
 	}
@@ -554,8 +568,8 @@ camera_set_config (Camera *camera, CameraWidget *window, GPContext *context)
 	if (gp_widget_changed (w)) {
 		int qual;
 
-		/* FIXME: decoding is strange. the UI shows number of starts
-		 * on k20d: 4 stars = 3, 3 stars = 0, 2 stars = 1, 1 star = 2 
+		/* FIXME: decoding is strange. the UI shows number of stars
+		 * on k20d: 4 stars = 3, 3 stars = 0, 2 stars = 1, 1 star = 2
 		 */
 		gp_widget_get_value (w, &sval);
 		if (sscanf(sval, "%d", &qual)) {

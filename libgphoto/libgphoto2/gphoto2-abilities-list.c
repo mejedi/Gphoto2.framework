@@ -18,8 +18,8 @@
  * \par
  * You should have received a copy of the GNU Lesser General Public
  * License along with this library; if not, write to the
- * Free Software Foundation, Inc., 59 Temple Place - Suite 330,
- * Boston, MA 02111-1307, USA.
+ * Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
+ * Boston, MA  02110-1301  USA
  */
 
 #include "config.h"
@@ -169,7 +169,7 @@ gp_abilities_list_load_dir (CameraAbilitiesList *list, const char *dir,
 	CameraLibraryAbilitiesFunc ab;
 	CameraText text;
 	int ret, x, old_count, new_count;
-	unsigned int i, p;
+	int i, p;
 	const char *filename;
 	CameraList *flist;
 	int count;

@@ -16,8 +16,8 @@
  * \par
  * You should have received a copy of the GNU Lesser General Public
  * License along with this library; if not, write to the
- * Free Software Foundation, Inc., 59 Temple Place - Suite 330,
- * Boston, MA 02111-1307, USA.
+ * Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
+ * Boston, MA  02110-1301  USA
  */
 
 #include "config.h"
@@ -128,9 +128,9 @@ char gpi_jpeg_findactivemarker(char *id, int *location, chunk *picture)
     return 0;
 }
 
-char *gpi_jpeg_markername(int c)
+char *gpi_jpeg_markername(unsigned int c)
 {
-    int x;
+    unsigned int x;
 /*    printf("searching for marker %X in list\n",c); */
 /*    printf("%i\n", sizeof(markers)); */
     for (x=0; x<countof(JPEG_MARKERS); x++)

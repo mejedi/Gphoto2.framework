@@ -13,8 +13,9 @@
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+ * along with this program; if not, write to the 
+ * Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
+ * Boston, MA  02110-1301  USA
  */
 
 #define _BSD_SOURCE
@@ -23,7 +24,7 @@
 
 #include <string.h>
 #include <stdlib.h>
-#ifdef HAVE_GD
+#ifdef HAVE_LIBGD
 #include <gd.h>
 #endif
 
@@ -166,7 +167,7 @@ get_file_func (CameraFilesystem *fs, const char *folder, const char *filename,
 {
 	Camera *camera = data;
 	int idx, size;
-#ifdef HAVE_GD
+#ifdef HAVE_LIBGD
 	int ret;
 	gdImagePtr im;
 	void *gdpng;
@@ -189,7 +190,7 @@ get_file_func (CameraFilesystem *fs, const char *folder, const char *filename,
 		return GP_OK;
 	}
 
-#ifdef HAVE_GD
+#ifdef HAVE_LIBGD
 	if (type != GP_FILE_TYPE_NORMAL)
 		return GP_ERROR_NOT_SUPPORTED;
 
@@ -227,7 +228,7 @@ static int
 put_file_func (CameraFilesystem *fs, const char *folder, const char *name, 
 	CameraFileType type, CameraFile *file, void *data, GPContext *context)
 {
-#ifdef HAVE_GD
+#ifdef HAVE_LIBGD
 	Camera *camera = data;
 	char *filedata = NULL;
 	int ret, in_width, in_height, in_x, in_y;

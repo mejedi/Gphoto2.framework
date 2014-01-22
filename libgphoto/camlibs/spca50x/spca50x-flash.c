@@ -23,8 +23,8 @@
 /*                                                              */
 /* You should have received a copy of the GNU Library General   */
 /* Public License along with this library; if not, write to the */
-/* Free Software Foundation, Inc., 59 Temple Place - Suite 330, */
-/* Boston, MA 02111-1307, USA.                                  */
+/* Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,*/
+/* Boston, MA  02110-1301  USA					*/
 /****************************************************************/
 #define _BSD_SOURCE
 
@@ -370,7 +370,7 @@ spca50x_flash_get_file_name (CameraPrivateLibrary *pl, int index, char *name)
 static int
 spca50x_flash_get_number_from_file_name (CameraPrivateLibrary *pl, int index, int *file_number)
 {
-	char name[13];
+	char name[14];
 
 	CHECK (spca50x_flash_get_file_name (pl, index, name));
 	if(sscanf(&(name[4]), "%d", file_number) != 1)    /* skip "DSC_" */

@@ -4,8 +4,8 @@ AC_PREREQ(2.59)
 dnl NOTE: Be version style _higher_ than the last release.
 dnl       So lastversion.X.trunk for instance. Bump X if necessary.
 
-dnl ******* THE NEXT RELEASE VERSION MUST BE 2.5.3 at least or higher!
-AC_INIT([libgphoto2 photo camera library], [2.5.2], [gphoto-devel@lists.sourceforge.net], [libgphoto2])
+dnl ******* THE NEXT RELEASE VERSION MUST BE 2.5.4 at least or higher!
+AC_INIT([libgphoto2 photo camera library], [2.5.3], [gphoto-devel@lists.sourceforge.net], [libgphoto2])
 
 AC_CONFIG_SRCDIR([libgphoto2/gphoto2-version.c])
 AC_CONFIG_HEADERS([config.h])
@@ -88,8 +88,8 @@ dnl Turn on (almost) all warnings when using gcc
 dnl ---------------------------------------------------------------------------
 if test "x$GCC" = "xyes"; then
 	# CFLAGS="$CFLAGS --std=c99 -Wall -Wextra -Werror -pedantic"
-	CFLAGS="$CFLAGS -Wall -g -Wmissing-declarations -Wmissing-prototypes"
-	LDFLAGS="$LDFLAGS -g"
+	CFLAGS="$CFLAGS -Wall -Wmissing-declarations -Wmissing-prototypes"
+	LDFLAGS="$LDFLAGS"
 	AC_SUBST([NO_UNUSED_CFLAGS], [-Wno-unused])
 fi
 AM_CONDITIONAL([HAVE_GCC], [test "x$GCC" = "xyes"])
@@ -205,7 +205,7 @@ dnl ---------------------------------------------------------------------------
 dnl i18n support (including some hacks)
 dnl ---------------------------------------------------------------------------
 
-ALL_LINGUAS="da de es eu fr hu it ja nl pl ru sv uk vi zh_CN"
+ALL_LINGUAS="cs da de es eu fr hu it ja nl pl ru sv uk vi zh_CN"
 GP_GETTEXT_HACK([${PACKAGE}-${LIBGPHOTO2_CURRENT_MIN}],[The gPhoto Team],[${MAIL_GPHOTO_TRANSLATION}])
 AM_GNU_GETTEXT_VERSION([0.14.1])
 AM_GNU_GETTEXT([external])
@@ -273,40 +273,20 @@ AS_IF([test "x$with_jpeg" != "xno"], [
 GP_CONFIG_MSG([JPEG mangling support],[${libjpeg_msg}])
 
 dnl ---------------------------------------------------------------------------
-dnl check for libxml22
+dnl check for libxml2
 dnl ---------------------------------------------------------------------------
-LIBXML2=""
-libxml2_msg="no"
-AC_SUBST(LIBXML2)
-AC_ARG_WITH([libxml2], AS_HELP_STRING([--without-libxml2], [Build without libxml2 library (default: no)]))
-AS_IF([test "x$with_libxml2" != "xno"], [
-	AC_CHECK_LIB(xml2,xmlFirstElementChild,[
-		AC_CHECK_HEADER(libxml/parser.h,[
-			AC_DEFINE(HAVE_LIBXML2,1,[define if we found LIBXML2 and its headers])
-			LIBXML2="-lxml2"
-			libxml2_msg="yes"
-		])
-	])
-])
-GP_CONFIG_MSG([LIBXML2 to support Olympus E remote control],[${libxml2_msg}])
+GP_CHECK_LIBRARY([LIBXML2],[libxml-2.0],[>= 2.0],
+                [libxml/parser.h],[xmlFirstElementChild],[],[],
+                [default-on],
+                [http://xmlsoft.org]
+)
+GP_CONFIG_MSG([XML support for Olympus E series],[${have_LIBXML2}])
 
 dnl ---------------------------------------------------------------------------
 dnl check for libgd
 dnl ---------------------------------------------------------------------------
-LIBGD=""
-libgd_msg="no"
-AC_SUBST(LIBGD)
-AC_ARG_WITH([gd], AS_HELP_STRING([--without-gd], [Build without GD library (default: no)]))
-AS_IF([test "x$with_gd" != "xno"], [
-	AC_CHECK_LIB(gd,gdImageCreateTrueColor,[
-		AC_CHECK_HEADER(gd.h,[
-			AC_DEFINE(HAVE_GD,1,[define if we have LIBGD and its headers])
-			LIBGD="-lgd"
-			libgd_msg="yes"
-		])
-	])
-])
-GP_CONFIG_MSG([GD conversion support],[${libgd_msg}])
+GP_CHECK_LIBRARY([LIBGD],[libgd],[>= 2.0],[gd.h],[gdImageCreateTrueColor],[],[],[default-on],[http://www.libgd.org/])
+GP_CONFIG_MSG([libGD conversion support],[${have_LIBGD}])
 
 dnl ---------------------------------------------------------------------------
 dnl Checks for header files.
