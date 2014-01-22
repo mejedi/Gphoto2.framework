@@ -30,9 +30,6 @@
 /* Define to 1 if you have the <dlfcn.h> header file. */
 #undef HAVE_DLFCN_H
 
-/* define if we have LIBGD and its headers */
-#undef HAVE_GD
-
 /* Define to 1 if you have the `getopt' function. */
 #undef HAVE_GETOPT
 
@@ -60,13 +57,16 @@
 /* whether we use a version of libexif with ExifData.ifd[[]] */
 #undef HAVE_LIBEXIF_IFD
 
+/* whether we compile with libgd support */
+#undef HAVE_LIBGD
+
 /* Define to 1 if you have the `ibs' library (-libs). */
 #undef HAVE_LIBIBS
 
 /* define if we found LIBJPEG and its headers */
 #undef HAVE_LIBJPEG
 
-/* define if we found LIBXML2 and its headers */
+/* whether we compile with libxml-2.0 support */
 #undef HAVE_LIBXML2
 
 /* Define to 1 if you have the <limits.h> header file. */

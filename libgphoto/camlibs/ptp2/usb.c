@@ -16,8 +16,8 @@
  *
  * You should have received a copy of the GNU Lesser General Public
  * License along with this library; if not, write to the
- * Free Software Foundation, Inc., 59 Temple Place - Suite 330,
- * Boston, MA 02111-1307, USA.
+ * Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
+ * Boston, MA  02110-1301  USA
  */
 
 #define _BSD_SOURCE
@@ -227,7 +227,7 @@ retry:
 		gp_log (GP_LOG_DEBUG, "ptp2/usbread", "Clearing halt on IN EP and retrying once.");
 		gp_port_usb_clear_halt (camera->port, GP_PORT_USB_ENDPOINT_IN);
 		/* retrying only makes sense if we did not read anything yet */
-		if ((tries++ < 1) && (result == 0))
+		if (tries++ < 1)
 			goto retry;
 	}
 	return PTP_ERROR_IO;
@@ -370,7 +370,6 @@ retry:
 		curread = 0; res = 0;
 		while (bytes_to_read > 0) {
 			unsigned long toread = bytes_to_read;
-			int res;
 
 			/* read in large blobs.
 			 * if smaller than large blob, read all but the last short packet

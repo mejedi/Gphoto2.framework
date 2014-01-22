@@ -125,7 +125,7 @@ const struct canonCamModelData models[] = {
         /* 3042 is a scanner, so it will never be added here. */
         {"Canon:PowerShot S20",         CANON_CLASS_0,  0x04A9, 0x3043, CAP_NON, SL_MOVIE_SMALL, SL_THUMB, SL_PICTURE, "Canon PowerShot S20"},
         {"Canon:EOS D30",               CANON_CLASS_4,  0x04A9, 0x3044, CAP_SUP, SL_MOVIE_SMALL, SL_THUMB, SL_PICTURE, NULL},
-        {"Canon:PowerShot S100",        CANON_CLASS_0,  0x04A9, 0x3045, CAP_NON, SL_MOVIE_SMALL, SL_THUMB, SL_PICTURE, NULL},
+        {"Canon:PowerShot S100 (2000)", CANON_CLASS_0,  0x04A9, 0x3045, CAP_NON, SL_MOVIE_SMALL, SL_THUMB, SL_PICTURE, NULL},
         {"Canon:IXY DIGITAL",           CANON_CLASS_0,  0x04A9, 0x3046, CAP_NON, SL_MOVIE_SMALL, SL_THUMB, SL_PICTURE, NULL},
         {"Canon:Digital IXUS",          CANON_CLASS_0,  0x04A9, 0x3047, CAP_NON, SL_MOVIE_SMALL, SL_THUMB, SL_PICTURE, NULL},
         {"Canon:PowerShot G1",          CANON_CLASS_0,  0x04A9, 0x3048, CAP_SUP, SL_MOVIE_SMALL, SL_THUMB, SL_PICTURE, "Canon PowerShot G1"},
@@ -139,7 +139,7 @@ const struct canonCamModelData models[] = {
         /* Mac OS includes this as a valid ID; don't know which camera model --swestin */
         {"Canon:PowerShot unknown 1",   CANON_CLASS_1,  0x04A9, 0x3050, CAP_SUP, SL_MOVIE_SMALL, SL_THUMB, SL_PICTURE, NULL},
         /* Canon IXY DIGITAL 200 here? */
-        {"Canon:PowerShot S110",        CANON_CLASS_0,  0x04A9, 0x3051, CAP_SUP, SL_MOVIE_SMALL, SL_THUMB, SL_PICTURE, NULL},
+        {"Canon:PowerShot S110 (2001)", CANON_CLASS_0,  0x04A9, 0x3051, CAP_SUP, SL_MOVIE_SMALL, SL_THUMB, SL_PICTURE, NULL},
         {"Canon:Digital IXUS v",        CANON_CLASS_0,  0x04A9, 0x3052, CAP_SUP, SL_MOVIE_SMALL, SL_THUMB, SL_PICTURE, NULL},
 
         {"Canon:PowerShot G2",          CANON_CLASS_1,  0x04A9, 0x3055, CAP_SUP, SL_MOVIE_SMALL, SL_THUMB, SL_PICTURE, NULL},
@@ -202,12 +202,8 @@ const struct canonCamModelData models[] = {
         {"Canon:MVX150i (normal mode)", CANON_CLASS_1,  0x04A9, 0x3080, CAP_SUP, SL_MOVIE_LARGE, SL_THUMB, SL_PICTURE, NULL},
         /* Sighted at
          * <http://www.qbik.ch/usb/devices/showdescr.php?id=2232>. */
-        {"Canon:Optura 10",             CANON_CLASS_1,  0x04A9, 0x3081, CAP_SUP, SL_MOVIE_LARGE, SL_THUMB, SL_PICTURE, NULL},
-        {"Canon:MVX100i",               CANON_CLASS_1,  0x04A9, 0x3081, CAP_NON, SL_MOVIE_LARGE, SL_THUMB, SL_PICTURE, NULL},
-
-
-        {"Canon:Optura 10",             CANON_CLASS_1,  0x04A9, 0x3082, CAP_NON, SL_MOVIE_LARGE, SL_THUMB, SL_PICTURE, NULL},
-        {"Canon:MVX100i",               CANON_CLASS_1,  0x04A9, 0x3082, CAP_NON, SL_MOVIE_LARGE, SL_THUMB, SL_PICTURE, NULL},
+        {"Canon:MVX100i",               CANON_CLASS_1,  0x04A9, 0x3081, CAP_SUP, SL_MOVIE_LARGE, SL_THUMB, SL_PICTURE, NULL},
+        {"Canon:Optura 10",             CANON_CLASS_1,  0x04A9, 0x3082, CAP_SUP, SL_MOVIE_LARGE, SL_THUMB, SL_PICTURE, NULL},
         {"Canon:EOS 10D",               CANON_CLASS_4,  0x04A9, 0x3083, CAP_SUP, SL_MOVIE_SMALL, SL_THUMB, SL_PICTURE, NULL},
         {"Canon:EOS 300D (normal mode)", CANON_CLASS_4, 0x04A9, 0x3084, CAP_SUP, SL_MOVIE_SMALL, SL_THUMB, SL_PICTURE, NULL},
         {"Canon:EOS Digital Rebel (normal mode)",CANON_CLASS_4, 0x04A9, 0x3084, CAP_SUP, SL_MOVIE_SMALL, SL_THUMB, SL_PICTURE, NULL},
@@ -1718,7 +1714,8 @@ canon_int_get_release_params (Camera *camera, GPContext *context)
 {
         unsigned char *response = NULL;
         unsigned int len = 0x8c;
-        int i, status;
+        unsigned int i;
+        int status;
 
         GP_DEBUG ("canon_int_get_release_params()");
 
@@ -2073,7 +2070,7 @@ canon_int_get_zoom (Camera *camera,
                 msg = canon_usb_dialogue ( camera,
                                            CANON_USB_FUNCTION_CONTROL_CAMERA,
                                            &datalen, payload, payloadlen );
-        if ( msg == NULL  && datalen != 0x1c) {
+        if ( msg == NULL  || datalen != 0x1c) {
                 /* ERROR */
                 GP_DEBUG ("%s datalen=%x",
                           desc, datalen);
@@ -2649,11 +2646,11 @@ canon_int_get_time (Camera *camera, time_t *camera_time, GPContext *context)
                 return GP_ERROR_CORRUPTED_DATA;
         }
 
-        if (camera_time != NULL)
+        if (camera_time != NULL) {
                 *camera_time = (time_t) le32atoh (msg + 4);
-
-        /* XXX should strip \n at the end of asctime() return data */
-        GP_DEBUG ("Camera time: %s", asctime (gmtime (camera_time)));
+		/* XXX should strip \n at the end of asctime() return data */
+		GP_DEBUG ("Camera time: %s", asctime (gmtime (camera_time)));
+	}
 
         return GP_OK;
 }
@@ -2820,9 +2817,8 @@ canon_int_get_disk_name (Camera *camera, GPContext *context)
                          */
                         msg = (unsigned char *)strdup ((char *)msg + 4);        /* @@@ should check length */
                         if ( msg == NULL ) {
-                                GP_DEBUG ("canon_int_get_disk_name: could not allocate %li "
-                                          "bytes of memory to hold response",
-                                          (long)(strlen ((char *) msg + 4)));
+                                GP_DEBUG ("canon_int_get_disk_name: could not allocate "
+                                          "memory to hold response");
                                 return NULL;
                         }
                         break;
@@ -3330,11 +3326,10 @@ canon_int_list_directory (Camera *camera, const char *folder, CameraList *list,
                                                  sizeof (info.file.type));
                                         info.file.fields |= GP_FILE_INFO_TYPE;
 
-                                        if ((dirent_attrs & CANON_ATTR_DOWNLOADED) == 0)
-                                                info.file.status = GP_FILE_STATUS_DOWNLOADED;
+                                        if (dirent_attrs & CANON_ATTR_NOT_DOWNLOADED)
+                                                info.file.status = GP_FILE_STATUS_NOT_DOWNLOADED;
                                         else
-                                                info.file.status =
-                                                        GP_FILE_STATUS_NOT_DOWNLOADED;
+                                                info.file.status = GP_FILE_STATUS_DOWNLOADED;
                                         info.file.fields |= GP_FILE_INFO_STATUS;
 
                                         /* the size is located at offset 2 and is 4
@@ -3894,11 +3889,10 @@ canon_int_get_info_func (Camera *camera, const char *folder,
                                                  sizeof (info->file.type));
                                         info->file.fields |= GP_FILE_INFO_TYPE;
 
-                                        if ((dirent_attrs & CANON_ATTR_DOWNLOADED) == 0)
-                                                info->file.status = GP_FILE_STATUS_DOWNLOADED;
+                                        if (dirent_attrs & CANON_ATTR_NOT_DOWNLOADED)
+                                                info->file.status = GP_FILE_STATUS_NOT_DOWNLOADED;
                                         else
-                                                info->file.status =
-                                                        GP_FILE_STATUS_NOT_DOWNLOADED;
+                                                info->file.status = GP_FILE_STATUS_DOWNLOADED;
                                         info->file.fields |= GP_FILE_INFO_STATUS;
 
                                         /* the size is located at offset 2 and is 4
@@ -4061,7 +4055,8 @@ canon_int_extract_jpeg_thumb (unsigned char *data, const unsigned int datalen,
                  * software assume that the EXIF is included in the
                  * JPEG thumbnail and just fetch the thumbnail to get
                  * the EXIF data. */
-                int ifd0_offset, ifd1_offset, n_tags;
+                unsigned int n_tags;
+                int ifd0_offset, ifd1_offset;
                 int jpeg_offset = -1, jpeg_size = -1;
 
                 GP_DEBUG ( "canon_int_extract_jpeg_thumb: this is from a CR2 file.");

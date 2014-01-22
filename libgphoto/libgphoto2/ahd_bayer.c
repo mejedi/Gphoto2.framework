@@ -33,8 +33,8 @@
  * \par
  * You should have received a copy of the GNU Lesser General Public
  * License along with this library; if not, write to the
- * Free Software Foundation, Inc., 59 Temple Place - Suite 330,
- * Boston, MA 02111-1307, USA.
+ * Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
+ * Boston, MA  02110-1301  USA
  */
  
 
@@ -263,7 +263,7 @@ int do_green_ctr_row(unsigned char *image, unsigned char *image_h,
 					value -= image[AD(x+2,y,w)+RED];
 				else
 					value -= image[AD(x+2,y,w)+BLUE];
-					div--;
+				div--;
 			}
 			if (x > 0) {
 				value += 2*image[AD(x-1,y,w)+GREEN];
@@ -428,37 +428,46 @@ int gp_ahd_interpolate (unsigned char *image, int w, int h, BayerTile tile)
 
 	window_h = calloc (w * 18, 1);
 	if (!window_h) {
-		free (window_h);
 		GP_DEBUG("Out of memory\n");
 		return GP_ERROR_NO_MEMORY;
 	}
 	window_v = calloc(w * 18, 1);
 	if (!window_v) {
-		free (window_v);
+		free (window_h);
 		GP_DEBUG("Out of memory\n");
 		return GP_ERROR_NO_MEMORY;
 	}
 	homo_h = calloc(w*3, 1);
 	if (!homo_h) {
-		free (homo_h);
+		free (window_v);
+		free (window_h);
 		GP_DEBUG("Out of memory\n");
 		return GP_ERROR_NO_MEMORY;
 	}
 	homo_v = calloc(w*3, 1);
 	if (!homo_v) {
-		free (homo_v);
+		free (window_v);
+		free (window_h);
+		free (homo_h);
 		GP_DEBUG("Out of memory\n");
 		return GP_ERROR_NO_MEMORY;
 	}
 	homo_ch = calloc (w, 1);
 	if (!homo_ch) {
-		free (homo_ch);
+		free (window_v);
+		free (window_h);
+		free (homo_h);
+		free (homo_v);
 		GP_DEBUG("Out of memory\n");
 		return GP_ERROR_NO_MEMORY;
 	}
 	homo_cv = calloc (w, 1);
 	if (!homo_cv) {
+		free (window_v);
+		free (window_h);
 		free (homo_ch);
+		free (homo_v);
+		free (homo_h);
 		GP_DEBUG("Out of memory\n");
 		return GP_ERROR_NO_MEMORY;
 	}

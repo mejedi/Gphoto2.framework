@@ -229,14 +229,16 @@ aox_la_OBJECTS = $(am_aox_la_OBJECTS)
 aox_la_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) \
 	$(LIBTOOLFLAGS) --mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) \
 	$(aox_la_LDFLAGS) $(LDFLAGS) -o $@
-am_ax203_la_OBJECTS = ax203/library.lo ax203/ax203.lo \
-	ax203/ax203_decode_yuv.lo ax203/ax203_decode_yuv_delta.lo \
-	ax203/ax203_compress_jpeg.lo ax203/jpeg_memsrcdest.lo \
-	ax203/tinyjpeg.lo ax203/jidctflt.lo
+am_ax203_la_OBJECTS = ax203/ax203_la-library.lo \
+	ax203/ax203_la-ax203.lo ax203/ax203_la-ax203_decode_yuv.lo \
+	ax203/ax203_la-ax203_decode_yuv_delta.lo \
+	ax203/ax203_la-ax203_compress_jpeg.lo \
+	ax203/ax203_la-jpeg_memsrcdest.lo ax203/ax203_la-tinyjpeg.lo \
+	ax203/ax203_la-jidctflt.lo
 ax203_la_OBJECTS = $(am_ax203_la_OBJECTS)
 ax203_la_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) \
-	$(LIBTOOLFLAGS) --mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) \
-	$(ax203_la_LDFLAGS) $(LDFLAGS) -o $@
+	$(LIBTOOLFLAGS) --mode=link $(CCLD) $(ax203_la_CFLAGS) \
+	$(CFLAGS) $(ax203_la_LDFLAGS) $(LDFLAGS) -o $@
 am_barbie_la_OBJECTS = barbie/barbie.lo
 barbie_la_OBJECTS = $(am_barbie_la_OBJECTS)
 barbie_la_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) \
@@ -472,8 +474,9 @@ polaroid_pdc700_la_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CC \
 	$(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=link $(CCLD) \
 	$(AM_CFLAGS) $(CFLAGS) $(polaroid_pdc700_la_LDFLAGS) \
 	$(LDFLAGS) -o $@
-am_ptp2_la_OBJECTS = ptp2/ptp.lo ptp2/library.lo ptp2/usb.lo \
-	ptp2/ptpip.lo ptp2/config.lo ptp2/olympus-wrap.lo
+am_ptp2_la_OBJECTS = ptp2/ptp2_la-ptp.lo ptp2/ptp2_la-library.lo \
+	ptp2/ptp2_la-usb.lo ptp2/ptp2_la-ptpip.lo \
+	ptp2/ptp2_la-config.lo ptp2/ptp2_la-olympus-wrap.lo
 ptp2_la_OBJECTS = $(am_ptp2_la_OBJECTS)
 ptp2_la_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) \
 	$(LIBTOOLFLAGS) --mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) \
@@ -560,12 +563,12 @@ sq905_la_OBJECTS = $(am_sq905_la_OBJECTS)
 sq905_la_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) \
 	$(LIBTOOLFLAGS) --mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) \
 	$(sq905_la_LDFLAGS) $(LDFLAGS) -o $@
-am_st2205_la_OBJECTS = st2205/library.lo st2205/st2205.lo \
-	st2205/st2205_decode.lo
+am_st2205_la_OBJECTS = st2205/st2205_la-library.lo \
+	st2205/st2205_la-st2205.lo st2205/st2205_la-st2205_decode.lo
 st2205_la_OBJECTS = $(am_st2205_la_OBJECTS)
 st2205_la_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) \
-	$(LIBTOOLFLAGS) --mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) \
-	$(st2205_la_LDFLAGS) $(LDFLAGS) -o $@
+	$(LIBTOOLFLAGS) --mode=link $(CCLD) $(st2205_la_CFLAGS) \
+	$(CFLAGS) $(st2205_la_LDFLAGS) $(LDFLAGS) -o $@
 am_stv0674_la_OBJECTS = stv0674/stv0674.lo stv0674/library.lo
 stv0674_la_OBJECTS = $(am_stv0674_la_OBJECTS)
 stv0674_la_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) \
@@ -601,11 +604,12 @@ toshiba_pdrm11_la_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CC \
 	$(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=link $(CCLD) \
 	$(AM_CFLAGS) $(CFLAGS) $(toshiba_pdrm11_la_LDFLAGS) $(LDFLAGS) \
 	-o $@
-am_tp6801_la_OBJECTS = tp6801/library.lo tp6801/tp6801.lo
+am_tp6801_la_OBJECTS = tp6801/tp6801_la-library.lo \
+	tp6801/tp6801_la-tp6801.lo
 tp6801_la_OBJECTS = $(am_tp6801_la_OBJECTS)
 tp6801_la_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) \
-	$(LIBTOOLFLAGS) --mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) \
-	$(tp6801_la_LDFLAGS) $(LDFLAGS) -o $@
+	$(LIBTOOLFLAGS) --mode=link $(CCLD) $(tp6801_la_CFLAGS) \
+	$(CFLAGS) $(tp6801_la_LDFLAGS) $(LDFLAGS) -o $@
 DEFAULT_INCLUDES = -I.@am__isrc@ -I$(top_builddir)
 depcomp = $(SHELL) $(top_srcdir)/auto-aux/depcomp
 am__depfiles_maybe = depfiles
@@ -805,7 +809,9 @@ LDFLAGS = @LDFLAGS@
 LIBEXIF_CFLAGS = @LIBEXIF_CFLAGS@
 LIBEXIF_CONFIG_PROG = @LIBEXIF_CONFIG_PROG@
 LIBEXIF_LIBS = @LIBEXIF_LIBS@
-LIBGD = @LIBGD@
+LIBGD_CFLAGS = @LIBGD_CFLAGS@
+LIBGD_CONFIG_PROG = @LIBGD_CONFIG_PROG@
+LIBGD_LIBS = @LIBGD_LIBS@
 LIBGPHOTO2_AGE = @LIBGPHOTO2_AGE@
 LIBGPHOTO2_CURRENT = @LIBGPHOTO2_CURRENT@
 LIBGPHOTO2_CURRENT_MIN = @LIBGPHOTO2_CURRENT_MIN@
@@ -818,7 +824,9 @@ LIBLTDL = @LIBLTDL@
 LIBOBJS = @LIBOBJS@
 LIBS = @LIBS@
 LIBTOOL = @LIBTOOL@
-LIBXML2 = @LIBXML2@
+LIBXML2_CFLAGS = @LIBXML2_CFLAGS@
+LIBXML2_CONFIG_PROG = @LIBXML2_CONFIG_PROG@
+LIBXML2_LIBS = @LIBXML2_LIBS@
 LIPO = @LIPO@
 LN_S = @LN_S@
 LTDLINCL = @LTDLINCL@
@@ -855,6 +863,8 @@ PKG_CONFIG_PATH = @PKG_CONFIG_PATH@
 POSUB = @POSUB@
 RANLIB = @RANLIB@
 REQUIREMENTS_FOR_LIBEXIF = @REQUIREMENTS_FOR_LIBEXIF@
+REQUIREMENTS_FOR_LIBGD = @REQUIREMENTS_FOR_LIBGD@
+REQUIREMENTS_FOR_LIBXML2 = @REQUIREMENTS_FOR_LIBXML2@
 RPMBUILD = @RPMBUILD@
 SED = @SED@
 SET_MAKE = @SET_MAKE@
@@ -1089,7 +1099,8 @@ aox_la_LIBADD = $(camlib_libadd)
 ax203_la_SOURCES = ax203/library.c ax203/ax203.c ax203/ax203.h ax203/ax203_decode_yuv.c ax203/ax203_decode_yuv_delta.c ax203/ax203_compress_jpeg.c ax203/jpeg_memsrcdest.h ax203/jpeg_memsrcdest.c ax203/tinyjpeg.c ax203/tinyjpeg.h ax203/tinyjpeg-internal.h ax203/jidctflt.c
 ax203_la_LDFLAGS = $(camlib_ldflags)
 ax203_la_DEPENDENCIES = $(camlib_dependencies)
-ax203_la_LIBADD = $(camlib_libadd) @LIBGD@ @LIBJPEG@
+ax203_la_LIBADD = $(camlib_libadd) @LIBGD_LIBS@ @LIBJPEG@
+ax203_la_CFLAGS = @LIBGD_CFLAGS@
 barbie_la_SOURCES = barbie/barbie.c
 barbie_la_LDFLAGS = $(camlib_ldflags)
 barbie_la_DEPENDENCIES = $(camlib_dependencies)
@@ -1364,6 +1375,7 @@ polaroid_pdc700_la_SOURCES = polaroid/pdc700.c
 polaroid_pdc700_la_LDFLAGS = $(camlib_ldflags)
 polaroid_pdc700_la_DEPENDENCIES = $(camlib_dependencies)
 polaroid_pdc700_la_LIBADD = $(camlib_libadd)
+ptp2_la_CPPFLAGS = $(AM_CPPFLAGS) $(CPPFLAGS) $(LIBXML2_CFLAGS)
 ptp2_la_SOURCES = \
 	ptp2/ptp.c ptp2/ptp.h \
 	ptp2/library.c ptp2/usb.c ptp2/ptp-bugs.h \
@@ -1373,7 +1385,7 @@ ptp2_la_SOURCES = \
 
 ptp2_la_LDFLAGS = $(camlib_ldflags)
 ptp2_la_DEPENDENCIES = $(camlib_dependencies)
-ptp2_la_LIBADD = $(camlib_libadd) $(LTLIBICONV) $(LIBXML2)
+ptp2_la_LIBADD = $(camlib_libadd) $(LTLIBICONV) $(LIBXML2_LIBS)
 ricoh_la_SOURCES = ricoh/library.c ricoh/ricoh.c ricoh/ricoh.h ricoh/crctab.h
 ricoh_la_LDFLAGS = $(camlib_ldflags)
 ricoh_la_DEPENDENCIES = $(camlib_dependencies)
@@ -1465,7 +1477,8 @@ sq905_la_LIBADD = $(camlib_libadd)
 st2205_la_SOURCES = st2205/library.c st2205/st2205.c st2205/st2205.h st2205/st2205_decode.c
 st2205_la_LDFLAGS = $(camlib_ldflags)
 st2205_la_DEPENDENCIES = $(camlib_dependencies)
-st2205_la_LIBADD = $(camlib_libadd) @LIBGD@ $(LTLIBICONV)
+st2205_la_LIBADD = $(camlib_libadd) @LIBGD_LIBS@ $(LTLIBICONV)
+st2205_la_CFLAGS = @LIBGD_CFLAGS@
 stv0674_la_SOURCES = \
 	stv0674/stv0674.c stv0674/stv0674.h \
 	stv0674/library.c stv0674/library.h
@@ -1509,7 +1522,8 @@ toshiba_pdrm11_la_LIBADD = $(camlib_libadd)
 tp6801_la_SOURCES = tp6801/library.c tp6801/tp6801.c tp6801/tp6801.h
 tp6801_la_LDFLAGS = $(camlib_ldflags)
 tp6801_la_DEPENDENCIES = $(camlib_dependencies)
-tp6801_la_LIBADD = $(camlib_libadd) @LIBGD@
+tp6801_la_LIBADD = $(camlib_libadd) @LIBGD_LIBS@
+tp6801_la_CFLAGS = @LIBGD_CFLAGS@
 all: all-recursive
 
 .SUFFIXES:
@@ -1625,20 +1639,21 @@ ax203/$(am__dirstamp):
 ax203/$(DEPDIR)/$(am__dirstamp):
 	@$(MKDIR_P) ax203/$(DEPDIR)
 	@: > ax203/$(DEPDIR)/$(am__dirstamp)
-ax203/library.lo: ax203/$(am__dirstamp) \
+ax203/ax203_la-library.lo: ax203/$(am__dirstamp) \
 	ax203/$(DEPDIR)/$(am__dirstamp)
-ax203/ax203.lo: ax203/$(am__dirstamp) ax203/$(DEPDIR)/$(am__dirstamp)
-ax203/ax203_decode_yuv.lo: ax203/$(am__dirstamp) \
+ax203/ax203_la-ax203.lo: ax203/$(am__dirstamp) \
 	ax203/$(DEPDIR)/$(am__dirstamp)
-ax203/ax203_decode_yuv_delta.lo: ax203/$(am__dirstamp) \
+ax203/ax203_la-ax203_decode_yuv.lo: ax203/$(am__dirstamp) \
 	ax203/$(DEPDIR)/$(am__dirstamp)
-ax203/ax203_compress_jpeg.lo: ax203/$(am__dirstamp) \
+ax203/ax203_la-ax203_decode_yuv_delta.lo: ax203/$(am__dirstamp) \
 	ax203/$(DEPDIR)/$(am__dirstamp)
-ax203/jpeg_memsrcdest.lo: ax203/$(am__dirstamp) \
+ax203/ax203_la-ax203_compress_jpeg.lo: ax203/$(am__dirstamp) \
 	ax203/$(DEPDIR)/$(am__dirstamp)
-ax203/tinyjpeg.lo: ax203/$(am__dirstamp) \
+ax203/ax203_la-jpeg_memsrcdest.lo: ax203/$(am__dirstamp) \
 	ax203/$(DEPDIR)/$(am__dirstamp)
-ax203/jidctflt.lo: ax203/$(am__dirstamp) \
+ax203/ax203_la-tinyjpeg.lo: ax203/$(am__dirstamp) \
+	ax203/$(DEPDIR)/$(am__dirstamp)
+ax203/ax203_la-jidctflt.lo: ax203/$(am__dirstamp) \
 	ax203/$(DEPDIR)/$(am__dirstamp)
 ax203.la: $(ax203_la_OBJECTS) $(ax203_la_DEPENDENCIES) $(EXTRA_ax203_la_DEPENDENCIES) 
 	$(AM_V_CCLD)$(ax203_la_LINK)  $(ax203_la_OBJECTS) $(ax203_la_LIBADD) $(LIBS)
@@ -2117,12 +2132,17 @@ ptp2/$(am__dirstamp):
 ptp2/$(DEPDIR)/$(am__dirstamp):
 	@$(MKDIR_P) ptp2/$(DEPDIR)
 	@: > ptp2/$(DEPDIR)/$(am__dirstamp)
-ptp2/ptp.lo: ptp2/$(am__dirstamp) ptp2/$(DEPDIR)/$(am__dirstamp)
-ptp2/library.lo: ptp2/$(am__dirstamp) ptp2/$(DEPDIR)/$(am__dirstamp)
-ptp2/usb.lo: ptp2/$(am__dirstamp) ptp2/$(DEPDIR)/$(am__dirstamp)
-ptp2/ptpip.lo: ptp2/$(am__dirstamp) ptp2/$(DEPDIR)/$(am__dirstamp)
-ptp2/config.lo: ptp2/$(am__dirstamp) ptp2/$(DEPDIR)/$(am__dirstamp)
-ptp2/olympus-wrap.lo: ptp2/$(am__dirstamp) \
+ptp2/ptp2_la-ptp.lo: ptp2/$(am__dirstamp) \
+	ptp2/$(DEPDIR)/$(am__dirstamp)
+ptp2/ptp2_la-library.lo: ptp2/$(am__dirstamp) \
+	ptp2/$(DEPDIR)/$(am__dirstamp)
+ptp2/ptp2_la-usb.lo: ptp2/$(am__dirstamp) \
+	ptp2/$(DEPDIR)/$(am__dirstamp)
+ptp2/ptp2_la-ptpip.lo: ptp2/$(am__dirstamp) \
+	ptp2/$(DEPDIR)/$(am__dirstamp)
+ptp2/ptp2_la-config.lo: ptp2/$(am__dirstamp) \
+	ptp2/$(DEPDIR)/$(am__dirstamp)
+ptp2/ptp2_la-olympus-wrap.lo: ptp2/$(am__dirstamp) \
 	ptp2/$(DEPDIR)/$(am__dirstamp)
 ptp2.la: $(ptp2_la_OBJECTS) $(ptp2_la_DEPENDENCIES) $(EXTRA_ptp2_la_DEPENDENCIES) 
 	$(AM_V_CCLD)$(ptp2_la_LINK)  $(ptp2_la_OBJECTS) $(ptp2_la_LIBADD) $(LIBS)
@@ -2284,11 +2304,11 @@ st2205/$(am__dirstamp):
 st2205/$(DEPDIR)/$(am__dirstamp):
 	@$(MKDIR_P) st2205/$(DEPDIR)
 	@: > st2205/$(DEPDIR)/$(am__dirstamp)
-st2205/library.lo: st2205/$(am__dirstamp) \
+st2205/st2205_la-library.lo: st2205/$(am__dirstamp) \
 	st2205/$(DEPDIR)/$(am__dirstamp)
-st2205/st2205.lo: st2205/$(am__dirstamp) \
+st2205/st2205_la-st2205.lo: st2205/$(am__dirstamp) \
 	st2205/$(DEPDIR)/$(am__dirstamp)
-st2205/st2205_decode.lo: st2205/$(am__dirstamp) \
+st2205/st2205_la-st2205_decode.lo: st2205/$(am__dirstamp) \
 	st2205/$(DEPDIR)/$(am__dirstamp)
 st2205.la: $(st2205_la_OBJECTS) $(st2205_la_DEPENDENCIES) $(EXTRA_st2205_la_DEPENDENCIES) 
 	$(AM_V_CCLD)$(st2205_la_LINK)  $(st2205_la_OBJECTS) $(st2205_la_LIBADD) $(LIBS)
@@ -2382,9 +2402,9 @@ tp6801/$(am__dirstamp):
 tp6801/$(DEPDIR)/$(am__dirstamp):
 	@$(MKDIR_P) tp6801/$(DEPDIR)
 	@: > tp6801/$(DEPDIR)/$(am__dirstamp)
-tp6801/library.lo: tp6801/$(am__dirstamp) \
+tp6801/tp6801_la-library.lo: tp6801/$(am__dirstamp) \
 	tp6801/$(DEPDIR)/$(am__dirstamp)
-tp6801/tp6801.lo: tp6801/$(am__dirstamp) \
+tp6801/tp6801_la-tp6801.lo: tp6801/$(am__dirstamp) \
 	tp6801/$(DEPDIR)/$(am__dirstamp)
 tp6801.la: $(tp6801_la_OBJECTS) $(tp6801_la_DEPENDENCIES) $(EXTRA_tp6801_la_DEPENDENCIES) 
 	$(AM_V_CCLD)$(tp6801_la_LINK)  $(tp6801_la_OBJECTS) $(tp6801_la_LIBADD) $(LIBS)
@@ -2399,22 +2419,22 @@ mostlyclean-compile:
 	-rm -f aox/aox.lo
 	-rm -f aox/library.$(OBJEXT)
 	-rm -f aox/library.lo
-	-rm -f ax203/ax203.$(OBJEXT)
-	-rm -f ax203/ax203.lo
-	-rm -f ax203/ax203_compress_jpeg.$(OBJEXT)
-	-rm -f ax203/ax203_compress_jpeg.lo
-	-rm -f ax203/ax203_decode_yuv.$(OBJEXT)
-	-rm -f ax203/ax203_decode_yuv.lo
-	-rm -f ax203/ax203_decode_yuv_delta.$(OBJEXT)
-	-rm -f ax203/ax203_decode_yuv_delta.lo
-	-rm -f ax203/jidctflt.$(OBJEXT)
-	-rm -f ax203/jidctflt.lo
-	-rm -f ax203/jpeg_memsrcdest.$(OBJEXT)
-	-rm -f ax203/jpeg_memsrcdest.lo
-	-rm -f ax203/library.$(OBJEXT)
-	-rm -f ax203/library.lo
-	-rm -f ax203/tinyjpeg.$(OBJEXT)
-	-rm -f ax203/tinyjpeg.lo
+	-rm -f ax203/ax203_la-ax203.$(OBJEXT)
+	-rm -f ax203/ax203_la-ax203.lo
+	-rm -f ax203/ax203_la-ax203_compress_jpeg.$(OBJEXT)
+	-rm -f ax203/ax203_la-ax203_compress_jpeg.lo
+	-rm -f ax203/ax203_la-ax203_decode_yuv.$(OBJEXT)
+	-rm -f ax203/ax203_la-ax203_decode_yuv.lo
+	-rm -f ax203/ax203_la-ax203_decode_yuv_delta.$(OBJEXT)
+	-rm -f ax203/ax203_la-ax203_decode_yuv_delta.lo
+	-rm -f ax203/ax203_la-jidctflt.$(OBJEXT)
+	-rm -f ax203/ax203_la-jidctflt.lo
+	-rm -f ax203/ax203_la-jpeg_memsrcdest.$(OBJEXT)
+	-rm -f ax203/ax203_la-jpeg_memsrcdest.lo
+	-rm -f ax203/ax203_la-library.$(OBJEXT)
+	-rm -f ax203/ax203_la-library.lo
+	-rm -f ax203/ax203_la-tinyjpeg.$(OBJEXT)
+	-rm -f ax203/ax203_la-tinyjpeg.lo
 	-rm -f barbie/barbie.$(OBJEXT)
 	-rm -f barbie/barbie.lo
 	-rm -f canon/canon_la-canon.$(OBJEXT)
@@ -2607,18 +2627,18 @@ mostlyclean-compile:
 	-rm -f polaroid/pdc640.lo
 	-rm -f polaroid/pdc700.$(OBJEXT)
 	-rm -f polaroid/pdc700.lo
-	-rm -f ptp2/config.$(OBJEXT)
-	-rm -f ptp2/config.lo
-	-rm -f ptp2/library.$(OBJEXT)
-	-rm -f ptp2/library.lo
-	-rm -f ptp2/olympus-wrap.$(OBJEXT)
-	-rm -f ptp2/olympus-wrap.lo
-	-rm -f ptp2/ptp.$(OBJEXT)
-	-rm -f ptp2/ptp.lo
-	-rm -f ptp2/ptpip.$(OBJEXT)
-	-rm -f ptp2/ptpip.lo
-	-rm -f ptp2/usb.$(OBJEXT)
-	-rm -f ptp2/usb.lo
+	-rm -f ptp2/ptp2_la-config.$(OBJEXT)
+	-rm -f ptp2/ptp2_la-config.lo
+	-rm -f ptp2/ptp2_la-library.$(OBJEXT)
+	-rm -f ptp2/ptp2_la-library.lo
+	-rm -f ptp2/ptp2_la-olympus-wrap.$(OBJEXT)
+	-rm -f ptp2/ptp2_la-olympus-wrap.lo
+	-rm -f ptp2/ptp2_la-ptp.$(OBJEXT)
+	-rm -f ptp2/ptp2_la-ptp.lo
+	-rm -f ptp2/ptp2_la-ptpip.$(OBJEXT)
+	-rm -f ptp2/ptp2_la-ptpip.lo
+	-rm -f ptp2/ptp2_la-usb.$(OBJEXT)
+	-rm -f ptp2/ptp2_la-usb.lo
 	-rm -f ricoh/g3.$(OBJEXT)
 	-rm -f ricoh/g3.lo
 	-rm -f ricoh/library.$(OBJEXT)
@@ -2685,12 +2705,12 @@ mostlyclean-compile:
 	-rm -f sq905/postprocess.lo
 	-rm -f sq905/sq905.$(OBJEXT)
 	-rm -f sq905/sq905.lo
-	-rm -f st2205/library.$(OBJEXT)
-	-rm -f st2205/library.lo
-	-rm -f st2205/st2205.$(OBJEXT)
-	-rm -f st2205/st2205.lo
-	-rm -f st2205/st2205_decode.$(OBJEXT)
-	-rm -f st2205/st2205_decode.lo
+	-rm -f st2205/st2205_la-library.$(OBJEXT)
+	-rm -f st2205/st2205_la-library.lo
+	-rm -f st2205/st2205_la-st2205.$(OBJEXT)
+	-rm -f st2205/st2205_la-st2205.lo
+	-rm -f st2205/st2205_la-st2205_decode.$(OBJEXT)
+	-rm -f st2205/st2205_la-st2205_decode.lo
 	-rm -f stv0674/library.$(OBJEXT)
 	-rm -f stv0674/library.lo
 	-rm -f stv0674/stv0674.$(OBJEXT)
@@ -2727,10 +2747,10 @@ mostlyclean-compile:
 	-rm -f toshiba/pdrm11/library.lo
 	-rm -f toshiba/pdrm11/pdrm11.$(OBJEXT)
 	-rm -f toshiba/pdrm11/pdrm11.lo
-	-rm -f tp6801/library.$(OBJEXT)
-	-rm -f tp6801/library.lo
-	-rm -f tp6801/tp6801.$(OBJEXT)
-	-rm -f tp6801/tp6801.lo
+	-rm -f tp6801/tp6801_la-library.$(OBJEXT)
+	-rm -f tp6801/tp6801_la-library.lo
+	-rm -f tp6801/tp6801_la-tp6801.$(OBJEXT)
+	-rm -f tp6801/tp6801_la-tp6801.lo
 
 distclean-compile:
 	-rm -f *.tab.c
@@ -2739,14 +2759,14 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@agfa-cl20/$(DEPDIR)/agfa_cl20.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@aox/$(DEPDIR)/aox.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@aox/$(DEPDIR)/library.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@ax203/$(DEPDIR)/ax203.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@ax203/$(DEPDIR)/ax203_compress_jpeg.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@ax203/$(DEPDIR)/ax203_decode_yuv.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@ax203/$(DEPDIR)/ax203_decode_yuv_delta.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@ax203/$(DEPDIR)/jidctflt.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@ax203/$(DEPDIR)/jpeg_memsrcdest.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@ax203/$(DEPDIR)/library.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@ax203/$(DEPDIR)/tinyjpeg.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@ax203/$(DEPDIR)/ax203_la-ax203.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@ax203/$(DEPDIR)/ax203_la-ax203_compress_jpeg.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@ax203/$(DEPDIR)/ax203_la-ax203_decode_yuv.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@ax203/$(DEPDIR)/ax203_la-ax203_decode_yuv_delta.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@ax203/$(DEPDIR)/ax203_la-jidctflt.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@ax203/$(DEPDIR)/ax203_la-jpeg_memsrcdest.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@ax203/$(DEPDIR)/ax203_la-library.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@ax203/$(DEPDIR)/ax203_la-tinyjpeg.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@barbie/$(DEPDIR)/barbie.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@canon/$(DEPDIR)/canon_la-canon.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@canon/$(DEPDIR)/canon_la-crc.Plo@am__quote@
@@ -2843,12 +2863,12 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@polaroid/$(DEPDIR)/pdc320.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@polaroid/$(DEPDIR)/pdc640.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@polaroid/$(DEPDIR)/pdc700.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@ptp2/$(DEPDIR)/config.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@ptp2/$(DEPDIR)/library.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@ptp2/$(DEPDIR)/olympus-wrap.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@ptp2/$(DEPDIR)/ptp.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@ptp2/$(DEPDIR)/ptpip.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@ptp2/$(DEPDIR)/usb.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@ptp2/$(DEPDIR)/ptp2_la-config.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@ptp2/$(DEPDIR)/ptp2_la-library.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@ptp2/$(DEPDIR)/ptp2_la-olympus-wrap.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@ptp2/$(DEPDIR)/ptp2_la-ptp.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@ptp2/$(DEPDIR)/ptp2_la-ptpip.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@ptp2/$(DEPDIR)/ptp2_la-usb.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@ricoh/$(DEPDIR)/g3.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@ricoh/$(DEPDIR)/library.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@ricoh/$(DEPDIR)/ricoh.Plo@am__quote@
@@ -2882,9 +2902,9 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@sq905/$(DEPDIR)/library.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@sq905/$(DEPDIR)/postprocess.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@sq905/$(DEPDIR)/sq905.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@st2205/$(DEPDIR)/library.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@st2205/$(DEPDIR)/st2205.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@st2205/$(DEPDIR)/st2205_decode.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@st2205/$(DEPDIR)/st2205_la-library.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@st2205/$(DEPDIR)/st2205_la-st2205.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@st2205/$(DEPDIR)/st2205_la-st2205_decode.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@stv0674/$(DEPDIR)/library.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@stv0674/$(DEPDIR)/stv0674.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@stv0680/$(DEPDIR)/bayer.Plo@am__quote@
@@ -2903,8 +2923,8 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@topfield/$(DEPDIR)/usb_io.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@toshiba/pdrm11/$(DEPDIR)/library.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@toshiba/pdrm11/$(DEPDIR)/pdrm11.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@tp6801/$(DEPDIR)/library.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@tp6801/$(DEPDIR)/tp6801.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@tp6801/$(DEPDIR)/tp6801_la-library.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@tp6801/$(DEPDIR)/tp6801_la-tp6801.Plo@am__quote@
 
 .c.o:
 @am__fastdepCC_TRUE@	$(AM_V_CC)depbase=`echo $@ | sed 's|[^/]*$$|$(DEPDIR)/&|;s|\.o$$||'`;\
@@ -2929,6 +2949,62 @@ distclean-compile:
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='$<' object='$@' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LTCOMPILE) -c -o $@ $<
+
+ax203/ax203_la-library.lo: ax203/library.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(ax203_la_CFLAGS) $(CFLAGS) -MT ax203/ax203_la-library.lo -MD -MP -MF ax203/$(DEPDIR)/ax203_la-library.Tpo -c -o ax203/ax203_la-library.lo `test -f 'ax203/library.c' || echo '$(srcdir)/'`ax203/library.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) ax203/$(DEPDIR)/ax203_la-library.Tpo ax203/$(DEPDIR)/ax203_la-library.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='ax203/library.c' object='ax203/ax203_la-library.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(ax203_la_CFLAGS) $(CFLAGS) -c -o ax203/ax203_la-library.lo `test -f 'ax203/library.c' || echo '$(srcdir)/'`ax203/library.c
+
+ax203/ax203_la-ax203.lo: ax203/ax203.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(ax203_la_CFLAGS) $(CFLAGS) -MT ax203/ax203_la-ax203.lo -MD -MP -MF ax203/$(DEPDIR)/ax203_la-ax203.Tpo -c -o ax203/ax203_la-ax203.lo `test -f 'ax203/ax203.c' || echo '$(srcdir)/'`ax203/ax203.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) ax203/$(DEPDIR)/ax203_la-ax203.Tpo ax203/$(DEPDIR)/ax203_la-ax203.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='ax203/ax203.c' object='ax203/ax203_la-ax203.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(ax203_la_CFLAGS) $(CFLAGS) -c -o ax203/ax203_la-ax203.lo `test -f 'ax203/ax203.c' || echo '$(srcdir)/'`ax203/ax203.c
+
+ax203/ax203_la-ax203_decode_yuv.lo: ax203/ax203_decode_yuv.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(ax203_la_CFLAGS) $(CFLAGS) -MT ax203/ax203_la-ax203_decode_yuv.lo -MD -MP -MF ax203/$(DEPDIR)/ax203_la-ax203_decode_yuv.Tpo -c -o ax203/ax203_la-ax203_decode_yuv.lo `test -f 'ax203/ax203_decode_yuv.c' || echo '$(srcdir)/'`ax203/ax203_decode_yuv.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) ax203/$(DEPDIR)/ax203_la-ax203_decode_yuv.Tpo ax203/$(DEPDIR)/ax203_la-ax203_decode_yuv.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='ax203/ax203_decode_yuv.c' object='ax203/ax203_la-ax203_decode_yuv.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(ax203_la_CFLAGS) $(CFLAGS) -c -o ax203/ax203_la-ax203_decode_yuv.lo `test -f 'ax203/ax203_decode_yuv.c' || echo '$(srcdir)/'`ax203/ax203_decode_yuv.c
+
+ax203/ax203_la-ax203_decode_yuv_delta.lo: ax203/ax203_decode_yuv_delta.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(ax203_la_CFLAGS) $(CFLAGS) -MT ax203/ax203_la-ax203_decode_yuv_delta.lo -MD -MP -MF ax203/$(DEPDIR)/ax203_la-ax203_decode_yuv_delta.Tpo -c -o ax203/ax203_la-ax203_decode_yuv_delta.lo `test -f 'ax203/ax203_decode_yuv_delta.c' || echo '$(srcdir)/'`ax203/ax203_decode_yuv_delta.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) ax203/$(DEPDIR)/ax203_la-ax203_decode_yuv_delta.Tpo ax203/$(DEPDIR)/ax203_la-ax203_decode_yuv_delta.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='ax203/ax203_decode_yuv_delta.c' object='ax203/ax203_la-ax203_decode_yuv_delta.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(ax203_la_CFLAGS) $(CFLAGS) -c -o ax203/ax203_la-ax203_decode_yuv_delta.lo `test -f 'ax203/ax203_decode_yuv_delta.c' || echo '$(srcdir)/'`ax203/ax203_decode_yuv_delta.c
+
+ax203/ax203_la-ax203_compress_jpeg.lo: ax203/ax203_compress_jpeg.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(ax203_la_CFLAGS) $(CFLAGS) -MT ax203/ax203_la-ax203_compress_jpeg.lo -MD -MP -MF ax203/$(DEPDIR)/ax203_la-ax203_compress_jpeg.Tpo -c -o ax203/ax203_la-ax203_compress_jpeg.lo `test -f 'ax203/ax203_compress_jpeg.c' || echo '$(srcdir)/'`ax203/ax203_compress_jpeg.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) ax203/$(DEPDIR)/ax203_la-ax203_compress_jpeg.Tpo ax203/$(DEPDIR)/ax203_la-ax203_compress_jpeg.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='ax203/ax203_compress_jpeg.c' object='ax203/ax203_la-ax203_compress_jpeg.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(ax203_la_CFLAGS) $(CFLAGS) -c -o ax203/ax203_la-ax203_compress_jpeg.lo `test -f 'ax203/ax203_compress_jpeg.c' || echo '$(srcdir)/'`ax203/ax203_compress_jpeg.c
+
+ax203/ax203_la-jpeg_memsrcdest.lo: ax203/jpeg_memsrcdest.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(ax203_la_CFLAGS) $(CFLAGS) -MT ax203/ax203_la-jpeg_memsrcdest.lo -MD -MP -MF ax203/$(DEPDIR)/ax203_la-jpeg_memsrcdest.Tpo -c -o ax203/ax203_la-jpeg_memsrcdest.lo `test -f 'ax203/jpeg_memsrcdest.c' || echo '$(srcdir)/'`ax203/jpeg_memsrcdest.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) ax203/$(DEPDIR)/ax203_la-jpeg_memsrcdest.Tpo ax203/$(DEPDIR)/ax203_la-jpeg_memsrcdest.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='ax203/jpeg_memsrcdest.c' object='ax203/ax203_la-jpeg_memsrcdest.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(ax203_la_CFLAGS) $(CFLAGS) -c -o ax203/ax203_la-jpeg_memsrcdest.lo `test -f 'ax203/jpeg_memsrcdest.c' || echo '$(srcdir)/'`ax203/jpeg_memsrcdest.c
+
+ax203/ax203_la-tinyjpeg.lo: ax203/tinyjpeg.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(ax203_la_CFLAGS) $(CFLAGS) -MT ax203/ax203_la-tinyjpeg.lo -MD -MP -MF ax203/$(DEPDIR)/ax203_la-tinyjpeg.Tpo -c -o ax203/ax203_la-tinyjpeg.lo `test -f 'ax203/tinyjpeg.c' || echo '$(srcdir)/'`ax203/tinyjpeg.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) ax203/$(DEPDIR)/ax203_la-tinyjpeg.Tpo ax203/$(DEPDIR)/ax203_la-tinyjpeg.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='ax203/tinyjpeg.c' object='ax203/ax203_la-tinyjpeg.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(ax203_la_CFLAGS) $(CFLAGS) -c -o ax203/ax203_la-tinyjpeg.lo `test -f 'ax203/tinyjpeg.c' || echo '$(srcdir)/'`ax203/tinyjpeg.c
+
+ax203/ax203_la-jidctflt.lo: ax203/jidctflt.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(ax203_la_CFLAGS) $(CFLAGS) -MT ax203/ax203_la-jidctflt.lo -MD -MP -MF ax203/$(DEPDIR)/ax203_la-jidctflt.Tpo -c -o ax203/ax203_la-jidctflt.lo `test -f 'ax203/jidctflt.c' || echo '$(srcdir)/'`ax203/jidctflt.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) ax203/$(DEPDIR)/ax203_la-jidctflt.Tpo ax203/$(DEPDIR)/ax203_la-jidctflt.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='ax203/jidctflt.c' object='ax203/ax203_la-jidctflt.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(ax203_la_CFLAGS) $(CFLAGS) -c -o ax203/ax203_la-jidctflt.lo `test -f 'ax203/jidctflt.c' || echo '$(srcdir)/'`ax203/jidctflt.c
 
 canon/canon_la-canon.lo: canon/canon.c
 @am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(canon_la_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT canon/canon_la-canon.lo -MD -MP -MF canon/$(DEPDIR)/canon_la-canon.Tpo -c -o canon/canon_la-canon.lo `test -f 'canon/canon.c' || echo '$(srcdir)/'`canon/canon.c
@@ -3021,6 +3097,48 @@ pentax/pentax_la-library.lo: pentax/library.c
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(pentax_la_CFLAGS) $(CFLAGS) -c -o pentax/pentax_la-library.lo `test -f 'pentax/library.c' || echo '$(srcdir)/'`pentax/library.c
 
+ptp2/ptp2_la-ptp.lo: ptp2/ptp.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(ptp2_la_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT ptp2/ptp2_la-ptp.lo -MD -MP -MF ptp2/$(DEPDIR)/ptp2_la-ptp.Tpo -c -o ptp2/ptp2_la-ptp.lo `test -f 'ptp2/ptp.c' || echo '$(srcdir)/'`ptp2/ptp.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) ptp2/$(DEPDIR)/ptp2_la-ptp.Tpo ptp2/$(DEPDIR)/ptp2_la-ptp.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='ptp2/ptp.c' object='ptp2/ptp2_la-ptp.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(ptp2_la_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o ptp2/ptp2_la-ptp.lo `test -f 'ptp2/ptp.c' || echo '$(srcdir)/'`ptp2/ptp.c
+
+ptp2/ptp2_la-library.lo: ptp2/library.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(ptp2_la_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT ptp2/ptp2_la-library.lo -MD -MP -MF ptp2/$(DEPDIR)/ptp2_la-library.Tpo -c -o ptp2/ptp2_la-library.lo `test -f 'ptp2/library.c' || echo '$(srcdir)/'`ptp2/library.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) ptp2/$(DEPDIR)/ptp2_la-library.Tpo ptp2/$(DEPDIR)/ptp2_la-library.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='ptp2/library.c' object='ptp2/ptp2_la-library.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(ptp2_la_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o ptp2/ptp2_la-library.lo `test -f 'ptp2/library.c' || echo '$(srcdir)/'`ptp2/library.c
+
+ptp2/ptp2_la-usb.lo: ptp2/usb.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(ptp2_la_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT ptp2/ptp2_la-usb.lo -MD -MP -MF ptp2/$(DEPDIR)/ptp2_la-usb.Tpo -c -o ptp2/ptp2_la-usb.lo `test -f 'ptp2/usb.c' || echo '$(srcdir)/'`ptp2/usb.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) ptp2/$(DEPDIR)/ptp2_la-usb.Tpo ptp2/$(DEPDIR)/ptp2_la-usb.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='ptp2/usb.c' object='ptp2/ptp2_la-usb.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(ptp2_la_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o ptp2/ptp2_la-usb.lo `test -f 'ptp2/usb.c' || echo '$(srcdir)/'`ptp2/usb.c
+
+ptp2/ptp2_la-ptpip.lo: ptp2/ptpip.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(ptp2_la_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT ptp2/ptp2_la-ptpip.lo -MD -MP -MF ptp2/$(DEPDIR)/ptp2_la-ptpip.Tpo -c -o ptp2/ptp2_la-ptpip.lo `test -f 'ptp2/ptpip.c' || echo '$(srcdir)/'`ptp2/ptpip.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) ptp2/$(DEPDIR)/ptp2_la-ptpip.Tpo ptp2/$(DEPDIR)/ptp2_la-ptpip.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='ptp2/ptpip.c' object='ptp2/ptp2_la-ptpip.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(ptp2_la_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o ptp2/ptp2_la-ptpip.lo `test -f 'ptp2/ptpip.c' || echo '$(srcdir)/'`ptp2/ptpip.c
+
+ptp2/ptp2_la-config.lo: ptp2/config.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(ptp2_la_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT ptp2/ptp2_la-config.lo -MD -MP -MF ptp2/$(DEPDIR)/ptp2_la-config.Tpo -c -o ptp2/ptp2_la-config.lo `test -f 'ptp2/config.c' || echo '$(srcdir)/'`ptp2/config.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) ptp2/$(DEPDIR)/ptp2_la-config.Tpo ptp2/$(DEPDIR)/ptp2_la-config.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='ptp2/config.c' object='ptp2/ptp2_la-config.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(ptp2_la_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o ptp2/ptp2_la-config.lo `test -f 'ptp2/config.c' || echo '$(srcdir)/'`ptp2/config.c
+
+ptp2/ptp2_la-olympus-wrap.lo: ptp2/olympus-wrap.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(ptp2_la_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT ptp2/ptp2_la-olympus-wrap.lo -MD -MP -MF ptp2/$(DEPDIR)/ptp2_la-olympus-wrap.Tpo -c -o ptp2/ptp2_la-olympus-wrap.lo `test -f 'ptp2/olympus-wrap.c' || echo '$(srcdir)/'`ptp2/olympus-wrap.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) ptp2/$(DEPDIR)/ptp2_la-olympus-wrap.Tpo ptp2/$(DEPDIR)/ptp2_la-olympus-wrap.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='ptp2/olympus-wrap.c' object='ptp2/ptp2_la-olympus-wrap.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(ptp2_la_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o ptp2/ptp2_la-olympus-wrap.lo `test -f 'ptp2/olympus-wrap.c' || echo '$(srcdir)/'`ptp2/olympus-wrap.c
+
 sierra/sierra_la-sierra.lo: sierra/sierra.c
 @am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(sierra_la_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT sierra/sierra_la-sierra.lo -MD -MP -MF sierra/$(DEPDIR)/sierra_la-sierra.Tpo -c -o sierra/sierra_la-sierra.lo `test -f 'sierra/sierra.c' || echo '$(srcdir)/'`sierra/sierra.c
 @am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) sierra/$(DEPDIR)/sierra_la-sierra.Tpo sierra/$(DEPDIR)/sierra_la-sierra.Plo
@@ -3070,12 +3188,47 @@ sierra/sierra_la-epson-desc.lo: sierra/epson-desc.c
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(sierra_la_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o sierra/sierra_la-epson-desc.lo `test -f 'sierra/epson-desc.c' || echo '$(srcdir)/'`sierra/epson-desc.c
 
+st2205/st2205_la-library.lo: st2205/library.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(st2205_la_CFLAGS) $(CFLAGS) -MT st2205/st2205_la-library.lo -MD -MP -MF st2205/$(DEPDIR)/st2205_la-library.Tpo -c -o st2205/st2205_la-library.lo `test -f 'st2205/library.c' || echo '$(srcdir)/'`st2205/library.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) st2205/$(DEPDIR)/st2205_la-library.Tpo st2205/$(DEPDIR)/st2205_la-library.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='st2205/library.c' object='st2205/st2205_la-library.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(st2205_la_CFLAGS) $(CFLAGS) -c -o st2205/st2205_la-library.lo `test -f 'st2205/library.c' || echo '$(srcdir)/'`st2205/library.c
+
+st2205/st2205_la-st2205.lo: st2205/st2205.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(st2205_la_CFLAGS) $(CFLAGS) -MT st2205/st2205_la-st2205.lo -MD -MP -MF st2205/$(DEPDIR)/st2205_la-st2205.Tpo -c -o st2205/st2205_la-st2205.lo `test -f 'st2205/st2205.c' || echo '$(srcdir)/'`st2205/st2205.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) st2205/$(DEPDIR)/st2205_la-st2205.Tpo st2205/$(DEPDIR)/st2205_la-st2205.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='st2205/st2205.c' object='st2205/st2205_la-st2205.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(st2205_la_CFLAGS) $(CFLAGS) -c -o st2205/st2205_la-st2205.lo `test -f 'st2205/st2205.c' || echo '$(srcdir)/'`st2205/st2205.c
+
+st2205/st2205_la-st2205_decode.lo: st2205/st2205_decode.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(st2205_la_CFLAGS) $(CFLAGS) -MT st2205/st2205_la-st2205_decode.lo -MD -MP -MF st2205/$(DEPDIR)/st2205_la-st2205_decode.Tpo -c -o st2205/st2205_la-st2205_decode.lo `test -f 'st2205/st2205_decode.c' || echo '$(srcdir)/'`st2205/st2205_decode.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) st2205/$(DEPDIR)/st2205_la-st2205_decode.Tpo st2205/$(DEPDIR)/st2205_la-st2205_decode.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='st2205/st2205_decode.c' object='st2205/st2205_la-st2205_decode.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(st2205_la_CFLAGS) $(CFLAGS) -c -o st2205/st2205_la-st2205_decode.lo `test -f 'st2205/st2205_decode.c' || echo '$(srcdir)/'`st2205/st2205_decode.c
+
 template/template_la-template.lo: template/template.c
 @am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(template_la_CFLAGS) $(CFLAGS) -MT template/template_la-template.lo -MD -MP -MF template/$(DEPDIR)/template_la-template.Tpo -c -o template/template_la-template.lo `test -f 'template/template.c' || echo '$(srcdir)/'`template/template.c
 @am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) template/$(DEPDIR)/template_la-template.Tpo template/$(DEPDIR)/template_la-template.Plo
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='template/template.c' object='template/template_la-template.lo' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(template_la_CFLAGS) $(CFLAGS) -c -o template/template_la-template.lo `test -f 'template/template.c' || echo '$(srcdir)/'`template/template.c
+
+tp6801/tp6801_la-library.lo: tp6801/library.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(tp6801_la_CFLAGS) $(CFLAGS) -MT tp6801/tp6801_la-library.lo -MD -MP -MF tp6801/$(DEPDIR)/tp6801_la-library.Tpo -c -o tp6801/tp6801_la-library.lo `test -f 'tp6801/library.c' || echo '$(srcdir)/'`tp6801/library.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) tp6801/$(DEPDIR)/tp6801_la-library.Tpo tp6801/$(DEPDIR)/tp6801_la-library.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='tp6801/library.c' object='tp6801/tp6801_la-library.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(tp6801_la_CFLAGS) $(CFLAGS) -c -o tp6801/tp6801_la-library.lo `test -f 'tp6801/library.c' || echo '$(srcdir)/'`tp6801/library.c
+
+tp6801/tp6801_la-tp6801.lo: tp6801/tp6801.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(tp6801_la_CFLAGS) $(CFLAGS) -MT tp6801/tp6801_la-tp6801.lo -MD -MP -MF tp6801/$(DEPDIR)/tp6801_la-tp6801.Tpo -c -o tp6801/tp6801_la-tp6801.lo `test -f 'tp6801/tp6801.c' || echo '$(srcdir)/'`tp6801/tp6801.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) tp6801/$(DEPDIR)/tp6801_la-tp6801.Tpo tp6801/$(DEPDIR)/tp6801_la-tp6801.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='tp6801/tp6801.c' object='tp6801/tp6801_la-tp6801.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(tp6801_la_CFLAGS) $(CFLAGS) -c -o tp6801/tp6801_la-tp6801.lo `test -f 'tp6801/tp6801.c' || echo '$(srcdir)/'`tp6801/tp6801.c
 
 mostlyclean-libtool:
 	-rm -f *.lo

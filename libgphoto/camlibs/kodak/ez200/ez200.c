@@ -14,8 +14,8 @@
  *
  * You should have received a copy of the GNU Lesser General Public
  * License along with this library; if not, write to the
- * Free Software Foundation, Inc., 59 Temple Place - Suite 330,
- * Boston, MA 02111-1307, USA.
+ * Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
+ * Boston, MA  02110-1301  USA
  */
 
 #include <config.h>
@@ -256,6 +256,7 @@ get_file_func (CameraFilesystem *fs, const char *folder, const char *filename,
 
 	len = ez200_get_picture_size (camera->port, n);
 	GP_DEBUG("len = %i", len);
+	if (len < GP_OK) return len;
 
 	data = (char *)malloc(len + HEADER_SIZE + 1);
 	if (!data) return GP_ERROR_NO_MEMORY;

@@ -13,8 +13,9 @@
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+ * along with this program; if not, write to the 
+ * Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
+ * Boston, MA  02110-1301  USA
  */
 #define _BSD_SOURCE
 #include "config.h"
@@ -24,7 +25,7 @@
 #ifdef HAVE_ICONV
 # include <langinfo.h>
 #endif
-#ifdef HAVE_GD
+#ifdef HAVE_LIBGD
 # include <gd.h>
 #endif
 
@@ -129,7 +130,7 @@ static int get_file_idx(CameraPrivateLibrary *pl, const char *folder,
 	return i;
 }
 
-#ifdef HAVE_GD
+#ifdef HAVE_LIBGD
 static void
 rotate90 (gdImagePtr src, gdImagePtr dest)
 {
@@ -180,7 +181,7 @@ get_file_func (CameraFilesystem *fs, const char *folder, const char *filename,
 {
 	Camera *camera = data;
 	int idx, size;
-#ifdef HAVE_GD
+#ifdef HAVE_LIBGD
 	int ret;
 	gdImagePtr im, rotated;
 	void *gdpng;
@@ -203,7 +204,7 @@ get_file_func (CameraFilesystem *fs, const char *folder, const char *filename,
 		return GP_OK;
 	}
 
-#ifdef HAVE_GD
+#ifdef HAVE_LIBGD
 	if (type != GP_FILE_TYPE_NORMAL)
 		return GP_ERROR_NOT_SUPPORTED;
 
@@ -252,7 +253,7 @@ static int
 put_file_func (CameraFilesystem *fs, const char *folder, const char *name, 
 	CameraFileType type, CameraFile *file, void *data, GPContext *context)
 {
-#ifdef HAVE_GD
+#ifdef HAVE_LIBGD
 	Camera *camera = data;
 	char *c, *in_name, *out_name, *filedata = NULL;
 	int ret, in_width, in_height, in_x, in_y;

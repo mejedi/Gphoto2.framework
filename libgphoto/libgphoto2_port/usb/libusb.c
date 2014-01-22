@@ -16,8 +16,8 @@
  *
  * You should have received a copy of the GNU Lesser General Public
  * License along with this library; if not, write to the
- * Free Software Foundation, Inc., 59 Temple Place - Suite 330,
- * Boston, MA 02111-1307, USA.
+ * Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
+ * Boston, MA  02110-1301  USA
  */
 
 #define _BSD_SOURCE
@@ -301,12 +301,22 @@ gp_port_usb_open (GPPort *port)
 	if (ret < 0) {
 		int saved_errno = errno;
 		gp_port_set_error (port, _("Could not claim interface %d (%s). "
-					   "Make sure no other program "
+					   "Make sure no other program (%s) "
 					   "or kernel module (such as %s) "
 					   "is using the device and you have "
-					   "read/write access to the device."),
+					   "read/write access to the device."
+					),
 				   port->settings.usb.interface,
 				   strerror(saved_errno),
+#ifdef __linux__
+				   "gvfs-gphoto2-volume-monitor",
+#else
+#if defined(__APPLE__)
+				   N_("MacOS PTPCamera service"),
+#else
+				   N_("unknown libgphoto2 using program"),
+#endif
+#endif
 				   "sdc2xx, stv680, spca50x");
 		return GP_ERROR_IO_USB_CLAIM;
 	}
@@ -954,6 +964,7 @@ gp_port_usb_find_path_lib(GPPort *port)
  * Windows Media Player 10 uses.
  * It is documented to some degree on various internet pages.
  */
+#if 0
 static int
 gp_port_usb_match_mtp_device(struct usb_device *dev,int *configno, int *interfaceno, int *altsettingno)
 {
@@ -966,8 +977,8 @@ gp_port_usb_match_mtp_device(struct usb_device *dev,int *configno, int *interfac
 	if ((dev->descriptor.bDeviceClass!=0xff) && (dev->descriptor.bDeviceClass!=0))
 		return 0;
 #endif
+	xifaces = xnocamifaces = 0;
 	if (dev->config) {
-		xifaces = xnocamifaces = 0;
 		for (i = 0; i < dev->descriptor.bNumConfigurations; i++) {
 			unsigned int j;
 
@@ -1096,14 +1107,17 @@ errout:
 	return 0;
 #endif
 }
+#endif
 
 static int
 gp_port_usb_match_device_by_class(struct usb_device *dev, int class, int subclass, int protocol, int *configno, int *interfaceno, int *altsettingno)
 {
 	int i, i1, i2;
 
+#if 0
 	if (class == 666) /* Special hack for MTP devices with MS OS descriptors. */
 		return gp_port_usb_match_mtp_device (dev, configno, interfaceno, altsettingno);
+#endif
 
 	if (dev->descriptor.bDeviceClass == class &&
 	    (subclass == -1 ||

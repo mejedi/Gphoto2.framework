@@ -17,6 +17,8 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+#define PSLR_MAX_RESOLUTIONS 4
+
 #define PSLR_LIGHT_METER_AE_LOCK 0x8
 
 #define PSLR_AF_POINT_TOP_LEFT   0x1
@@ -31,6 +33,8 @@
 #define PSLR_AF_POINT_BOT_MID    0x200
 #define PSLR_AF_POINT_BOT_RIGHT  0x400
 
+#define PSLR_ID1_K30     0x12f52
+#define PSLR_ID2_K30     0x20c
 #define PSLR_ID1_K20D    0x12cd2
 #define PSLR_ID2_K20D    0x1ba
 #define PSLR_ID1_K10D    0x12c1e
@@ -77,14 +81,6 @@ typedef enum {
     PSLR_JPEG_QUALITY_1,
     PSLR_JPEG_QUALITY_MAX
 } pslr_jpeg_quality_t;
-
-typedef enum {
-    PSLR_JPEG_RESOLUTION_14M, /* K20D only */
-    PSLR_JPEG_RESOLUTION_10M,
-    PSLR_JPEG_RESOLUTION_6M,
-    PSLR_JPEG_RESOLUTION_2M,
-    PSLR_JPEG_RESOLUTION_MAX
-} pslr_jpeg_resolution_t;
 
 typedef enum {
     PSLR_JPEG_IMAGE_MODE_NATURAL,
@@ -188,13 +184,6 @@ typedef struct {
     uint32_t focused_af_point;             /* 0x150 */
 } pslr_status;
 
-typedef struct {
-    uint32_t a;
-    uint32_t b;
-    uint32_t addr;
-    uint32_t length;
-} pslr_buffer_segment_info;
-
 typedef void (*pslr_progress_callback_t)(uint32_t current, uint32_t total);
 
 #ifdef LIBGPHOTO2
@@ -223,7 +212,7 @@ int pslr_set_iso(pslr_handle_t h, uint32_t value);
 int pslr_set_ec(pslr_handle_t h, pslr_rational_t value);
 
 int pslr_set_jpeg_quality(pslr_handle_t h, pslr_jpeg_quality_t quality);
-int pslr_set_jpeg_resolution(pslr_handle_t h, pslr_jpeg_resolution_t resolution);
+int pslr_set_jpeg_resolution(pslr_handle_t h, int resolution);
 int pslr_set_jpeg_image_mode(pslr_handle_t h, pslr_jpeg_image_mode_t image_mode);
 
 int pslr_set_jpeg_sharpness(pslr_handle_t h, int32_t sharpness);
@@ -247,3 +236,4 @@ int pslr_set_exposure_mode(pslr_handle_t h, pslr_exposure_mode_t mode);
 int pslr_select_af_point(pslr_handle_t h, uint32_t point);
 
 const char *pslr_camera_name(pslr_handle_t h);
+const char **pslr_camera_resolution_steps(pslr_handle_t h);

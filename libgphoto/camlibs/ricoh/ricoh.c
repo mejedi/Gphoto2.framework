@@ -14,8 +14,8 @@
  *
  * You should have received a copy of the GNU Lesser General Public
  * License along with this library; if not, write to the
- * Free Software Foundation, Inc., 59 Temple Place - Suite 330,
- * Boston, MA 02111-1307, USA.
+ * Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
+ * Boston, MA  02110-1301  USA
  */
 
 #include "config.h"
@@ -830,7 +830,7 @@ ricoh_put_file (Camera *camera, GPContext *context, const char *name,
 	if (strlen (name) > 12) {
 		gp_context_error (context, _("The filename's length must not "
 			"exceed 12 characters ('%s' has %i characters)."),
-			name, strlen (name));
+			name, (int)strlen (name));
 		return (GP_ERROR);
 	}
 

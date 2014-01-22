@@ -17,8 +17,8 @@
  * \par
  * You should have received a copy of the GNU Lesser General Public
  * License along with this library; if not, write to the
- * Free Software Foundation, Inc., 59 Temple Place - Suite 330,
- * Boston, MA 02111-1307, USA.
+ * Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
+ * Boston, MA  02110-1301  USA
  */
 
 #define _BSD_SOURCE
@@ -451,6 +451,8 @@ gp_context_question (GPContext *context, const char *format, ...)
 	feedback = GP_CONTEXT_FEEDBACK_OK;
 	if (context && context->question_func)
 		feedback = context->question_func (context, str, context->question_func_data);
+
+	free (str);
 
 	return feedback;
 }

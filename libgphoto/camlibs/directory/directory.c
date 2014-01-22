@@ -16,8 +16,8 @@
  *
  * You should have received a copy of the GNU Lesser General Public
  * License along with this library; if not, write to the
- * Free Software Foundation, Inc., 59 Temple Place - Suite 330,
- * Boston, MA 02111-1307, USA.
+ * Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
+ * Boston, MA  02110-1301  USA
  */
 
 #define _BSD_SOURCE
@@ -120,6 +120,7 @@ static const struct {
 	{"srw",  GP_MIME_RAW},
 	{"gf1",  GP_MIME_RAW},
 	{"srw",  GP_MIME_RAW},
+	{"nrw",  GP_MIME_RAW},
 	{"png",  GP_MIME_PNG},
 	{"wav",  GP_MIME_WAV},
 	{"3gp",  "video/3gpp"},
@@ -373,6 +374,7 @@ folder_list_func (CameraFilesystem *fs, const char *folder, CameraList *list,
 				gp_context_error (context, _("Could not get information "
 							     "about '%s' (%s)."),
 						  buf, strerror(saved_errno));
+				gp_system_closedir (dir);
 				return GP_ERROR;
 			}
 			if (S_ISDIR (st.st_mode)) {

@@ -14,8 +14,8 @@
  *
  * You should have received a copy of the GNU Lesser General Public
  * License along with this library; if not, write to the
- * Free Software Foundation, Inc., 59 Temple Place - Suite 330,
- * Boston, MA 02111-1307, USA.
+ * Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
+ * Boston, MA  02110-1301  USA
  */
 
 #define _BSD_SOURCE
@@ -78,7 +78,7 @@ static const struct {
 								    0x9120},
 	{"ViviCam3350",       GP_DRIVER_STATUS_EXPERIMENTAL, 0x2770, 0x9120},
 	{"ViviCam5B",         GP_DRIVER_STATUS_EXPERIMENTAL, 0x2770, 0x9120},
-	{"DC-N130t",          GP_DRIVER_STATUS_EXPERIMENTAL, 0x2770, 0x9120},
+	{"DC-N130ta",         GP_DRIVER_STATUS_EXPERIMENTAL, 0x2770, 0x9120},
 	{"SY-2107C",          GP_DRIVER_STATUS_EXPERIMENTAL, 0x2770, 0x9120},
 	{"Shark SDC-513",     GP_DRIVER_STATUS_EXPERIMENTAL, 0x2770, 0x9120},
 	{"Shark SDC-519",     GP_DRIVER_STATUS_EXPERIMENTAL, 0x2770, 0x9120},
@@ -384,7 +384,10 @@ get_file_func (CameraFilesystem *fs, const char *folder, const char *filename,
 		GP_DEBUG ("size = %i\n", size);
 		if (comp_ratio>1) {
 			rawdata = malloc (w*h);
-			if (!rawdata) return GP_ERROR_NO_MEMORY;
+			if (!rawdata) {
+				free (ppm);
+				return GP_ERROR_NO_MEMORY;
+			}
 			sq_decompress (camera->pl->model, rawdata,
 						frame_data, w, h);
 			gp_gamma_fill_table (gtable, .65); 
@@ -397,6 +400,7 @@ get_file_func (CameraFilesystem *fs, const char *folder, const char *filename,
 
 		gp_file_set_mime_type (file, GP_MIME_PPM);
 		gp_file_set_data_and_size (file, (char *)ppm, size);
+		if (rawdata != frame_data) free (rawdata);
 
 	} else {	/* type is GP_FILE_TYPE_RAW */
 		size = w*h/comp_ratio;

@@ -16,8 +16,9 @@
  *                                                                           *
  *  You should have received a copy of the GNU Library General Public        *
  *  License along with this program; see the file COPYING.LIB.  If not,      *
- *  write to the Free Software Foundation, Inc., 59 Temple Place -           *
- *  Suite 330,  Boston, MA 02111-1307, USA.                                  *
+ *  write to the 
+ *  Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
+ *  Boston, MA  02110-1301  USA
  *                                                                           *
  *****************************************************************************/
 
@@ -579,8 +580,11 @@ get_info_func (CameraFilesystem *fs, const char *folder, const char *filename,
 	free (buf);
 	if (ret < GP_OK)
 		return ret;
-	if (msglen < 2)
+
+	if (msglen < 2) {
+		free (msg);
 		return GP_ERROR_IO;
+	}
 
 /*
 0000  80 80 80 85 86 85-84 84 30 31 2f 30 32 2f  ..........01/02/
@@ -590,8 +594,10 @@ get_info_func (CameraFilesystem *fs, const char *folder, const char *filename,
  */
 	xmsg = msg;
 	ret = decode_u32(&xmsg, &msglen, &val);
-	if (ret < GP_OK)
+	if (ret < GP_OK) {
+		free (msg);
 		return ret;
+	}
 	memset (info, 0, sizeof(*info));
 	info->file.fields = GP_FILE_INFO_SIZE;
 	info->file.size = val;
@@ -604,8 +610,10 @@ get_info_func (CameraFilesystem *fs, const char *folder, const char *filename,
 	msglen	-= 2;
 
 	ret = decode_u32(&xmsg, &msglen, &val);
-	if (ret < GP_OK)
+	if (ret < GP_OK) {
+		free (msg);
 		return ret;
+	}
 	info->preview.fields = GP_FILE_INFO_SIZE;
 	info->preview.size = val;
 
