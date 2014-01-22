@@ -8,25 +8,17 @@ it covers the majority of current and antiquated cameras.
 
 ## Usage
 
-Straightforward. Gphoto2 install name is *@rpath/Frameworks/Gphoto2.framework/Gphoto2*,
-please adjust your rpath accordingly.
+1. Add the framework to your project.
+2. Include _&lt;gphoto2/gphoto2.h&gt;_.
+3. Link against _Gphoto2.framework_. 
+4. Put the framework into your application bundle with a _Copy Files_ build phase. 
+5. Please adjust your application rpath.  
+   If the framework was
+put into _Frameworks_ subfolder inside application bundle the value for _Runpath Search Paths_ build setting
+would be *@loader_path/../Frameworks*.
 
 ## Library Versions
 - libgphoto-2.5.3.1
 - libusbx-1.0.16
 - libtool-2.4.2
-
-## About Branches
-
-- *external.nub* — the starting point for branches named after external project
-- *libtool* — [libtool](http://www.gnu.org/software/libtool/) sources
-- *libusb* — [libusb](http://www.libusb.org) sources
-- *libgphoto* — [libgphoto](http://www.gphoto.org) sources
-
-Eventually external sources are updated with a newer version. This is done as follows.
-First checkout the corresponding branch. Replace old sources with new sources and commit.
-Now merge the branch with master.
-
-Changes to external source code is done in *master* only; the branch named after the
-external project always contains the pristine code.
 
