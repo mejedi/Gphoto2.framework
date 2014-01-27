@@ -2427,6 +2427,7 @@
 				90A666C718182D4400592E25 /* CopyFiles */,
 				90A666E718184AFB00592E25 /* CopyFiles */,
 				90A667301818538A00592E25 /* CopyFiles */,
+				90D3124E1896AD7D00987158 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -2631,6 +2632,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		90D3124E1896AD7D00987158 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "FMWK_ROOT=\"$TARGET_BUILD_DIR/$FULL_PRODUCT_NAME\"\nFMWK_FILE=\"$TARGET_BUILD_DIR/$EXECUTABLE_PATH\"\n\n# @rpath/ -> @loader_path/\nfor lib in $(otool -L \"$FMWK_FILE\" | awk 'NR>2{print $1}')\ndo\n    echo $lib\n    install_name_tool -change \"$lib\" \"$(echo $lib| sed s+^@rpath/+@loader_path/+)\" \"$FMWK_FILE\" || exit 9\ndone\n\n# create Libraries (for linker)\nrm -f \"$FMWK_ROOT/Libraries\"\nln -s \"Versions/Current/Libraries\" \"$FMWK_ROOT/Libraries\"";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		90A666521818291900592E25 /* Sources */ = {
