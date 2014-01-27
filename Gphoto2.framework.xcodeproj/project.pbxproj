@@ -158,6 +158,62 @@
 			remoteGlobalIDString = 90ADD954181B023E0083A15F;
 			remoteInfo = "ptp-camera-stop";
 		};
+		90D311F318969ABF00987158 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 90B828181817D43B0029357C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 90A666BA18182C0600592E25;
+			remoteInfo = libgphoto2_port;
+		};
+		90D311F518969AC500987158 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 90B828181817D43B0029357C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 90A666EC18184CBB00592E25;
+			remoteInfo = libgphoto2;
+		};
+		90D311F718969AED00987158 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 90B828181817D43B0029357C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 90A666BA18182C0600592E25;
+			remoteInfo = libgphoto2_port;
+		};
+		90D311F918969AF300987158 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 90B828181817D43B0029357C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 90B82A061817F0580029357C;
+			remoteInfo = libltdl;
+		};
+		90D311FB18969AFA00987158 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 90B828181817D43B0029357C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 90B8282A1817D56D0029357C;
+			remoteInfo = "libusb-1.0";
+		};
+		90D311FD18969B1500987158 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 90B828181817D43B0029357C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 90A666BA18182C0600592E25;
+			remoteInfo = libgphoto2_port;
+		};
+		90D311FF18969B1A00987158 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 90B828181817D43B0029357C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 90B8282A1817D56D0029357C;
+			remoteInfo = "libusb-1.0";
+		};
+		90D3120118969B2300987158 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 90B828181817D43B0029357C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 90B82A061817F0580029357C;
+			remoteInfo = libltdl;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -2399,6 +2455,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				90D3120218969B2300987158 /* PBXTargetDependency */,
 			);
 			name = libgphoto2_port;
 			productName = libgphoto_port;
@@ -2416,6 +2473,8 @@
 			buildRules = (
 			);
 			dependencies = (
+				90D3120018969B1A00987158 /* PBXTargetDependency */,
+				90D311FE18969B1500987158 /* PBXTargetDependency */,
 			);
 			name = usb;
 			productName = ptp2;
@@ -2433,6 +2492,9 @@
 			buildRules = (
 			);
 			dependencies = (
+				90D311FC18969AFA00987158 /* PBXTargetDependency */,
+				90D311FA18969AF300987158 /* PBXTargetDependency */,
+				90D311F818969AED00987158 /* PBXTargetDependency */,
 			);
 			name = libgphoto2;
 			productName = libgphoto;
@@ -2450,6 +2512,8 @@
 			buildRules = (
 			);
 			dependencies = (
+				90D311F618969AC500987158 /* PBXTargetDependency */,
+				90D311F418969ABF00987158 /* PBXTargetDependency */,
 			);
 			name = ptp2;
 			productName = ptp2;
@@ -2725,6 +2789,46 @@
 			isa = PBXTargetDependency;
 			target = 90ADD954181B023E0083A15F /* icc-yield */;
 			targetProxy = 90ADD961181B02BA0083A15F /* PBXContainerItemProxy */;
+		};
+		90D311F418969ABF00987158 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 90A666BA18182C0600592E25 /* libgphoto2_port */;
+			targetProxy = 90D311F318969ABF00987158 /* PBXContainerItemProxy */;
+		};
+		90D311F618969AC500987158 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 90A666EC18184CBB00592E25 /* libgphoto2 */;
+			targetProxy = 90D311F518969AC500987158 /* PBXContainerItemProxy */;
+		};
+		90D311F818969AED00987158 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 90A666BA18182C0600592E25 /* libgphoto2_port */;
+			targetProxy = 90D311F718969AED00987158 /* PBXContainerItemProxy */;
+		};
+		90D311FA18969AF300987158 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 90B82A061817F0580029357C /* libltdl */;
+			targetProxy = 90D311F918969AF300987158 /* PBXContainerItemProxy */;
+		};
+		90D311FC18969AFA00987158 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 90B8282A1817D56D0029357C /* libusb-1.0 */;
+			targetProxy = 90D311FB18969AFA00987158 /* PBXContainerItemProxy */;
+		};
+		90D311FE18969B1500987158 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 90A666BA18182C0600592E25 /* libgphoto2_port */;
+			targetProxy = 90D311FD18969B1500987158 /* PBXContainerItemProxy */;
+		};
+		90D3120018969B1A00987158 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 90B8282A1817D56D0029357C /* libusb-1.0 */;
+			targetProxy = 90D311FF18969B1A00987158 /* PBXContainerItemProxy */;
+		};
+		90D3120218969B2300987158 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 90B82A061817F0580029357C /* libltdl */;
+			targetProxy = 90D3120118969B2300987158 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
